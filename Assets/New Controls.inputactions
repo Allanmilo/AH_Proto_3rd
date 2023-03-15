@@ -1,0 +1,55 @@
+{
+    "name": "New Controls",
+    "maps": [
+        {
+            "name": "Player01",
+            "id": "78daf338-c30a-458f-9a16-8a27c241473b",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Button",
+                    "id": "32388231-504e-4017-82a9-8c55274a5fc3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c7203656-eb4b-43fa-82d3-1e73df5a1d3e",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7a5b3eeb-fc24-41f2-92c8-a019b36d3fb2",
+                    "path": "<XInputController>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bdec3292-8a58-4882-8931-26e55ade4ce3",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

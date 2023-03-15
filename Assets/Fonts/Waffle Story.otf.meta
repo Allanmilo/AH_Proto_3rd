@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 795d358932685834b8aeb1d50dd0fef8
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Waffle Story
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 609b648600e07984383cc57b29434cd8, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

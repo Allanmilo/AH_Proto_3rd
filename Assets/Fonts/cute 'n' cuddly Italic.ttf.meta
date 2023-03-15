@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: dec6ad61f95a8984f8c99fe54048856b
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Cute 'n' Cuddly
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 4123e7a7c86ac7244a39479456e490ef, type: 3}
+  - {fileID: 12800000, guid: 6e1b041b28402ce46a3993d9a9443b24, type: 3}
+  - {fileID: 12800000, guid: 83a43f9de9aeaa64591a6897b38084dc, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

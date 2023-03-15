@@ -1,0 +1,730 @@
+fileFormatVersion: 2
+guid: f0ec9b6491e29e846a508e677259bbdc
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8151875366620845823
+    second: tpihfag_0
+  - first:
+      213: 7575779875448755036
+    second: tpihfag_1
+  - first:
+      213: -3023667528662773869
+    second: tpihfag_2
+  - first:
+      213: 4764227492932971757
+    second: tpihfag_3
+  - first:
+      213: 6369035111724737331
+    second: tpihfag_4
+  - first:
+      213: 3820393629739537437
+    second: tpihfag_5
+  - first:
+      213: 2737756836618962691
+    second: tpihfag_6
+  - first:
+      213: 1407816794634733070
+    second: tpihfag_7
+  - first:
+      213: -7671603622260417171
+    second: tpihfag_8
+  - first:
+      213: 3425417041261804117
+    second: tpihfag_9
+  - first:
+      213: 1789528994514922758
+    second: tpihfag_10
+  - first:
+      213: 407714622792701788
+    second: tpihfag_11
+  - first:
+      213: 5366075620938045301
+    second: tpihfag_12
+  - first:
+      213: 339556308225469076
+    second: tpihfag_13
+  - first:
+      213: -609850995025871567
+    second: tpihfag_14
+  - first:
+      213: 5017149647647668852
+    second: tpihfag_15
+  - first:
+      213: 981635542374065392
+    second: tpihfag_16
+  - first:
+      213: 2494153289389661439
+    second: tpihfag_17
+  - first:
+      213: 8878382770137394512
+    second: tpihfag_18
+  - first:
+      213: 8405561612292739725
+    second: tpihfag_19
+  - first:
+      213: -1359019828893560941
+    second: tpihfag_20
+  - first:
+      213: -7145199358631074822
+    second: tpihfag_21
+  - first:
+      213: -9189739099917704650
+    second: tpihfag_22
+  - first:
+      213: -4274943443236312693
+    second: tpihfag_23
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tpihfag_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8
+        width: 25
+        height: 30
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 109ae476b88bede80800000000000000
+      internalID: -8151875366620845823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tpihfag_1
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 8
+        width: 24
+        height: 34
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c531da498a3922960800000000000000
+      internalID: 7575779875448755036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tpihfag_2
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 8
+        width: 22
+        height: 26
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39f0c2b1766c906d0800000000000000
+      internalID: -3023667528662773869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tpihfag_3
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 1
+        width: 25
+        height: 34
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dec6b61b9afed1240800000000000000
+      internalID: 4764227492932971757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tpihfag_4
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 9
+        width: 24
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 333e75480bb536850800000000000000
+      internalID: 6369035111724737331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tpihfag_5
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 8
+        width: 23
+        height: 27
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d145ac2d3c3c40530800000000000000
+      internalID: 3820393629739537437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tpihfag_6
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 9
+        width: 22
+        height: 33
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 307021076577ef520800000000000000
+      internalID: 2737756836618962691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tpihfag_7
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 25
+        width: 7
+        height: 13
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0648017ae1998310800000000000000
+      internalID: 1407816794634733070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tpihfag_8
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 9
+        width: 21
+        height: 26
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6d5195c62df88590800000000000000
+      internalID: -7671603622260417171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tpihfag_9
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 8
+        width: 24
+        height: 34
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55abaff76a6898f20800000000000000
+      internalID: 3425417041261804117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tpihfag_10
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 9
+        width: 24
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60de251a32fa5d810800000000000000
+      internalID: 1789528994514922758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tpihfag_11
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 9
+        width: 24
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c579a4d0a4e78a500800000000000000
+      internalID: 407714622792701788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tpihfag_12
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 0
+        width: 24
+        height: 35
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57755e7b851287a40800000000000000
+      internalID: 5366075620938045301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tpihfag_13
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 9
+        width: 17
+        height: 26
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49aa50dc9a856b400800000000000000
+      internalID: 339556308225469076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tpihfag_14
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 1
+        width: 23
+        height: 33
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13d709b40cf5987f0800000000000000
+      internalID: -609850995025871567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tpihfag_15
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 8
+        width: 20
+        height: 34
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47af305c50f70a540800000000000000
+      internalID: 5017149647647668852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tpihfag_16
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 9
+        width: 25
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f4aa1a23587f9d00800000000000000
+      internalID: 981635542374065392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tpihfag_17
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 9
+        width: 17
+        height: 26
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffc517db3330d9220800000000000000
+      internalID: 2494153289389661439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tpihfag_18
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 8
+        width: 23
+        height: 26
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05decf9f61a563b70800000000000000
+      internalID: 8878382770137394512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tpihfag_19
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 23
+        height: 35
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d825e5670cd86a470800000000000000
+      internalID: 8405561612292739725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tpihfag_20
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 9
+        width: 26
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39f46108aaac32de0800000000000000
+      internalID: -1359019828893560941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tpihfag_21
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 8
+        width: 23
+        height: 26
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af3227b4a0727dc90800000000000000
+      internalID: -7145199358631074822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tpihfag_22
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 9
+        width: 9
+        height: 33
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63223ea5afc777080800000000000000
+      internalID: -9189739099917704650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tpihfag_23
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 5
+        width: 10
+        height: 13
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b89a30786995ca4c0800000000000000
+      internalID: -4274943443236312693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
