@@ -9,7 +9,7 @@ using TMPro;
 public class AHManager : MonoBehaviour
 {
 
-
+GameObject Test_Commit;
     [SerializeField] GameObject _puck;
     
     [SerializeField] GameObject _circleBackground;

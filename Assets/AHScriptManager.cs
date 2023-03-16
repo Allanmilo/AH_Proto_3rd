@@ -681,7 +681,7 @@ int arrayNum;
 
         // worked here Test_Function();
 
-        Debug.Log("again");
+        Debug.Log("again and again too");
 
         start_Count = true;
 

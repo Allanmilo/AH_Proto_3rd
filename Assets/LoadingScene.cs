@@ -32,6 +32,8 @@ public class LoadingScene: MonoBehaviour
 	Color startColor;
 	Color endColor;
 
+    float progress;
+
 	void Awake()
 	{
 		newAlpha = 1;
@@ -57,31 +59,34 @@ public class LoadingScene: MonoBehaviour
 
 	void LoadScene()
 	{	
-		StartCoroutine(BeginLoad(Change_Circle));
+		StartCoroutine(BeginLoad());
 		
 	}
 
 
 
-	private IEnumerator BeginLoad(Action action)
+	private IEnumerator BeginLoad()
 	{
 		
 		yield return null;
 		
 		 operation = SceneManager.LoadSceneAsync(sceneName);
-		//	operation.allowSceneActivation = false;
+		 operation.allowSceneActivation = false;  // was off originally.
 		
 		while (!operation.isDone)
 		{
 			
-			float progress = Mathf.Clamp01(operation.progress / .9f); // allows progress to go to 1 instead of stopping AT .9.
+			progress = Mathf.Clamp01(operation.progress / .9f); // allows progress to go to 1 instead of stopping AT .9.
 			
 			_progress_Circle_Image.fillAmount = progress;
-				
-			yield return null;	
+
+            operation.allowSceneActivation = true;
+
+            yield return null;	
 		}
-		
-		action();
+
+        Change_Circle();
+		// action();
 		
 	}
 
