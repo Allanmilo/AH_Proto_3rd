@@ -1,0 +1,195 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 61
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffe70aba2e7074048aca5de573b64a59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SimpleSelectedItems:
+    m_Keys:
+    - Assets/AHManager.cs
+    - Assets/AHManager.cs.meta
+    - Assets/AHScriptManager.cs
+    - Assets/AHScriptManager.cs.meta
+    - Assets/AH_Menu/AH_Menu_Prefabs/CircleBackground 1.prefab
+    - Assets/AH_Menu/AH_Menu_Prefabs/MenuReturnButton.prefab
+    - Assets/AH_Menu/AH_Menu_Scripts/FreezeText.cs
+    - Assets/AH_Menu/AH_Menu_Scripts/Menu_Buttons.cs
+    - Assets/AH_Menu/AH_Menu_Scripts/MouseClicks.cs
+    - Assets/AH_Menu/AH_Menu_Scripts/PanMovement.cs
+    - Assets/AH_Menu/AH_Menu_Scripts/PanMovement.cs.meta
+    - Assets/AH_Menu/AH_Menu_Scripts/PuckColliderScript.cs
+    - Assets/Change_Mat.cs
+    - Assets/Change_Mat.cs.meta
+    - Assets/Color_Changer.cs
+    - Assets/Color_Changer.cs.meta
+    - Assets/Flower_Buttons.cs
+    - Assets/Flower_Buttons.cs.meta
+    - Assets/Fonts/Bubblegum SDF.asset
+    - Assets/Fonts/Jo_wrote_a_lovesong SDF.asset
+    - Assets/Fonts/Jo_wrote_a_lovesong SDF.asset.meta
+    - Assets/Fonts/Leo hates school SDF.asset
+    - Assets/Fonts/Lova Bear Font by Dreamink (7NTypes) SDF.asset
+    - Assets/Fonts/MilkyNice SDF.asset
+    - Assets/Fonts/MilkyNice-Clean SDF.asset
+    - Assets/Fonts/MilkyNice-Clean SDF.asset.meta
+    - Assets/Fonts/Mungil-Regular SDF.asset
+    - Assets/Fonts/aAbstractGroovy SDF.asset
+    - Assets/LoadingScene.cs
+    - Assets/LoadingScene.cs.meta
+    - Assets/Loading_Scene.unity
+    - Assets/Loading_Scene.unity.meta
+    - Assets/Mat_02.mat
+    - Assets/Mat_02.mat.meta
+    - Assets/Material_02.mat
+    - Assets/Material_02.mat.meta
+    - Assets/Prefabs/2ndRunAway.prefab
+    - Assets/Prefabs/2ndRunAway.prefab.meta
+    - Assets/Prefabs/JumpBackIn.prefab
+    - Assets/Prefabs/JumpBackIn.prefab.meta
+    - Assets/Prefabs/Lets.prefab
+    - Assets/Prefabs/Lets.prefab.meta
+    - Assets/Prefabs/StartOver.prefab
+    - Assets/Prefabs/StartOver.prefab.meta
+    - Assets/Prefabs/smiq.prefab
+    - Assets/Prefabs/smiq.prefab.meta
+    - Assets/Prefabs/tpihfag.prefab
+    - Assets/Prefabs/tpihfag.prefab.meta
+    - Assets/Scenes/Loading_Scene.unity
+    - Assets/Scenes/Loading_Scene.unity.meta
+    - Assets/Scenes/Main_Scene.unity
+    - Assets/Scenes/Main_Scene.unity.meta
+    - Assets/Scenes/SampleScene.unity
+    - Assets/Scenes/SampleScene.unity.meta
+    - Assets/Scripts/AH_Manager.cs
+    - Assets/Scripts/AH_Manager.cs.meta
+    - Assets/Scripts/AIScript.cs
+    - Assets/Scripts/CountDown.cs
+    - Assets/Scripts/FlashFade.cs
+    - Assets/Scripts/FlashFadeTop.cs
+    - Assets/Scripts/MenuMidGame.cs
+    - Assets/Scripts/MenuMidGame.cs.meta
+    - Assets/Scripts/Player.cs
+    - Assets/Scripts/PountEffectorSwitch.cs
+    - Assets/Scripts/PountEffectorSwitch.cs.meta
+    - Assets/Scripts/PuckGlow.cs
+    - Assets/Scripts/PuckGlow.cs.meta
+    - Assets/Scripts/ScoreScaling.cs
+    - Assets/Scripts/StarBoytext.cs
+    - Assets/Scripts/StarGirlText.cs
+    - Assets/Scripts/StartMenuScript.cs
+    - Assets/Scripts/StartMenuScript.cs.meta
+    - Assets/Scripts/Text01Score.cs
+    - Assets/Scripts/TextCoroutines.cs
+    - Assets/Scripts/TextTwoScore.cs
+    - Assets/Sprites/BackDropGlow.png
+    - Assets/Sprites/BackDropGlow.png.meta
+    - Assets/Sprites/Blur_Circle_03.png
+    - Assets/Sprites/Blur_Circle_03.png.meta
+    - Assets/Sprites/Blure_Oval.png
+    - Assets/Sprites/Blure_Oval.png.meta
+    - Assets/Sprites/Flower.png
+    - Assets/Sprites/Flower.png.meta
+    - Assets/Sprites/LoadingScreen03.png
+    - Assets/Sprites/LoadingScreen03.png.meta
+    - Assets/Sprites/LoadingScreen04.png
+    - Assets/Sprites/LoadingScreen04.png.meta
+    - Assets/Sprites/Menu_Flower_01.png
+    - Assets/Sprites/Menu_Flower_01.png.meta
+    - Assets/Sprites/Menu_Flower_02.png
+    - Assets/Sprites/Menu_Flower_02.png.meta
+    - Assets/Sprites/Menu_Flower_over.png
+    - Assets/Sprites/Menu_Flower_over.png.meta
+    - Assets/Sprites/Paddle_Mopsy.png
+    - Assets/Sprites/Paddle_Mopsy.png.meta
+    - Assets/Sprites/Progress_Circle.png
+    - Assets/Sprites/Progress_Circle.png.meta
+    - Assets/Sprites/SplashLoad.png
+    - Assets/Sprites/SplashLoad.png.meta
+    - Assets/Sprites/SplashLoad02.png
+    - Assets/Sprites/SplashLoad02.png.meta
+    - Assets/Sprites/Sprites_Mopsey.meta
+    - Assets/Sprites/Sprites_Mopsey/AB_Front_Body.png
+    - Assets/Sprites/Sprites_Mopsey/AB_Front_Body.png.meta
+    - Assets/Sprites/Sprites_Mopsey/AB_Front_Feet.png
+    - Assets/Sprites/Sprites_Mopsey/AB_Front_Feet.png.meta
+    - Assets/Sprites/Sprites_Mopsey/AB_Front_Left_Foot.png
+    - Assets/Sprites/Sprites_Mopsey/AB_Front_Left_Foot.png.meta
+    - Assets/Sprites/Sprites_Mopsey/AB_Front_OpenMouth.png
+    - Assets/Sprites/Sprites_Mopsey/AB_Front_OpenMouth.png.meta
+    - Assets/Sprites/Sprites_Mopsey/AB_Front_Right_Foot.png
+    - Assets/Sprites/Sprites_Mopsey/AB_Front_Right_Foot.png.meta
+    - Assets/Sprites/Sprites_Mopsey/AB_Front_mouth.png
+    - Assets/Sprites/Sprites_Mopsey/AB_Front_mouth.png.meta
+    - Assets/Sprites/Sprites_Mopsey/AB_Left_Body.png
+    - Assets/Sprites/Sprites_Mopsey/AB_Left_Body.png.meta
+    - Assets/Sprites/Sprites_Mopsey/AB_Leftt_Feet.png
+    - Assets/Sprites/Sprites_Mopsey/AB_Leftt_Feet.png.meta
+    - Assets/Sprites/Sprites_Mopsey/AB_Right_Body.png
+    - Assets/Sprites/Sprites_Mopsey/AB_Right_Body.png.meta
+    - Assets/Sprites/Sprites_Mopsey/AB_Right_Feet.png
+    - Assets/Sprites/Sprites_Mopsey/AB_Right_Feet.png.meta
+    - Assets/Sprites/Sprites_Mopsey/AH_Background.png
+    - Assets/Sprites/Sprites_Mopsey/AH_Background.png.meta
+    - Assets/Sprites/Sprites_Mopsey/AH_Background.svg
+    - Assets/Sprites/Sprites_Mopsey/AH_Background.svg.meta
+    - Assets/Sprites/Sprites_Mopsey/Bunny_01.png
+    - Assets/Sprites/Sprites_Mopsey/Bunny_01.png.meta
+    - Assets/Sprites/Sprites_Mopsey/Bunny_03.png
+    - Assets/Sprites/Sprites_Mopsey/Bunny_03.png.meta
+    - Assets/Sprites/Sprites_Mopsey/Bunny_Attack_foot_left.png
+    - Assets/Sprites/Sprites_Mopsey/Bunny_Attack_foot_left.png.meta
+    - Assets/Sprites/Sprites_Mopsey/Bunny_Attack_foot_right.png
+    - Assets/Sprites/Sprites_Mopsey/Bunny_Attack_foot_right.png.meta
+    - Assets/Sprites/Sprites_Mopsey/Drip.png
+    - Assets/Sprites/Sprites_Mopsey/Drip.png.meta
+    - Assets/Sprites/Sprites_Mopsey/Evil_Mouth_01.png
+    - Assets/Sprites/Sprites_Mopsey/Evil_Mouth_01.png.meta
+    - Assets/Sprites/Sprites_Mopsey/Good_Bunny_02.png
+    - Assets/Sprites/Sprites_Mopsey/Good_Bunny_02.png.meta
+    - Assets/Sprites/Sprites_Mopsey/Mopsy.png
+    - Assets/Sprites/Sprites_Mopsey/Mopsy.png.meta
+    - Assets/Sprites/Sprites_Mopsey/MopsyToo.png
+    - Assets/Sprites/Sprites_Mopsey/MopsyToo.png.meta
+    - Assets/Sprites/Sprites_Mopsey/Mopsy_Is_Angry.png
+    - Assets/Sprites/Sprites_Mopsey/Mopsy_Is_Angry.png.meta
+    - Assets/Sprites/Sprites_Mopsey/Paddle_Mopsy.png
+    - Assets/Sprites/Sprites_Mopsey/Paddle_Mopsy.png.meta
+    - Assets/Sprites/Sprites_Mopsey/Square.png
+    - Assets/Sprites/Sprites_Mopsey/Square.png.meta
+    - Assets/Sprites/Sprites_Mopsey/evil_bunnies.png
+    - Assets/Sprites/Sprites_Mopsey/evil_bunnies.png.meta
+    - Assets/Sprites/back.png
+    - Assets/Sprites/back.png.meta
+    - Assets/Sprites/shadow.png
+    - Assets/Sprites/shadow.png.meta
+    - Assets/Sprites/try.png
+    - Assets/Sprites/try.png.meta
+    - Assets/Square 1.png
+    - Assets/Square 1.png.meta
+    - Assets/TextMesh Pro/Examples & Extras/Fonts/Anton SDF.asset
+    - Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Anton SDF.asset
+    - Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Bangers SDF.asset
+    - Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Electronic
+      Highway Sign SDF.asset
+    - Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Oswald Bold
+      SDF.asset
+    - Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Roboto-Bold
+      SDF.asset
+    - Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset
+    - ProjectSettings/EditorBuildSettings.asset
+    - ProjectSettings/TagManager.asset
+    - 
+    m_Values: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  RevisionSummary: 
+  ChangesSearchValue: 
+  SelectedHistoryRevision: 
+  HistoryPageNumber: 0
+  TabIndex: 0

@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Opponent
+  - Puck
+  - FireWorks
+  - FireWorks02
+  - FireWorks01
+  - Text01
+  - Text02
+  - StarGirl
+  - StarBoy
+  - GoalNet
+  - GoalNet01
+  - GoalNet02
+  - GoalFlash
+  - PuckCenter
+  - Puckedge
+  - B1
+  - B2
+  - MenuButton
+  - PlayPuck
+  - Pan
+  - MenuPucks
+  - MenuPuckText
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - lavel one
+  - level two
+  - level three
+  - MenuButton
+  - menu2_0
+  - menu2_1
+  - menu2_2
+  - Menu2-3
+  - PuckCenter
+  - StarBoyPuck
+  - StarGirlPuck
+  - PuckCollider
+  - MenuPucks
+  - MainMenu
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Text01
+    uniqueID: 1210158555
+    locked: 0
+  - name: Rink
+    uniqueID: 1182129351
+    locked: 0
+  - name: Paddle
+    uniqueID: 3046427725
+    locked: 0
+  - name: Boundary
+    uniqueID: 204391611
+    locked: 0
+  - name: Puck
+    uniqueID: 983171535
+    locked: 0
+  - name: Goal
+    uniqueID: 1997739573
+    locked: 0
+  - name: GoalGlow
+    uniqueID: 4020288611
+    locked: 0
+  - name: FireWorks
+    uniqueID: 1250350045
+    locked: 0
+  - name: FireWorks02
+    uniqueID: 1934997069
+    locked: 0

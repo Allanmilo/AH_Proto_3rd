@@ -1,0 +1,157 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Opponent
+  - Puck
+  - FireWorks
+  - FireWorks02
+  - FireWorks01
+  - Text01
+  - Text02
+  - StarGirl
+  - StarBoy
+  - GoalNet
+  - GoalNet01
+  - GoalNet02
+  - GoalFlash
+  - PuckCenter
+  - Puckedge
+  - B1
+  - B2
+  - MenuButton
+  - PlayPuck
+  - Pan
+  - MenuPucks
+  - MenuPuckText
+  - MenuReturnButton
+  - MenuRingFill
+  - AHManager
+  - PointEffector
+  - MenuCircles
+  - Menu01
+  - Menu92
+  - Progress_Circle
+  - Start_Button_Canvas
+  - SplashLoad
+  - Bad_Arua
+  - Star_Girl
+  - TextCountDown
+  - Text_Girl
+  - Text_Boy
+  - PanText_b
+  - PanText_a
+  - PanText
+  - Mopsey
+  - Second_Camera
+  - Attack_Bunnies
+  - Good_Bunnies
+  - Good_Bunny_o1
+  - Good_Bunny_02
+  - Good_Bunny_03
+  - Mouth_01
+  - Bunny01
+  - AB_Front_Feet
+  - Bunny02
+  - Mout02
+  - Mouth02
+  - AB_Right_Feet
+  - Bunny)3
+  - Mouth03
+  - AB_Left_Feet
+  - Mopsey_Is_Angry
+  - Mopsey_Text_Box
+  - Square_Screen
+  - square_Screen_Text_Box
+  - Dark_Overlay
+  - Hungry
+  - Mopseys_Visit
+  - Good_Bunny_01
+  - Bunny03
+  - SystemTrigger
+  - Hungry_Text
+  - Drops
+  - Splash
+  - Hearts_01
+  - Hearts_02
+  - Hearts_03
+  - Hearts_00
+  - Mopseys_Mask
+  - MainMenu
+  - Score
+  - Screen_Color
+  - Bad_Hearts_01
+  - Bad_Hearts_02
+  - Bad_Hearts_03
+  - Mopseys_Entrance
+  - Mopseys_Exiting
+  - Opponent_Text_Box
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - lavel one
+  - level two
+  - level three
+  - MenuButton
+  - menu2_0
+  - menu2_1
+  - menu2_2
+  - Menu2-3
+  - PuckCenter
+  - StarBoyPuck
+  - StarGirlPuck
+  - PuckCollider
+  - MenuPucks
+  - MainMenu
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Text01
+    uniqueID: 1210158555
+    locked: 0
+  - name: Rink
+    uniqueID: 1182129351
+    locked: 0
+  - name: Paddle
+    uniqueID: 3046427725
+    locked: 0
+  - name: Boundary
+    uniqueID: 204391611
+    locked: 0
+  - name: Puck
+    uniqueID: 983171535
+    locked: 0
+  - name: Goal
+    uniqueID: 1997739573
+    locked: 0
+  - name: GoalGlow
+    uniqueID: 4020288611
+    locked: 0
+  - name: FireWorks
+    uniqueID: 1250350045
+    locked: 0
+  - name: FireWorks02
+    uniqueID: 1934997069
+    locked: 0
+  - name: FireWorks03
+    uniqueID: 692269183
+    locked: 0

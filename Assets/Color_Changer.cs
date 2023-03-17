@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Color_Changer : MonoBehaviour
 {
+    // special effect for star's angry background.
     [SerializeField] Transform blure_oval01;
     [SerializeField] Transform blure_oval02;
     [SerializeField] Vector3 _rotation;  

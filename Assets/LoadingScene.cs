@@ -85,7 +85,7 @@ public class LoadingScene: MonoBehaviour
             yield return null;	
 		}
 
-        Change_Circle();
+        Change_Circle(); // was an action item.
 		// action();
 		
 	}

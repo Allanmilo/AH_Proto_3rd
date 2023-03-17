@@ -577,12 +577,15 @@ int arrayNum;
 
     #endregion Delegates
 
+    public bool speedUp;
+    public int paddle_Array_Pos;
 
+    public string[] paddle_Trash_Talk_Array;
     void Start()
     {  
        Debug.Log("start of start");
-       
-
+        speedUp = false;
+        
         _start_Size_Y = new Vector2(6, 0);
         _mid_Size_Y = new Vector2(6, 1);
         _mid02_Size_Y = new Vector2(6, 4);
@@ -770,6 +773,20 @@ int arrayNum;
         textBox_width02 = new Vector2(11, 1);
 
         _text_Is_This = false;
+
+        paddle_Array_Pos = 0;
+
+        
+             paddle_Trash_Talk_Array = new string[5];
+
+        paddle_Trash_Talk_Array[0] = "Make my Day!";
+        paddle_Trash_Talk_Array[1] = "Yippee ki yay!";
+        paddle_Trash_Talk_Array[2] = "You lookin' at me?";
+        paddle_Trash_Talk_Array[3] = "Feelin' lucky?";
+        paddle_Trash_Talk_Array[4] = "You're goin' DOWN!";
+
+
+        
 
 
         #region Mopseys_Start
@@ -2684,7 +2701,7 @@ public void Switch_Menus()
 
      // activate main menu.
       startMenuScript.StartMenuOn();
-        
+        speedUp = false;
      fullSize = _startMenu.transform.localScale;  
       _startMenu.transform.localScale = zeroish;
     float time = .3f;
@@ -2752,11 +2769,12 @@ public void StartOver()
 
         DeActivateButtons();
 
-         foreach (FreezeText freezeText in _freezeText)
+         foreach (FreezeText freezeText in _freezeText)  // is this needed? not in new version.
             {
                  freezeText.bounceOn = false;
             }
 
+        speedUp = true;
          _pointEffectorSwitch.SwitchEffector();
      
          UnFreezeCircles();
@@ -2810,6 +2828,7 @@ public void UnFreezeCircles()
  
           public void restoreMenu()
         {
+            speedUp = false;
             Scale_Object(Pan, small, large, 0, 1 );
 
             Pan.SetActive(true);
