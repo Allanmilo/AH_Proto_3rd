@@ -13,6 +13,11 @@ public class AHScriptManager : MonoBehaviour
 
     gameObject Testing_Git_01;
     gameObject Testing_Git_02;
+    gameObject Testing_Git_03;
+
+
+
+    
     [SerializeField] GameObject _puck;
     
     [SerializeField] GameObject _circleBackground;
