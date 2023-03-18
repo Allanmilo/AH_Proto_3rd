@@ -11,7 +11,8 @@ using System.Threading.Tasks;
 public class AHScriptManager : MonoBehaviour
 {
 
-
+    gameObject Testing_Git_01;
+    gameObject Testing_Git_02;
     [SerializeField] GameObject _puck;
     
     [SerializeField] GameObject _circleBackground;
