@@ -10,13 +10,6 @@ using System.Threading.Tasks;
 
 public class AHScriptManager : MonoBehaviour
 {
-
-    gameObject Testing_Git_01;
-    gameObject Testing_Git_02;
-    gameObject Testing_Git_03;
-
-
-
     
     [SerializeField] GameObject _puck;
     
@@ -2532,7 +2525,7 @@ public async Task Rotate_Object(RectTransform _object_Rec, float x, float y, flo
                     
 
                         yield return new WaitForSeconds(1);
-                        Time.timeScale = 0;
+                        // Time.timeScale = 0;
                         Set_Prefab_Var(); 
                         ActivateReturnMenu(false, false);                                                     
                         
@@ -2769,7 +2762,7 @@ public void StartOver()
 
     public void SwitchScreens()
     {
-        Time.timeScale = 1;  
+        // Time.timeScale = 1;  
 
          StartReturnMenu();
 
@@ -2902,7 +2895,7 @@ void LowerTheScreen()
         if(_puck)
         {
              restoreMenuRunning = true;
-             Time.timeScale = 0;
+             // Time.timeScale = 0;
              ActivateReturnMenu(true, false);
             restoreMenu();
         }

@@ -4000,6 +4000,7 @@ GameObject:
   - component: {fileID: 6012189118866292722}
   - component: {fileID: 451268741936796754}
   - component: {fileID: 3713653838659016558}
+  - component: {fileID: 1686185123201062770}
   m_Layer: 21
   m_Name: StarBoyPuck
   m_TagString: MenuPucks
@@ -4088,7 +4089,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 2
 --- !u!114 &3713653838659016558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4102,6 +4103,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exitSpeed: 10
+--- !u!50 &1686185123201062770
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846201815658439128}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 1
+  m_Material: {fileID: 6200000, guid: 0c3a0bac72369684f86a455475a1c1b5, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!1 &854936234811332440
 GameObject:
   m_ObjectHideFlags: 0
@@ -9141,7 +9163,7 @@ Transform:
   - {fileID: 2983418021208946106}
   - {fileID: 2356618860394778787}
   - {fileID: 7150175268344669242}
-  - {fileID: 3182202253603524576}
+  - {fileID: 1190028471419575217}
   m_Father: {fileID: 165298064022156101}
   m_RootOrder: 97
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9152,7 +9174,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2632868178476474284}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6ec497f934036b4881936861f6b9542, type: 3}
   m_Name: 
@@ -9170,7 +9192,7 @@ EdgeCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2632868178476474284}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -10892,6 +10914,7 @@ GameObject:
   - component: {fileID: 4537653388549140677}
   - component: {fileID: 1650547762263904117}
   - component: {fileID: 1287812726715835769}
+  - component: {fileID: 5699672282815145893}
   m_Layer: 21
   m_Name: StarGirlPuck
   m_TagString: MenuPucks
@@ -10985,7 +11008,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 2
 --- !u!222 &1650547762263904117
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11007,6 +11030,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exitSpeed: 10
+--- !u!50 &5699672282815145893
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3066267818982790640}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 1
+  m_Material: {fileID: 6200000, guid: 0c3a0bac72369684f86a455475a1c1b5, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!1 &3217535216904402995
 GameObject:
   m_ObjectHideFlags: 0
@@ -14054,8 +14098,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3182202253603524576}
+  - component: {fileID: 1190028471419575217}
   - component: {fileID: 8278083090745050508}
+  - component: {fileID: 3072275378545152186}
+  - component: {fileID: 2635157846309431497}
   m_Layer: 0
   m_Name: Menu_Frame
   m_TagString: Untagged
@@ -14063,20 +14109,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3182202253603524576
-Transform:
+--- !u!224 &1190028471419575217
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3974029877424796477}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.29213715, z: 0}
-  m_LocalScale: {x: 0.56179786, y: 0.56179786, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.2, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 6970816654036371040}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -0.29213715}
+  m_SizeDelta: {x: 16.28, y: 13.89}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &8278083090745050508
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14114,9 +14165,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1934997069
+  m_SortingLayer: 9
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 2c23f90db86baef43a779e9af25448c0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -14128,6 +14179,62 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &3072275378545152186
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3974029877424796477}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 10000
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 6200000, guid: 0c3a0bac72369684f86a455475a1c1b5, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 7
+--- !u!60 &2635157846309431497
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3974029877424796477}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 16.28, y: 13.89}
+    newSize: {x: 16.28, y: 13.89}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -8.05, y: 6.8849998}
+      - {x: -8.08, y: 6.855}
+      - {x: -8.08, y: -6.855}
+      - {x: -8.05, y: -6.8849998}
+      - {x: 8.08, y: -6.8849998}
+      - {x: 8.08, y: 6.8849998}
+    - - {x: -7.06, y: 5.815}
+      - {x: 7.14, y: 5.815}
+      - {x: 7.14, y: -5.645}
+      - {x: -7.06, y: -5.645}
 --- !u!1 &3976137705764368943
 GameObject:
   m_ObjectHideFlags: 0
@@ -28215,6 +28322,7 @@ GameObject:
   - component: {fileID: 8744754181198384223}
   - component: {fileID: 4825124267089180417}
   - component: {fileID: 6066766267531526563}
+  - component: {fileID: 5025563098201706034}
   m_Layer: 21
   m_Name: PuckCenter
   m_TagString: MenuPucks
@@ -28230,8 +28338,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7601227140893555133}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.53, y: 3.23, z: 0}
-  m_LocalScale: {x: 0.48, y: 0.48, z: 0}
+  m_LocalPosition: {x: 6.79, y: -1.11, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 3209493980328753796}
   m_Father: {fileID: 6970816654036371040}
@@ -28303,7 +28411,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.8
 --- !u!114 &6066766267531526563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28317,6 +28425,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exitSpeed: 10
+--- !u!50 &5025563098201706034
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7601227140893555133}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 1
+  m_Material: {fileID: 6200000, guid: 0c3a0bac72369684f86a455475a1c1b5, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!1 &7631459126338262095
 GameObject:
   m_ObjectHideFlags: 0
