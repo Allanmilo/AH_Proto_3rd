@@ -10,7 +10,9 @@ using System.Threading.Tasks;
 
 public class AHScriptManager : MonoBehaviour
 {
-    
+    GameObject Testing_Tablet_Rep;
+
+
     [SerializeField] GameObject _puck;
     
     [SerializeField] GameObject _circleBackground;
