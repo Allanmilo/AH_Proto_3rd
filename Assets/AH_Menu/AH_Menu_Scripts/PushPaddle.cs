@@ -48,10 +48,8 @@ public class PushPaddle : MonoBehaviour
     {
         if(_AHManager.speedUp == true)
         {
-            transform.Rotate(0, 0, speed, Space.Self); // gives paddles a spin as menu blows apart.
-
-            transform.position += transform.position * .1f * Time.deltaTime; // makes paddles move a little faster.
-
+            transform.position += transform.position * 1f * Time.deltaTime; // makes paddles move a little faster.
+            transform.Rotate(0, 0, speed, Space.Self); // gives paddles a spin as menu blows apart
         }
     }
 

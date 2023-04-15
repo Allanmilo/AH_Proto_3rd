@@ -26,6 +26,9 @@ public class AHScriptManager : MonoBehaviour
                      GameObject star_Boy;
                      GameObject Pan;
                     GameObject opponent_Paddle;
+                    GameObject menu_Frame;
+                    PolygonCollider2D menu_Frame_Col;
+
 
 SpriteRenderer opponent_Paddle_SR;
 
@@ -2528,7 +2531,8 @@ public async Task Rotate_Object(RectTransform _object_Rec, float x, float y, flo
 
                         yield return new WaitForSeconds(1);
                         // Time.timeScale = 0;
-                        Set_Prefab_Var(); 
+                        Set_Prefab_Var();
+                        menu_Frame_Col.isTrigger = false;
                         ActivateReturnMenu(false, false);                                                     
                         
                         startMenuScript.StartMenuOn();
@@ -2555,8 +2559,6 @@ public async Task Rotate_Object(RectTransform _object_Rec, float x, float y, flo
 
 void Set_Prefab_Var()
 {
-    Debug.Log("Set prefab var is running");
-   
         prefabHolder = Instantiate(_circleBackground) as GameObject;
         
         pointEffectorCircle = GameObject.FindGameObjectWithTag("PointEffector");
@@ -2577,6 +2579,8 @@ void Set_Prefab_Var()
 
        midGameMenuScript = _midGameMenu.GetComponent<MenuMidGame>();
  
+        menu_Frame = GameObject.FindGameObjectWithTag("MenuFrame");
+        menu_Frame_Col = menu_Frame.GetComponent<PolygonCollider2D>();
 }
 
     public void StartReturnMenu()
@@ -2770,6 +2774,8 @@ public void StartOver()
 
         DeActivateButtons();
 
+        menu_Frame_Col.isTrigger = true;
+
          foreach (FreezeText freezeText in _freezeText)  // is this needed? not in new version.
             {
                  freezeText.bounceOn = false;
@@ -2784,7 +2790,7 @@ public void StartOver()
        text_Pan_TMPro.color = new Color(1, 1, 1, 1); 
        
         // MovePan();
-        Invoke("DestroyPrefabHolder", 1f);
+        Invoke("DestroyPrefabHolder", 2f);
 
     }
     
@@ -2840,7 +2846,7 @@ public void UnFreezeCircles()
 
 
            Set_Prefab_Var();
-            
+            menu_Frame_Col.isTrigger = false;
             startMenuScript.StartMenuOff();
             prefabHolder.transform.position = offScreenCB;
             midGameMenuScript.MidGameMenuOn();

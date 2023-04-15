@@ -88,6 +88,7 @@ TagManager:
   - Mopseys_Entrance
   - Mopseys_Exiting
   - Opponent_Text_Box
+  - MenuFrame
   layers:
   - Default
   - TransparentFX
