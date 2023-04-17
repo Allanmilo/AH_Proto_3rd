@@ -343,7 +343,7 @@ int arrayNum;
 
     bool end_Pan_Asks_U_To_tryAgain = false;
 
-    bool Pan_Asks_U_To_tryAgain_bool;
+    public bool Pan_Asks_U_To_tryAgain_bool;
 
 //StackTrace  stackTrace;
     Camera camera_01;
@@ -2938,7 +2938,7 @@ void LowerTheScreen()
         }
 
 
-IEnumerator Pan_Asks_U_To_tryAgain()
+public IEnumerator Pan_Asks_U_To_tryAgain()
 {
         Pan_Asks_U_To_tryAgain_bool = true;
 
@@ -2952,22 +2952,24 @@ IEnumerator Pan_Asks_U_To_tryAgain()
 
              text_Pan_Transform.sizeDelta = _end_Size;
 
-           StartCoroutine(Lerp_TMPro_Color_Alpha(text_Pan_TMPro, sunGlass_00, sunGlass_01, 0,  1));
+           yield return (Lerp_TMPro_Color_Alpha(text_Pan_TMPro, sunGlass_00, sunGlass_01, 0,  1));
 
-           yield return StartCoroutine(Lerp_TMPro_Color_Alpha(text_Pan_TMPro, sunGlass_01, sunGlass_00, 2,  1));
+           yield return (Lerp_TMPro_Color_Alpha(text_Pan_TMPro, sunGlass_01, sunGlass_00, 2,  1));
            
             
         if(!end_Pan_Asks_U_To_tryAgain)
         {
             _Pan_Says = "you can still\nwin back\nsome of\nyour diginity!";
              text_Pan_TMPro.text = _Pan_Says;
-            
+
+            Debug.Log("pans text is " + _Pan_Says);
+
             text_Pan_Transform.sizeDelta = _start_Size;
             text_Pan_TMPro.color =  sunGlass_01;
             Size_Object(text_Pan, _start_Size, _end_Size, 2, 2f);
            
             
-            yield return StartCoroutine(Lerp_TMPro_Color_Alpha(text_Pan_TMPro, sunGlass_01, sunGlass_00, 3,  1));
+            yield return (Lerp_TMPro_Color_Alpha(text_Pan_TMPro, sunGlass_01, sunGlass_00, 3,  1));
         }
             text_Pan_TMPro.text = "";
             end_Pan_Asks_U_To_tryAgain = false;
@@ -3046,42 +3048,19 @@ IEnumerator Pan_Asks_U_To_tryAgain()
 
         public void Try_Again_Star()
         {
-            StartCoroutine(Reset_Try_Again());
-        }
-
-        IEnumerator Reset_Try_Again()
-        {
+        end_Pan_Asks_U_To_tryAgain = true;
             if(Pan_Asks_U_To_tryAgain_bool)
             {
-                end_Pan_Asks_U_To_tryAgain = true;
-                end_Lerp_TMPro_Color = true;
+                StopCoroutine(Pan_Asks_U_To_tryAgain());  //end pan's coroutine
             }
 
-            while(Pan_Asks_U_To_tryAgain_bool)
-                {
-                    yield return null;
-                }
-
-
-                Try_Again();
+        Try_Again();
 
         flowers_Particle_01.Play();
         flowers_Particle_02.Play();
         Invoke("Reset_Flowers", 5);
-
-/*
-               if(!Pan_Asks_U_To_tryAgain_bool)
-               {
-                text_For_Pan = "Go get her!";
-                text_Pan_TMPro.text = text_For_Pan;
-                text_Pan_TMPro.color =  sunGlass_00;
-                StartCoroutine(Lerp_TMPro_Color_Alpha(text_Pan_TMPro, sunGlass_00, sunGlass_01, 0, 1.2f));
-                StartCoroutine(Lerp_TMPro_Color_Alpha(text_Pan_TMPro, sunGlass_01, sunGlass_00, 3, 1.2f));
-               }
-  */      
-               
-              
         }
+
 
     void Pans_Text_DOESNT_Follow()
     {
@@ -3102,6 +3081,7 @@ IEnumerator Pan_Asks_U_To_tryAgain()
 
      public void MovePan(bool curving, string speech, float wfs, float delay)
         {
+
             if(curving == true)
             {
                 // Slerp_Transform_Position( Pan, originalPos, gamePosLeft, 600, 1 );
@@ -3114,7 +3094,9 @@ IEnumerator Pan_Asks_U_To_tryAgain()
              text_For_Pan = speech;
             
             text_Pan_TMPro.text = text_For_Pan;
-        
+
+        Debug.Log("pans move text is " + text_Pan_TMPro.text);
+         
             StartCoroutine(Lerp_TMPro_Color_Alpha (text_Pan_TMPro, sunGlass_00, sunGlass_01, wfs, 1));
             StartCoroutine(Lerp_TMPro_Color_Alpha(text_Pan_TMPro, sunGlass_01, sunGlass_00, delay, 1));
            
@@ -3123,6 +3105,8 @@ IEnumerator Pan_Asks_U_To_tryAgain()
             StartCoroutine(Set_Object_Activate(Pan, false, 7));
             Vector2 _end_Size = new Vector2(5, 1);
             text_Pan_Transform.sizeDelta = _end_Size;
+
+        Debug.Log("pans next move text is " + text_Pan_TMPro.text);
         }
 
 public async void Set_Scoreboard(int _sec_2_Wait)
