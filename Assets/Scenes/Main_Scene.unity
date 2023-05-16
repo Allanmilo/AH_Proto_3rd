@@ -20,14 +20,14 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 216.84706, g: 232.9098, b: 265.0353, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
-  m_HaloStrength: 0.5
+  m_HaloStrength: 0.626
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 8cc43fcb0d0cc9644b754c0370730376, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -19408,7 +19408,7 @@ Camera:
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -19426,7 +19426,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 9
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -19434,9 +19434,9 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
-  m_TargetEye: 0
+  m_TargetEye: 3
   m_HDR: 1
-  m_AllowMSAA: 0
+  m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 0
@@ -71658,6 +71658,7 @@ MonoBehaviour:
   current_Color: {r: 0, g: 0, b: 0, a: 0}
   size_Object_Bool: 0
   scale_Object_Bool: 0
+  Pan_Asks_U_To_tryAgain_bool: 0
   camera_Rect_Rotation: {x: 0, y: 0, z: 0, w: 0}
   start_Pos_Bunny_01: {x: 0, y: 0, z: 0}
   end_Pos_Bunny_01: {x: 0, y: 0, z: 0}
@@ -71675,6 +71676,9 @@ MonoBehaviour:
   IsCanceled: 0
   oh_No: {fileID: 11400000, guid: 5a7b7c6d2e2310f4d8c35855f075abc4, type: 2}
   hungry: {fileID: 11400000, guid: 1aece5944d4e36f43823fddd88aa0e98, type: 2}
+  speedUp: 0
+  paddle_Array_Pos: 0
+  paddle_Trash_Talk_Array: []
 --- !u!4 &1743815474
 Transform:
   m_ObjectHideFlags: 0

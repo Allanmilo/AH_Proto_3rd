@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Threading.Tasks;
+using UnityEngine.Audio;
+using UnityEngine.Experimental.Rendering.Universal;
 
 
 public class PushPaddle : MonoBehaviour
@@ -25,23 +28,81 @@ public class PushPaddle : MonoBehaviour
     int speed;
 
 
+
+ GameObject theBalls;
+
+    GameObject thisBall;
+
+  Control_Script_01 _control_Script;
+
+  [SerializeField] int pad_Num;
+
+    //bool onOff = false;
+
+// light variables.
+    Light2D myLight;
+
+    AudioSource audio_Source;
+	
+	public AudioClip[] audioClips;
+
+    bool sine_Bool;
+    bool skip_Collision;
+
+    int x;
+
+    [System.Serializable] // Needed to see in Inspector.
+    public class Row
+        {   
+            public float[] rowdata; // Array(s) containing flash timings.
+        }
+
+    public Row[] speech_Times; // Array containing rowdata arrays.
+     
+    //  To get a value from arrays:
+    //  speech_Times[x].rowdata[y] 
+    // Were x is an array 
+    // y is the value in the array.
+   
+
+
+
     void Start()
     {
+        
+        
+    
         AHScriptManager = GameObject.FindGameObjectWithTag("AHManager");
         _AHManager = AHScriptManager.GetComponent<AHScriptManager>();
 
-        tmpText = transform.GetChild(0).GetComponent<TextMeshPro>();
+       // tmpText = transform.GetChild(0).GetComponent<TextMeshPro>();
 
         menu_Paddle_RB = this.gameObject.GetComponent<Rigidbody2D>();
 
         menu_Paddle_RB.AddForce( RandomVector(10, 5), ForceMode2D.Impulse);
 
-        tmProColor_1 =  new Color(1, 1, 1, 1);
-        tmProColor_0 =  new Color(1, 1, 1, 0);
+        // tmProColor_1 =  new Color(1, 1, 1, 1);
+       // tmProColor_0 =  new Color(1, 1, 1, 0);
 
         speed = (Random.Range(0, 2) * 2 - 1) * 15;   // Sets int speed to either15 or -15.
 
-        stopTalk = false;
+       // stopTalk = false;
+
+        theBalls = GameObject.FindGameObjectWithTag("TheBalls");
+        _control_Script = theBalls.GetComponent<Control_Script_01>();
+
+        thisBall = this.gameObject;
+
+        // light settings.
+        myLight = GetComponent<Light2D>();
+
+        audio_Source = GetComponent<AudioSource>();
+        sine_Bool = false;
+        skip_Collision = false;
+		
+		x = 0;
+
+
     }
 
     void Update()
@@ -53,14 +114,25 @@ public class PushPaddle : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collisionStuff)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collisionStuff.collider.tag == "MenuPucks")
+       // if(collisionStuff.collider.tag == "MenuPucks")
+      //  {
+                 if(_control_Script.stop_Col == false && collision.gameObject.tag == "MenuPucks")
         {
-            if (_AHManager.paddle_Array_Pos >= _AHManager.paddle_Trash_Talk_Array.Length - 1) // This if statement will return the array position to slot zero after reaching the end position of array.
-            {
-                _AHManager.paddle_Array_Pos = 0;
-            }
+            _control_Script.onOff = true;
+            // _control_Script.stop_Col = true;
+                                            
+                _control_Script.paddle.Add(thisBall);
+
+                StartCoroutine(Start_Talk());                  
+        }
+
+
+          //  if (_AHManager.paddle_Array_Pos >= _AHManager.paddle_Trash_Talk_Array.Length - 1) // This if statement will return the array position to slot zero after reaching the end position of array.
+         //   {
+          //      _AHManager.paddle_Array_Pos = 0;
+         //   }
 
         /*
                     if (puckArray >= pucksInMenu.Length) // This if statement will return the array position to slot zero after reaching the end position of array.
@@ -69,21 +141,21 @@ public class PushPaddle : MonoBehaviour
                     }
         */
 
-        tmpText.text = _AHManager.paddle_Trash_Talk_Array[_AHManager.paddle_Array_Pos]; // Assigns the text from one of the array positions to the TMPro component of the pucks child.
+       // tmpText.text = _AHManager.paddle_Trash_Talk_Array[_AHManager.paddle_Array_Pos]; // Assigns the text from one of the array positions to the TMPro component of the pucks child.
 
-        _AHManager.paddle_Array_Pos++; // advances arrayPos by one.
+     //   _AHManager.paddle_Array_Pos++; // advances arrayPos by one.
 
 
-        if(stopTalk == false)
-            {
-                StartCoroutine(PuckTalking());
+     //   if(stopTalk == false)
+      //      {
+      //          StartCoroutine(PuckTalking());
             }
 
-        }
+      //  }
         
-    }
+   // }
 
-
+/*
     IEnumerator PuckTalking()
     {
         stopTalk = true;
@@ -101,8 +173,98 @@ public class PushPaddle : MonoBehaviour
 
         stopTalk = false;
     }
+*/
+
+IEnumerator Start_Talk()
+{
+    yield return new WaitForSeconds(.01f);
+
+    if(_control_Script.ball_Ran == thisBall)
+            {
+               // _control_Script.ball_Ran = null;
+                StartCoroutine(Say_Lite());
+				// _control_Script.ball_Ran = null;
+            }
+}
 
 
+
+
+
+        IEnumerator Say_Lite()
+        {
+            if(!skip_Collision)
+            {
+                    skip_Collision = true;
+                   
+                    audio_Source.clip = audioClips[x];
+					x++;
+					if(x >= audioClips.Length)
+					{ 
+						x = 0;
+					}
+                    audio_Source.Play();
+
+
+				for (int y = 0; y < speech_Times[x].rowdata.Length; y++)
+				{
+					float flash = speech_Times[x].rowdata[y];  
+			
+                        while (sine_Bool)
+                        {
+                            yield return null;
+                        } 
+
+                        if (!sine_Bool)
+                        {
+                            StartCoroutine(Blink_Twice(flash, 50));
+							sine_Bool = true;
+                        }
+
+                        yield return null;
+						
+						
+                }
+
+                 
+			   if(audio_Source.isPlaying)
+                 {
+                    yield return null;
+                 }
+
+                yield return new WaitForSeconds(.5f);
+              _control_Script.stop_Col = false;
+			   skip_Collision = false;
+				// _control_Script.onOff = false;
+				//  skip_Collision = false;
+			}
+			
+			
+        }
+
+    IEnumerator Blink_Twice(float Speed, float Amplitude)
+    {
+        
+
+        float y = 0;
+        float time = 0;
+
+                while (y >= 0)
+                {
+                    float angle = time * Time.deltaTime * Mathf.PI / Speed;
+                    y = Amplitude * (Mathf.Sin(angle));
+
+                    myLight.intensity = y;
+                    time += 1f;
+
+                    yield return null;
+                }
+
+        
+       // yield return new WaitForSeconds(1);
+		sine_Bool = false;
+        
+    }
 
     private Vector3 RandomVector(float min, float max)  // Function to return random number vector used for velocity.
     {

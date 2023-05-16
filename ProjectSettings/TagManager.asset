@@ -89,6 +89,7 @@ TagManager:
   - Mopseys_Exiting
   - Opponent_Text_Box
   - MenuFrame
+  - TheBalls
   layers:
   - Default
   - TransparentFX
