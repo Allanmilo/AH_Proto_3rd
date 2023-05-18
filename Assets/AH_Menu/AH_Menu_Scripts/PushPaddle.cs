@@ -14,6 +14,8 @@ public class PushPaddle : MonoBehaviour
     GameObject AHScriptManager;
     AHScriptManager _AHManager;
 
+    GameObject splashLoad02;
+
     TextMeshPro tmpText;
 
     Color tmProColor_1; 
@@ -70,10 +72,10 @@ public class PushPaddle : MonoBehaviour
     void Start()
     {
         
-        
-    
         AHScriptManager = GameObject.FindGameObjectWithTag("AHManager");
         _AHManager = AHScriptManager.GetComponent<AHScriptManager>();
+
+        splashLoad02 = GameObject.FindGameObjectWithTag("SplashLoad");
 
        // tmpText = transform.GetChild(0).GetComponent<TextMeshPro>();
 
@@ -101,9 +103,9 @@ public class PushPaddle : MonoBehaviour
         skip_Collision = false;
 		
 		x = 0;
-
-
     }
+
+
 
     void Update()
     {
@@ -114,11 +116,13 @@ public class PushPaddle : MonoBehaviour
         }
     }
 
+
+
     void OnCollisionEnter2D(Collision2D collision)
     {
-       // if(collisionStuff.collider.tag == "MenuPucks")
-      //  {
-                 if(_control_Script.stop_Col == false && collision.gameObject.tag == "MenuPucks")
+      if(splashLoad02 == null)
+      {
+        if(_control_Script.stop_Col == false && collision.gameObject.tag == "MenuPucks")
         {
             _control_Script.onOff = true;
             // _control_Script.stop_Col = true;
@@ -127,57 +131,14 @@ public class PushPaddle : MonoBehaviour
 
                 StartCoroutine(Start_Talk());                  
         }
-
-
-          //  if (_AHManager.paddle_Array_Pos >= _AHManager.paddle_Trash_Talk_Array.Length - 1) // This if statement will return the array position to slot zero after reaching the end position of array.
-         //   {
-          //      _AHManager.paddle_Array_Pos = 0;
-         //   }
-
-        /*
-                    if (puckArray >= pucksInMenu.Length) // This if statement will return the array position to slot zero after reaching the end position of array.
-                    {
-                        puckArray = 0;
-                    }
-        */
-
-       // tmpText.text = _AHManager.paddle_Trash_Talk_Array[_AHManager.paddle_Array_Pos]; // Assigns the text from one of the array positions to the TMPro component of the pucks child.
-
-     //   _AHManager.paddle_Array_Pos++; // advances arrayPos by one.
-
-
-     //   if(stopTalk == false)
-      //      {
-      //          StartCoroutine(PuckTalking());
-            }
-
-      //  }
-        
-   // }
-
-/*
-    IEnumerator PuckTalking()
-    {
-        stopTalk = true;
-
-        tmpText.color = tmProColor_1;  // Sets slpha to full.
-
-        yield return new WaitForSecondsRealtime(0);
-
-        for (float t = 0.0f; t < 1.0f; t += Time.unscaledDeltaTime) // Runs lerp for certian amount of time.
-        {
-            tmpText.color = Color.Lerp(tmProColor_1, tmProColor_0, t); // Lerp alpha from full to zero.
-            yield return null;
-        }
-        yield return new WaitForSecondsRealtime(3);
-
-        stopTalk = false;
+      }
     }
-*/
+        
+
 
 IEnumerator Start_Talk()
 {
-    yield return new WaitForSeconds(.01f);
+    yield return new WaitForSeconds(.001f);
 
     if(_control_Script.ball_Ran == thisBall)
             {
@@ -186,9 +147,6 @@ IEnumerator Start_Talk()
 				// _control_Script.ball_Ran = null;
             }
 }
-
-
-
 
 
         IEnumerator Say_Lite()
@@ -221,11 +179,8 @@ IEnumerator Start_Talk()
 							sine_Bool = true;
                         }
 
-                        yield return null;
-						
-						
+                        yield return null;		
                 }
-
                  
 			   if(audio_Source.isPlaying)
                  {
@@ -235,17 +190,11 @@ IEnumerator Start_Talk()
                 yield return new WaitForSeconds(.5f);
               _control_Script.stop_Col = false;
 			   skip_Collision = false;
-				// _control_Script.onOff = false;
-				//  skip_Collision = false;
 			}
-			
-			
         }
 
     IEnumerator Blink_Twice(float Speed, float Amplitude)
     {
-        
-
         float y = 0;
         float time = 0;
 
@@ -260,8 +209,6 @@ IEnumerator Start_Talk()
                     yield return null;
                 }
 
-        
-       // yield return new WaitForSeconds(1);
 		sine_Bool = false;
         
     }
