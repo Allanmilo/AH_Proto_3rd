@@ -118,42 +118,38 @@ public class PushPaddle : MonoBehaviour
 
 
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionExit2D(Collision2D collision)
     {
+       
       if(splashLoad02 == null)
       {
-        if(_control_Script.stop_Col == false && collision.gameObject.tag == "MenuPucks")
+                                                                   
+         if(_control_Script.stop_Col == false && collision.gameObject.tag == "MenuPucks")
         {
-            _control_Script.onOff = true;
-            // _control_Script.stop_Col = true;
+                _control_Script.stop_Col = true;
                                             
                 _control_Script.paddle.Add(thisBall);
+                _control_Script.paddle.Add(collision.gameObject);
 
-                StartCoroutine(Start_Talk());                  
+                                                                 
+                _control_Script.Pick_Paddle();
         }
       }
     }
         
 
 
-IEnumerator Start_Talk()
+public void Start_Talk()
 {
-    yield return new WaitForSeconds(.001f);
-
-    if(_control_Script.ball_Ran == thisBall)
-            {
-               // _control_Script.ball_Ran = null;
                 StartCoroutine(Say_Lite());
-				// _control_Script.ball_Ran = null;
-            }
 }
 
 
         IEnumerator Say_Lite()
         {
-            if(!skip_Collision)
-            {
-                    skip_Collision = true;
+           // if (!skip_Collision)
+          //  {
+              //     skip_Collision = true;
                    
                     audio_Source.clip = audioClips[x];
 					x++;
@@ -162,7 +158,7 @@ IEnumerator Start_Talk()
 						x = 0;
 					}
                     audio_Source.Play();
-
+                    Debug.Log("audio_Source is " +  audio_Source.clip);
 
 				for (int y = 0; y < speech_Times[x].rowdata.Length; y++)
 				{
@@ -182,15 +178,13 @@ IEnumerator Start_Talk()
                         yield return null;		
                 }
                  
-			   if(audio_Source.isPlaying)
+			   while(audio_Source.isPlaying)
                  {
                     yield return null;
                  }
 
                 yield return new WaitForSeconds(.5f);
               _control_Script.stop_Col = false;
-			   skip_Collision = false;
-			}
         }
 
     IEnumerator Blink_Twice(float Speed, float Amplitude)
