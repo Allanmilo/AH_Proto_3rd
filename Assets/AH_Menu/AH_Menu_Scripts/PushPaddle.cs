@@ -16,32 +16,13 @@ public class PushPaddle : MonoBehaviour
 
     GameObject splashLoad02;
 
-    TextMeshPro tmpText;
-
-    Color tmProColor_1; 
-    Color tmProColor_0;
-
-    bool stopTalk;
-
-    [SerializeField] float exitSpeed;
-
-    Vector3 viewPos; // Variable for storing the current transform position.
-
     int speed;
-
-
 
  GameObject theBalls;
 
     GameObject thisBall;
 
   Control_Script_01 _control_Script;
-
-  [SerializeField] int pad_Num;
-
-    //bool onOff = false;
-
-// light variables.
     Light2D myLight;
 
     AudioSource audio_Source;
@@ -49,7 +30,6 @@ public class PushPaddle : MonoBehaviour
 	public AudioClip[] audioClips;
 
     bool sine_Bool;
-    bool skip_Collision;
 
     int x;
 
@@ -77,18 +57,10 @@ public class PushPaddle : MonoBehaviour
 
         splashLoad02 = GameObject.FindGameObjectWithTag("SplashLoad");
 
-       // tmpText = transform.GetChild(0).GetComponent<TextMeshPro>();
-
         menu_Paddle_RB = this.gameObject.GetComponent<Rigidbody2D>();
-
         menu_Paddle_RB.AddForce( RandomVector(10, 5), ForceMode2D.Impulse);
 
-        // tmProColor_1 =  new Color(1, 1, 1, 1);
-       // tmProColor_0 =  new Color(1, 1, 1, 0);
-
         speed = (Random.Range(0, 2) * 2 - 1) * 15;   // Sets int speed to either15 or -15.
-
-       // stopTalk = false;
 
         theBalls = GameObject.FindGameObjectWithTag("TheBalls");
         _control_Script = theBalls.GetComponent<Control_Script_01>();
@@ -100,8 +72,6 @@ public class PushPaddle : MonoBehaviour
 
         audio_Source = GetComponent<AudioSource>();
         sine_Bool = false;
-        skip_Collision = false;
-		
 		x = 0;
     }
 
@@ -147,10 +117,6 @@ public void Start_Talk()
 
         IEnumerator Say_Lite()
         {
-           // if (!skip_Collision)
-          //  {
-              //     skip_Collision = true;
-                   
                     audio_Source.clip = audioClips[x];
 					x++;
 					if(x >= audioClips.Length)
@@ -183,7 +149,7 @@ public void Start_Talk()
                     yield return null;
                  }
 
-                yield return new WaitForSeconds(.5f);
+                yield return new WaitForSeconds(.2f);
               _control_Script.stop_Col = false;
         }
 
