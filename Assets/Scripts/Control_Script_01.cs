@@ -6,65 +6,40 @@ using UnityEngine;
 
 public class Control_Script_01 : MonoBehaviour
 {
-	
     public List<GameObject> paddle =  new List<GameObject>();
-
-    public int randomNum;
-
     public int listPick;
-
-    public int paddle_Num;
-
-    public bool onOff;
-
     public bool stop_Col;
-
 	public GameObject ball_Ran;
-    GameObject next_Ball;
-
-    int lastNumber;
-
+    public GameObject next_Ball;
     int maxAttempts;
+
 
     void Start()
     {
-        onOff = false;
         stop_Col = false;
         maxAttempts = 50;
-        
     }
 
-    
-	
-    void Update()
+   
+    public void Pick_Paddle()
     {
-        
-      if(paddle.Count >= 2 && onOff == true)
-       { 
-             stop_Col = true;
-            onOff = false;
-
-            
-            listPick = Random.Range(0, paddle.Count);
-	
-                for(int i=0; listPick == lastNumber && i < maxAttempts; i++)
-                {
+        Debug.Log("three ");
+        if (paddle.Count >= 2)
+        {  
+            for (int i = 0; next_Ball == ball_Ran && i < maxAttempts; i++)
+            {
                 listPick = Random.Range(0, paddle.Count);
-                }
+                ball_Ran = paddle[listPick];
+            }
 
-            lastNumber = listPick;
-                
-            next_Ball = paddle[listPick];
-
-                if(next_Ball != ball_Ran)
-                {
-                    ball_Ran = paddle[listPick];
-                    next_Ball = ball_Ran;
-                }
+                 next_Ball = ball_Ran;
         }
-            paddle.Clear();
-    }
 
-    
+            ball_Ran.GetComponent<PushPaddle>().Start_Talk();
+
+            paddle.Clear();
+       
+    }
 
 }
+

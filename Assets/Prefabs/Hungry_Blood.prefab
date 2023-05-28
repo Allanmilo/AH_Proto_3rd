@@ -61,7 +61,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 4
+    scalar: 0.1
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -4827,7 +4827,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7183800846716650671}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc3de6a979bf94d43ad6493e6df3c5d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 95b590ea41aaa644b8a5eecdbe2674e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   part: {fileID: 0}
@@ -4885,7 +4885,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.8257508, y: -5.2198863}
+  m_AnchoredPosition: {x: 17.1, y: 5.31}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7183800846938560274
@@ -9715,7 +9715,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7183800846938560274}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc3de6a979bf94d43ad6493e6df3c5d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 95b590ea41aaa644b8a5eecdbe2674e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   part: {fileID: 0}
@@ -9781,7 +9781,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 4
+    scalar: 0.2
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -14547,7 +14547,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7183800847012686005}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc3de6a979bf94d43ad6493e6df3c5d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 95b590ea41aaa644b8a5eecdbe2674e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   part: {fileID: 0}
@@ -14613,7 +14613,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 2
+    scalar: 0.2
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -19379,7 +19379,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7183800847215495590}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc3de6a979bf94d43ad6493e6df3c5d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 95b590ea41aaa644b8a5eecdbe2674e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   part: {fileID: 0}
@@ -19435,7 +19435,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19456,15 +19456,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0ccc3ae36b736f646b82bf9c0d279501, type: 3}
   m_Color: {r: 0.5137255, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.08, y: 0.08}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &7183800847216354215
@@ -19484,8 +19484,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 2.56, y: 2.56}
+    newSize: {x: 0.08, y: 0.08}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -24320,7 +24320,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7183800847218452559}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc3de6a979bf94d43ad6493e6df3c5d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 95b590ea41aaa644b8a5eecdbe2674e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   part: {fileID: 0}
@@ -24386,7 +24386,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 6
+    scalar: 0
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -29152,7 +29152,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7183800847375350918}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc3de6a979bf94d43ad6493e6df3c5d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 95b590ea41aaa644b8a5eecdbe2674e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   part: {fileID: 0}
@@ -33984,7 +33984,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7183800847520907595}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc3de6a979bf94d43ad6493e6df3c5d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 95b590ea41aaa644b8a5eecdbe2674e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   part: {fileID: 0}
@@ -34050,7 +34050,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 5
+    scalar: 0
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -38816,7 +38816,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7183800847530503839}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc3de6a979bf94d43ad6493e6df3c5d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 95b590ea41aaa644b8a5eecdbe2674e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   part: {fileID: 0}
@@ -38882,7 +38882,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 6
+    scalar: 0
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -43648,7 +43648,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7183800847588927308}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc3de6a979bf94d43ad6493e6df3c5d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 95b590ea41aaa644b8a5eecdbe2674e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   part: {fileID: 0}
@@ -43714,7 +43714,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 3
+    scalar: 0.1
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -48480,7 +48480,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7183800847738803018}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc3de6a979bf94d43ad6493e6df3c5d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 95b590ea41aaa644b8a5eecdbe2674e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   part: {fileID: 0}
@@ -48546,7 +48546,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 6
+    scalar: 0.3
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -53312,7 +53312,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7183800847821477868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc3de6a979bf94d43ad6493e6df3c5d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 95b590ea41aaa644b8a5eecdbe2674e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   part: {fileID: 0}
@@ -53378,7 +53378,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0
+    scalar: 1.4
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -58144,7 +58144,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7183800847864648435}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc3de6a979bf94d43ad6493e6df3c5d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 95b590ea41aaa644b8a5eecdbe2674e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   part: {fileID: 0}
@@ -58210,7 +58210,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0
+    scalar: 0.5
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -62976,7 +62976,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7183800848015805145}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc3de6a979bf94d43ad6493e6df3c5d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 95b590ea41aaa644b8a5eecdbe2674e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   part: {fileID: 0}
@@ -63211,7 +63211,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 2
+    scalar: 0.3
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -67977,7 +67977,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7183800848222680113}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc3de6a979bf94d43ad6493e6df3c5d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 95b590ea41aaa644b8a5eecdbe2674e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   part: {fileID: 0}
@@ -68043,7 +68043,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 5
+    scalar: 0
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -72809,7 +72809,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7183800848227474667}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc3de6a979bf94d43ad6493e6df3c5d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 95b590ea41aaa644b8a5eecdbe2674e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   part: {fileID: 0}
@@ -77641,7 +77641,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7183800848232605018}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc3de6a979bf94d43ad6493e6df3c5d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 95b590ea41aaa644b8a5eecdbe2674e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   part: {fileID: 0}
@@ -82473,7 +82473,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7183800848433539216}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc3de6a979bf94d43ad6493e6df3c5d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 95b590ea41aaa644b8a5eecdbe2674e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   part: {fileID: 0}
@@ -82539,7 +82539,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 3
+    scalar: 1.3
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -87305,7 +87305,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7183800848528605480}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc3de6a979bf94d43ad6493e6df3c5d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 95b590ea41aaa644b8a5eecdbe2674e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   part: {fileID: 0}
@@ -87371,7 +87371,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 8
+    scalar: 0.5
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -92137,7 +92137,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7183800848581073398}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc3de6a979bf94d43ad6493e6df3c5d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 95b590ea41aaa644b8a5eecdbe2674e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   part: {fileID: 0}

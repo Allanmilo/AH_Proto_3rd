@@ -30,6 +30,14 @@ public class AHScriptManager : MonoBehaviour
                     PolygonCollider2D menu_Frame_Col;
 
 
+
+GameObject backDropGlow;
+SpriteRenderer backDropGlow_SR;
+public float transparency;
+public float changeSpeed;
+
+
+
 SpriteRenderer opponent_Paddle_SR;
 
 public Sprite stars_Paddle;
@@ -507,7 +515,8 @@ int arrayNum;
     
 
     Vector3 Mopsey_Text_Origin_Pos;
-    Vector3 Mopsey_Text_Start_Pos;
+    Vector3 Mopsey_Text_Start_Pos; 
+    Vector3 Mopsey_Text_Hello_Pos;
 
     Vector3 Mopsey_Text_OffSet_Center01;
     Vector3 Mopsey_Text_OffSet_Center02;
@@ -600,6 +609,10 @@ int arrayNum;
 
         Pan = GameObject.FindGameObjectWithTag("Pan");
         panTrans = Pan.GetComponent<RectTransform>();
+
+        backDropGlow = GameObject.FindGameObjectWithTag("BackDropGlow");
+        backDropGlow_SR = backDropGlow.GetComponent<SpriteRenderer>();
+
 
         gameObject_List = new List<GameObject>();
 
@@ -802,8 +815,9 @@ int arrayNum;
 
         // Start, end and center offset postions for Mopsey saying HI, 
         // taking in to account pivot location changing do to scaling.
-        Mopsey_Text_Origin_Pos = new Vector3(-11.5f, -2.8f, 0); 
+        Mopsey_Text_Origin_Pos =new Vector3(-10.55f, 2.25f, 0); //  new Vector3(-11.5f, -2.8f, 0); 
         Mopsey_Text_Start_Pos = new Vector3(-8.3f, -2.5f, 0);
+        Mopsey_Text_Hello_Pos = new Vector3(-11.5f, -2.8f, 0);
         Mopsey_Text_OffSet_Center01 = new Vector3(-11, -4);
         Mopsey_Text_OffSet_Center02 = new Vector3(-7f, -2.5f);
 
@@ -977,21 +991,17 @@ int arrayNum;
                     }
               
 
-                if (Input.GetKeyDown(KeyCode.Q))
-                    {
-                        string result = "List contents: ";
-
-                        foreach (var item in gameObject_List)
-                            {
-                            result += item.ToString() + ", ";
-                            }
-                    }
-        
-
-         if (Input.GetKeyDown(KeyCode.W))
+            if(Pan)
             {
-                    Debug.Log("W pressed.");
+                backDropGlow_SR.color = new Color(1, 1, 1, transparency);
+                float pingpong = Mathf.PingPong((Time.time) * changeSpeed, 1);
+                transparency = Mathf.Lerp(.5f, 1f, pingpong);
             }
+
+            if (Input.GetKeyUp(KeyCode.S))
+        {
+            Mopseys_Dialogue();
+        }
 
         }
 
@@ -1297,6 +1307,7 @@ public async void Size_Object(GameObject object_To_Size, Vector3 start_Size, Vec
        {
             // x is the recttransforms width; y is the recttransform's height.
             // starting point is were the pivot point is placed.
+            size_Object_Bool =true;
 
             float time = 0f;
             float x;
@@ -1320,6 +1331,8 @@ public async void Size_Object(GameObject object_To_Size, Vector3 start_Size, Vec
 
                await Task.Yield();
             }    
+
+            size_Object_Bool = false;
          }
 
 
@@ -1398,13 +1411,13 @@ public void Set_Font(TextMeshPro _TMPro, Color32 new_Color, TMP_FontAsset font_S
         text_To_Use_Is();
         text_To_Use_Is = null;
     }
-
+/*
     if(objects_Variables != null)
     {
         objects_Variables();
         objects_Variables = null;
     }
-
+*/
     if(text_Moves == "fade")
     {
         text_Moves = " ";
@@ -1431,7 +1444,7 @@ public void Set_Font(TextMeshPro _TMPro, Color32 new_Color, TMP_FontAsset font_S
         {
             yield return null;
         }
-                      
+              //    yield return new WaitForSeconds(1f);    
  
     }
                 float currentTime = 0f;
@@ -1501,6 +1514,7 @@ void First_Text_Line() // Sets text to trashTalk01.
 //------------------------------StarBoy's Dialogue----------------------------------
 async void Boys_Case_Zero()
            {
+            text_To_Use_Is = null;
                 text_To_Use_Is += First_Text_Line;
                 StartCoroutine(FadeOutCR("slide", 0, 3));
                 
@@ -1509,6 +1523,7 @@ async void Boys_Case_Zero()
                         await Task.Yield();
                   }
 
+                text_To_Use_Is = null;
                 text_To_Use_Is += Second_Text_Line;
                 StartCoroutine(FadeOutCR("slide", 0, 3f));
            }    
@@ -1850,7 +1865,7 @@ public void Stars_Dialogue()
             async void Mopseys_Case_Zero()
            {
                 text_To_Use_Is += First_Text_Line;
-                StartCoroutine(FadeOutCR("type", 0, 1.5f));
+                StartCoroutine(FadeOutCR("type", 0, 1f));
                 
              while( function_Done == false )
                   {
@@ -1886,7 +1901,7 @@ public void Stars_Dialogue()
                   }
 
                 text_To_Use_Is += Second_Text_Line;
-                StartCoroutine(FadeOutCR("slide", 0, 2f));
+                StartCoroutine(FadeOutCR("slide", 0, 1.5f));
            }  
 
             async void Mopseys_Case_Three()
@@ -1929,7 +1944,7 @@ public void Mopseys_Dialogue()
         {
             case 0:
                 trashTalk01 = "<b><size=9>Don't \nbe \nAfraid!</b>";
-				trashTalk02 = "<size=8>Bunnies \njust like to \nhave fun.";
+				trashTalk02 = "<size=8>Bunnies <br>just like <br>to <br>have fun.";
                  
                 Mopseys_Case_Zero();
             break;
@@ -1944,7 +1959,7 @@ public void Mopseys_Dialogue()
 
             case 2:
                 trashTalk01 = "<b><size=10>Want \na \ncarrot?</b>";
-				trashTalk02 = "<size=9>They're \ngood for \nthe eyes.";
+				trashTalk02 = "<size=9>They're <br>good for <br>the eyes.";
                 
                 Mopseys_Case_Two(); 
             break;
@@ -2090,7 +2105,7 @@ IEnumerator Mopseys_Intro()
    // opponent_Text_Box_Rec.pivot = new Vector2(.9f, .3f);
     Vector3 newCenterOffset = new Vector3(0, -10, 0);
 
-    Move_Object_Slerp(opponent_Text_Box_Rec, Mopsey_Text_Start_Pos, Mopsey_Text_Origin_Pos, newCenterOffset, .3f);
+    Move_Object_Slerp(opponent_Text_Box_Rec, Mopsey_Text_Start_Pos, Mopsey_Text_Hello_Pos, newCenterOffset, .3f);
     //Move_Object_Curve_Async(opponent_Text_Box_Rec, Mopsey_Text_Start_Pos, Mopsey_Text_OffSet_Center01, Mopsey_Text_Origin_Pos, .7f, 0);
 
     Scale_Object(opponent_Text_Box, scale_00, scale_01, 0, .3f);
@@ -2099,7 +2114,7 @@ IEnumerator Mopseys_Intro()
 
      
 
-     Move_Object_Slerp(opponent_Text_Box_Rec, Mopsey_Text_Origin_Pos, Mopsey_Text_Start_Pos, newCenterOffset, .2f);
+     Move_Object_Slerp(opponent_Text_Box_Rec, Mopsey_Text_Hello_Pos, Mopsey_Text_Start_Pos, newCenterOffset, .2f);
    //  Move_Object_Curve_Async(opponent_Text_Box_Rec, Mopsey_Text_Origin_Pos, Mopsey_Text_OffSet_Center02, Mopsey_Text_Start_Pos, .2f, 0);
 
     Scale_Object(opponent_Text_Box, scale_01, scale_00, 0, .25f);
@@ -2122,12 +2137,12 @@ IEnumerator Mopseys_Intro()
     opponent_TMPro.text = "\nI'm \nMopsey.";
 
     Scale_Object(opponent_Text_Box, scale_00, scale_01, 0, .3f);
-    Move_Object_Slerp(opponent_Text_Box_Rec, Mopsey_Text_Start_Pos, Mopsey_Text_Origin_Pos, newCenterOffset, .3f);
+    Move_Object_Slerp(opponent_Text_Box_Rec, Mopsey_Text_Start_Pos, Mopsey_Text_Hello_Pos, newCenterOffset, .3f);
 
     yield return new WaitForSeconds(1);
 
     Scale_Object(opponent_Text_Box, scale_01, scale_00, 0, .2f);
-    Move_Object_Slerp(opponent_Text_Box_Rec, Mopsey_Text_Origin_Pos, Mopsey_Text_Start_Pos, newCenterOffset, .2f);
+    Move_Object_Slerp(opponent_Text_Box_Rec, Mopsey_Text_Hello_Pos, Mopsey_Text_Start_Pos, newCenterOffset, .2f);
     
     yield return new WaitForSeconds(1.5f);
 
@@ -2138,6 +2153,7 @@ IEnumerator Mopseys_Intro()
    // Scale_Object(mopsey_Text_Box, scale_00, scale_01, 0, 1);
     opponent_Text_Box_Rec.localScale = scale_01;
     opponent_Text_Box_Rec.position = Mopsey_Text_Origin_Pos;
+    opponent_Text_Box_Rec.pivot = new Vector2(1f, 1f);
    // string firstToFive = "1st to <B><color=yellow>5</color></B> wins!";
     StartOver();
     countDown.StartCount(0.5f); 
@@ -2223,7 +2239,7 @@ IEnumerator Bunny_Attack_01_Start()
     square_Screen_Color = new Color32(0, 0, 0, 0);
     square_Screen_Color_01 = new Color32(0, 0, 0, 255);
 
-    dark_Overlay.SetActive(true);
+    // dark_Overlay.SetActive(true);
     square_Screen.SetActive(true); // activate square_Screen.
     square_Screen_Text.SetActive(true);
 
@@ -2350,6 +2366,7 @@ IEnumerator Bunny_Attack_01_Start()
         StartCoroutine(Scale_Object(bunny_03_Feet_Rec, bunny_02_Feet_Start, bunny_02_Feet_Forward, .4f, .3f, true)) ;
         Rotate_Object(bunny_03_Rec, 0, 0, .1f, 1, 1, 0, true);
 
+        
 
         while(scale_Object_List.Count < 9)
                     {
@@ -2359,14 +2376,15 @@ IEnumerator Bunny_Attack_01_Start()
 
            scale_Object_List.Clear();
 
+ hungry_Container.SetActive(true);
           // red screen and hungry text activates and fades out.
-            StartCoroutine(Lerp_Color_Alpha(square_Screen_Renderer, hungry_new_Color_01, hungry_new_Color, 0,  3));
+            // StartCoroutine(Lerp_Color_Alpha(square_Screen_Renderer, hungry_new_Color_01, hungry_new_Color, 0,  3));
             Switch_Cameras(camera, second_Camera);
-            hungry_Container.SetActive(true);
-            hungry_Text_TMPro.color = hungry_new_Color_01;
+           // hungry_Container.SetActive(true);
+            // hungry_Text_TMPro.color = hungry_new_Color_01;
 
-            StartCoroutine(Lerp_TMPro_Color_Alpha(hungry_Text_TMPro, hungry_new_Color_01, zero_Alpha, 2,  3f));
-            StartCoroutine(Stop_Drops());
+            // StartCoroutine(Lerp_TMPro_Color_Alpha(hungry_Text_TMPro, hungry_new_Color_01, zero_Alpha, 2,  3f));
+            // StartCoroutine(Stop_Drops());
 
 
         // angry bunnies sit back down.
@@ -2385,14 +2403,16 @@ IEnumerator Bunny_Attack_01_Start()
         StartCoroutine(Scale_Object(bunny_03_Feet_Rec, bunny_02_Feet_Forward, bunny_02_Feet_Start, 0f, .5f, false));
         Rotate_Object(bunny_03_Rec, 0, 0, 0f, 1, 1, 0, true);
 
+ 
+ 
         while(scale_Object_List.Count < 9)
                     {
                       //  Debug.Log("bunny 04 " + scale_Object_List.Count);
                         await Task.Yield();
                     }
 
-        Color square_Screen_Color_02 = new Color(0, 0, 0, .3f);
-        StartCoroutine(Lerp_Color_Alpha(dark_Overlay_Renderer, square_Screen_Color_02, square_Screen_Color, 2,  1.5f));
+        Color square_Screen_Color_02 = new Color(159, 7, 7, .3f);
+       // StartCoroutine(Lerp_Color_Alpha(dark_Overlay_Renderer, square_Screen_Color_02, square_Screen_Color, 2,  1.5f));
         bunny_01_Rec.localPosition = new Vector3(-.28f, .45f, 1.75f);
         scale_Object_List.Clear();
         
