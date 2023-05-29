@@ -468,11 +468,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7183800846716650668, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.scalar
-      value: 5
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7183800846716650668, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.minMaxState
-      value: 3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800846716650668, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: lengthInSec
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800846716650668, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800846716650668, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: prewarm
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7183800846716650671, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: m_TagString
@@ -520,11 +532,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7183800846938560287, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.scalar
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7183800846938560287, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.minMaxState
-      value: 3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800846938560287, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: lengthInSec
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800846938560287, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800846938560287, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: prewarm
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7183800847012686001, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -552,11 +576,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7183800847012686002, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.scalar
-      value: 5
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 7183800847012686002, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.minMaxState
-      value: 3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800847012686002, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: lengthInSec
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800847012686002, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800847012686002, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: prewarm
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7183800847012686005, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: m_TagString
@@ -592,11 +628,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7183800847215495587, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.minMaxState
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7183800847215495587, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.scalar
-      value: 5
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800847215495587, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: lengthInSec
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800847215495587, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800847215495587, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: prewarm
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7183800847215495590, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: m_TagString
@@ -644,11 +692,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7183800847218452556, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.scalar
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7183800847218452556, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.minMaxState
-      value: 3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800847218452556, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: lengthInSec
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800847218452556, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800847218452556, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: prewarm
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7183800847218452559, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: m_TagString
@@ -684,11 +744,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7183800847375350915, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.scalar
-      value: 5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7183800847375350915, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.minMaxState
-      value: 3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800847375350915, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: lengthInSec
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800847375350915, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800847375350915, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: prewarm
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7183800847375350918, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: m_TagString
@@ -716,11 +788,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7183800847520907592, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.scalar
-      value: 5
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 7183800847520907592, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.minMaxState
-      value: 3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800847520907592, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: lengthInSec
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800847520907592, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800847520907592, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: prewarm
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7183800847520907595, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: m_TagString
@@ -760,11 +844,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7183800847530503836, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.scalar
-      value: 5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7183800847530503836, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.minMaxState
-      value: 3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800847530503836, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: lengthInSec
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800847530503836, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800847530503836, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: prewarm
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7183800847530503839, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: m_TagString
@@ -796,7 +892,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7183800847588927306, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.scalar
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7183800847588927306, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: CollisionModule.collidesWith.m_Bits
@@ -804,10 +900,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7183800847588927306, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.minMaxState
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7183800847588927306, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.minScalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800847588927306, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: lengthInSec
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800847588927306, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800847588927306, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: prewarm
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7183800847588927308, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
@@ -844,11 +952,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7183800847738803063, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.scalar
-      value: 5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7183800847738803063, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.minMaxState
-      value: 3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800847738803063, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: lengthInSec
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800847738803063, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800847738803063, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: prewarm
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7183800847821477864, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -880,11 +1000,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7183800847821477865, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.scalar
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7183800847821477865, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.minMaxState
-      value: 3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800847821477865, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: lengthInSec
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800847821477865, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800847821477865, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: prewarm
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7183800847821477868, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: m_TagString
@@ -912,11 +1044,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7183800847864648432, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.scalar
-      value: 5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7183800847864648432, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.minMaxState
-      value: 3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800847864648432, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: lengthInSec
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800847864648432, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800847864648432, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: prewarm
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7183800847864648435, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: m_TagString
@@ -960,11 +1104,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7183800848015805126, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.scalar
-      value: 5
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7183800848015805126, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.minMaxState
-      value: 3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800848015805126, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: lengthInSec
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800848015805126, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800848015805126, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: prewarm
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7183800848015805145, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: m_TagString
@@ -1052,11 +1208,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7183800848222680126, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.minMaxState
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7183800848222680126, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.scalar
-      value: 5
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800848222680126, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: lengthInSec
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800848222680126, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800848222680126, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: prewarm
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7183800848227474455, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1088,11 +1256,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7183800848227474664, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.scalar
-      value: 5
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7183800848227474664, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.minMaxState
-      value: 3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800848227474664, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: lengthInSec
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800848227474664, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800848227474664, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: prewarm
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7183800848227474667, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: m_TagString
@@ -1124,11 +1304,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7183800848232604999, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.scalar
-      value: 5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 7183800848232604999, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.minMaxState
-      value: 3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800848232604999, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: lengthInSec
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800848232604999, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800848232604999, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: prewarm
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7183800848232605018, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: m_TagString
@@ -1164,11 +1356,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7183800848433539229, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.minMaxState
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7183800848433539229, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.scalar
-      value: 5
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800848433539229, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: lengthInSec
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800848433539229, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800848433539229, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: prewarm
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7183800848528605480, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: m_TagString
@@ -1200,11 +1404,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7183800848528605525, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.minMaxState
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7183800848528605525, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.scalar
-      value: 5
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800848528605525, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: lengthInSec
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800848528605525, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800848528605525, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: prewarm
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7183800848581073394, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1236,11 +1452,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7183800848581073395, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.scalar
-      value: 5
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 7183800848581073395, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: startDelay.minMaxState
-      value: 3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800848581073395, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: lengthInSec
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800848581073395, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183800848581073395, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
+      propertyPath: prewarm
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7183800848581073398, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
       propertyPath: m_TagString
@@ -2114,7 +2342,7 @@ SpriteRenderer:
   m_SortingLayer: 8
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 377949a13e1ab4646a394eb7fa5cf728, type: 3}
-  m_Color: {r: 0.03773582, g: 0.0012459948, b: 0.0012459948, a: 1}
+  m_Color: {r: 0.6132076, g: 0.00867745, b: 0.00867745, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

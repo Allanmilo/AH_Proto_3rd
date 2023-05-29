@@ -920,7 +920,7 @@ int arrayNum;
         oh_No_new_Color_01 = new Color32(240, 200, 200, 255);
         hungry_font_Size = 36;
         hungry_new_Color = new Color32(130, 0, 0, 0);
-        hungry_new_Color_01 = new Color32(255, 255, 255, 255);
+        hungry_new_Color_01 = new Color32(159, 7, 7, 255);
         alpha_TMPro_00 = 0;
         alpha_TMPro_01 = 1;
 
@@ -2376,33 +2376,50 @@ IEnumerator Bunny_Attack_01_Start()
 
            scale_Object_List.Clear();
 
- hungry_Container.SetActive(true);
+ // hungry_Container.SetActive(true);
           // red screen and hungry text activates and fades out.
-            // StartCoroutine(Lerp_Color_Alpha(square_Screen_Renderer, hungry_new_Color_01, hungry_new_Color, 0,  3));
-            Switch_Cameras(camera, second_Camera);
-           // hungry_Container.SetActive(true);
-            // hungry_Text_TMPro.color = hungry_new_Color_01;
+         StartCoroutine(Lerp_Color_Alpha(square_Screen_Renderer, hungry_new_Color_01, hungry_new_Color, 0,  3));
+           
+         hungry_Text_TMPro.color = hungry_new_Color_01;
 
-            // StartCoroutine(Lerp_TMPro_Color_Alpha(hungry_Text_TMPro, hungry_new_Color_01, zero_Alpha, 2,  3f));
-            // StartCoroutine(Stop_Drops());
+             StartCoroutine(Lerp_TMPro_Color_Alpha(hungry_Text_TMPro, hungry_new_Color_01, zero_Alpha, 5 ,  3f));
+             StartCoroutine(Stop_Drops());
 
 
         // angry bunnies sit back down.
-        StartCoroutine(Scale_Object(mouth_01_Rec, Mouth_Wide_Size, mouth_Close_Size, 0f, .5f, false));
-        StartCoroutine(Scale_Object(bunny_01_Rec, body_forward_Size, body_norm_Size, 0f, .5f, false));
-        StartCoroutine(Scale_Object(bunny_01_Feet_Rec, bunny_02_Feet_Forward, bunny_02_Feet_Start, 0f, .5f, false));
+        StartCoroutine(Scale_Object(mouth_01_Rec, Mouth_Wide_Size, mouth_Close_Size, 0f, .1f, false));
+        StartCoroutine(Scale_Object(bunny_01_Rec, body_forward_Size, body_norm_Size, 0f, .1f, false));
+        StartCoroutine(Scale_Object(bunny_01_Feet_Rec, bunny_02_Feet_Forward, bunny_02_Feet_Start, 0f, .1f, false));
        // StartCoroutine(Move_Object_Math(bunny_01_Rec, 0, -8, 0f, .5f));
 
-        StartCoroutine(Scale_Object(mouth_02_Rec, Mouth_Wide_Size, mouth_Close_Size, 0f, .5f, false));
-        StartCoroutine(Scale_Object(bunny_02_Rec, body_forward_Size_02, body_norm_Size_02, 0f, .5f, false));
-        StartCoroutine(Scale_Object(bunny_02_Feet_Rec, bunny_02_Feet_Forward, bunny_02_Feet_Start, 0f, .5f, false));
+        StartCoroutine(Scale_Object(mouth_02_Rec, Mouth_Wide_Size, mouth_Close_Size, 0f, .1f, false));
+        StartCoroutine(Scale_Object(bunny_02_Rec, body_forward_Size_02, body_norm_Size_02, 0f, .1f, false));
+        StartCoroutine(Scale_Object(bunny_02_Feet_Rec, bunny_02_Feet_Forward, bunny_02_Feet_Start, 0f, .1f, false));
         Rotate_Object(bunny_02_Rec, 0, 0, 0f, 1, 1, 100, true);
 
-        StartCoroutine(Scale_Object(mouth_03_Rec, Mouth_Wide_Size_03, mouth_Close_Size_03, 0f, .5f, false));
-        StartCoroutine(Scale_Object(bunny_03_Rec, body_forward_Size_03, body_norm_Size_03,  0f, .5f, false));
-        StartCoroutine(Scale_Object(bunny_03_Feet_Rec, bunny_02_Feet_Forward, bunny_02_Feet_Start, 0f, .5f, false));
+        StartCoroutine(Scale_Object(mouth_03_Rec, Mouth_Wide_Size_03, mouth_Close_Size_03, 0f, .1f, false));
+        StartCoroutine(Scale_Object(bunny_03_Rec, body_forward_Size_03, body_norm_Size_03,  0f, .1f, false));
+        StartCoroutine(Scale_Object(bunny_03_Feet_Rec, bunny_02_Feet_Forward, bunny_02_Feet_Start, 0f, .1f, false));
         Rotate_Object(bunny_03_Rec, 0, 0, 0f, 1, 1, 0, true);
 
+ Switch_Cameras(camera, second_Camera);
+    hungry_Container.SetActive(true);
+  /*      
+
+         mouth_01_Rec.localPosition =  mouth_Close_Size;
+        bunny_01_Rec.localPosition =  body_norm_Size;
+        bunny_01_Feet_Rec.localPosition =  bunny_02_Feet_Start;
+       // StartCoroutine(Move_Object_Math(bunny_01_Rec, 0, -8, 0f, .5f));
+
+        mouth_02_Rec.localPosition =  mouth_Close_Size;
+        bunny_02_Rec.localPosition =  body_norm_Size_02;
+        bunny_02_Feet_Rec.localPosition = bunny_02_Feet_Start;
+        Rotate_Object(bunny_02_Rec, 0, 0, 0f, 1, 1, 100, true);
+
+        mouth_03_Rec.localPosition = mouth_Close_Size_03;
+        bunny_03_Rec.localPosition = body_norm_Size_03;
+        bunny_03_Feet_Rec.localPosition = bunny_02_Feet_Start;
+        Rotate_Object(bunny_03_Rec, 0, 0, 0f, 1, 1, 0, true);
  
  
         while(scale_Object_List.Count < 9)
@@ -2410,8 +2427,8 @@ IEnumerator Bunny_Attack_01_Start()
                       //  Debug.Log("bunny 04 " + scale_Object_List.Count);
                         await Task.Yield();
                     }
-
-        Color square_Screen_Color_02 = new Color(159, 7, 7, .3f);
+*/
+       // Color square_Screen_Color_02 = new Color(159, 7, 7, .3f);
        // StartCoroutine(Lerp_Color_Alpha(dark_Overlay_Renderer, square_Screen_Color_02, square_Screen_Color, 2,  1.5f));
         bunny_01_Rec.localPosition = new Vector3(-.28f, .45f, 1.75f);
         scale_Object_List.Clear();
@@ -2435,7 +2452,7 @@ public void Angry_Bunnies_Exit()
 
  IEnumerator Stop_Drops()
         {
-                yield return new WaitForSeconds(1.2f);
+                yield return new WaitForSeconds(4f);
                 ParticleSystem PS;
                 GameObject[] PS_Drops = GameObject.FindGameObjectsWithTag("Drops");
                 foreach(GameObject drops in PS_Drops)
