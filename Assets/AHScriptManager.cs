@@ -512,6 +512,8 @@ int arrayNum;
 
     Vector3 mopseys_Mask_Pos;
 
+    Vector3 mopseys_Mask_Lower;
+
     
 
     Vector3 Mopsey_Text_Origin_Pos;
@@ -699,9 +701,22 @@ int arrayNum;
         hearts_03_PS = hearts_03_GO.GetComponent<ParticleSystem>();
         hearts_03_Renderer = hearts_03_PS.GetComponent<Renderer>();
 
-        // worked here Test_Function();
+       
 
-        Debug.Log("again and again too");
+
+        bad_Hearts_00_GO = GameObject.FindGameObjectWithTag("Bad_Hearts_00");
+        bad_Hearts_00_PS = bad_Hearts_00_GO.GetComponent<ParticleSystem>();
+
+        bad_Hearts_01_GO = GameObject.FindGameObjectWithTag("Bad_Hearts_01");
+        bad_Hearts_01_PS = bad_Hearts_01_GO.GetComponent<ParticleSystem>();
+
+        bad_Hearts_02_GO = GameObject.FindGameObjectWithTag("Bad_Hearts_02");
+        bad_Hearts_02_PS = bad_Hearts_02_GO.GetComponent<ParticleSystem>();
+
+        bad_Hearts_03_GO = GameObject.FindGameObjectWithTag("Bad_Hearts_03");
+        bad_Hearts_03_PS = bad_Hearts_03_GO.GetComponent<ParticleSystem>();
+
+
 
         start_Count = true;
 
@@ -810,6 +825,7 @@ int arrayNum;
 
         mopseys_Mask = GameObject.FindGameObjectWithTag("Mopseys_Mask");
         mopseys_Mask_Pos = new Vector3(0, 7.5f, 0);
+        mopseys_Mask_Lower = new Vector3(0, -7.5f, 0);
 
         mopseys_Text_Color = new Color32(245, 156, 156, 255);
 
@@ -1054,6 +1070,8 @@ public void Pick_Opponent(string opponent)
         
         play_Paddle_Intro += Mopseys_Paddle_Intro;
         play_Paddle_Exit += Mopseys_Paddle_Exit;
+
+
 
 
         Change_Opponent_Text_Box(mopseys_Box_Fullsize, Mopsey_Text_Start_Pos, mopseys_Pivot, Mopseys_Font, mopseys_Text_Color, 10);
@@ -2218,6 +2236,8 @@ public void Mopseys_Paddle_Exit()
          PS_COL.color = grad;
 
                  Opp_Paddle_PS.Play();
+
+                 opponent_Paddle.SetActive(false);
     }
 
 
@@ -2291,7 +2311,7 @@ IEnumerator Bunny_Attack_01_Start()
 
 
 
-        int follow = 0;
+      //  int follow = 0;
 
 
         // angry bunnies snap at you.
@@ -2432,6 +2452,8 @@ IEnumerator Bunny_Attack_01_Start()
        // StartCoroutine(Lerp_Color_Alpha(dark_Overlay_Renderer, square_Screen_Color_02, square_Screen_Color, 2,  1.5f));
         bunny_01_Rec.localPosition = new Vector3(-.28f, .45f, 1.75f);
         scale_Object_List.Clear();
+
+        // Start Mopseys exit.
         
 }
 
