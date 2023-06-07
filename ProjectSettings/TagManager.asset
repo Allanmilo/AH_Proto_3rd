@@ -91,6 +91,7 @@ TagManager:
   - MenuFrame
   - TheBalls
   - BackDropGlow
+  - Bad_Hearts_00
   layers:
   - Default
   - TransparentFX

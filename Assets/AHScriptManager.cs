@@ -684,7 +684,6 @@ int arrayNum;
        
         Opp_Paddle_PS.Stop();
 
-
         hearts_00_GO = GameObject.FindGameObjectWithTag("Hearts_00");
         hearts_00_PS = hearts_00_GO.GetComponent<ParticleSystem>();
         hearts_00_Renderer = hearts_00_PS.GetComponent<Renderer>();
