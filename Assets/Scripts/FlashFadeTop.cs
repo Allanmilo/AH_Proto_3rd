@@ -87,7 +87,7 @@ public class FlashFadeTop : MonoBehaviour
 				_scoreScaling.Scoring();
 				flashFadeGoalTop.FlashGoal();
 				fireWorks02.FireWorks02();
-				// textTwoScore.StartText02();
+				 textTwoScore.StartText02();
 
 				if(player != null)
 					{
@@ -119,7 +119,7 @@ public class FlashFadeTop : MonoBehaviour
 				_scoreScaling.Scoring();
 				flashFadeGoalTop.FlashGoal();
 				fireWorks02.FireWorks02();
-				// textTwoScore.StartText02();
+				 textTwoScore.StartText02();
 				startingPuck.SetActive(false);
 				
 				_AHManager.Start_Character_Loses();

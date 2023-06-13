@@ -584,8 +584,8 @@ int arrayNum;
 	public delegate void Character_Loses();
 	public static event Character_Loses character_Loses;
 
-    public delegate void Play_Paddle_Intro();
-	public static event Play_Paddle_Intro  play_Paddle_Intro;
+   // public delegate void Play_Paddle_Intro();
+	// public static event Play_Paddle_Intro  play_Paddle_Intro;
 
     public delegate void Play_Paddle_Exit();
 	public static event Play_Paddle_Exit  play_Paddle_Exit;
@@ -677,12 +677,12 @@ int arrayNum;
 
         opponent_Paddle_SR = opponent_Paddle.GetComponent<SpriteRenderer>();
 
-        Opp_Paddle_PS = opponent_Paddle.GetComponent<ParticleSystem>();
+       // Opp_Paddle_PS = opponent_Paddle.GetComponent<ParticleSystem>();
 
-        Opp_Paddle_Renderer = Opp_Paddle_PS.GetComponent<Renderer>();
+        // Opp_Paddle_Renderer = Opp_Paddle_PS.GetComponent<Renderer>();
 
        
-        Opp_Paddle_PS.Stop();
+       // Opp_Paddle_PS.Stop();
 
         hearts_00_GO = GameObject.FindGameObjectWithTag("Hearts_00");
         hearts_00_PS = hearts_00_GO.GetComponent<ParticleSystem>();
@@ -1067,8 +1067,8 @@ public void Pick_Opponent(string opponent)
         character_Wins += Mopsey_Wins;
         character_Loses += Mopsey_Loses;
         
-        play_Paddle_Intro += Mopseys_Paddle_Intro;
-        play_Paddle_Exit += Mopseys_Paddle_Exit;
+       // play_Paddle_Intro += Mopseys_Paddle_Intro;
+      //  play_Paddle_Exit += Mopseys_Paddle_Exit;
 
 
 
@@ -2033,7 +2033,7 @@ public void Change_Paddle(Sprite paddle)
         
         Scale_Object(opponent_Paddle, scale_00, scale_01, 0, 1);
 
-        play_Paddle_Intro();
+      //  play_Paddle_Intro();
        
     }
 
@@ -2111,7 +2111,9 @@ IEnumerator Mopseys_Intro()
     StartCoroutine(Lerp_Transform_Position(mopseys_Mask, mopseys_Mask_Pos, scale_00, 1, 3));
     hearts_00_PS.Play();
 
-    Change_Paddle(mopseys_Paddle);
+   // Change_Paddle(mopseys_Paddle);
+
+    Opp_Paddle_Intro(mopseys_Paddle, 0);
 
 
     // Mopsey says Hi!.
@@ -2180,7 +2182,7 @@ IEnumerator Mopseys_Intro()
 
 
 
-
+/*
 public void Mopseys_Paddle_Intro()
     {
         var _colorOverLifetime = Opp_Paddle_PS.colorOverLifetime;
@@ -2205,10 +2207,10 @@ public void Mopseys_Paddle_Intro()
 
                  Opp_Paddle_PS.Play();
     }
+*/
 
 
-
-
+/*
 public void Mopseys_Paddle_Exit()
     {
         var _colorOverLifetime = Opp_Paddle_PS.colorOverLifetime;
@@ -2238,7 +2240,7 @@ public void Mopseys_Paddle_Exit()
 
                  opponent_Paddle.SetActive(false);
     }
-
+*/
 
 
  public async Task Bunnies_Attack()
@@ -2452,12 +2454,36 @@ IEnumerator Bunny_Attack_01_Start()
         bunny_01_Rec.localPosition = new Vector3(-.28f, .45f, 1.75f);
         scale_Object_List.Clear();
 
+        // await Task.Delay(0500);
         // Start Mopseys exit.
+        // Opp_Paddle_Exit(mopseys_Paddle, 1);
+        StartCoroutine(Mopseys_Exit());
         
 }
 
-public void Angry_Bunnies_Exit()
+IEnumerator Mopseys_Exit()
 {
+    yield return new WaitForSeconds(6f);
+
+    Scale_Object(bunny_01, body_norm_Size, scale_00,  0, 1);
+    bad_Hearts_01_PS.Play();
+    yield return new WaitForSeconds(1);
+    Scale_Object(bunny_02, body_norm_Size_02, scale_00, 0, 1);
+    bad_Hearts_02_PS.Play();
+    yield return new WaitForSeconds(1);
+    Scale_Object(bunny_03,  body_norm_Size_03, scale_00, 0, 1);
+    bad_Hearts_03_PS.Play();
+    yield return new WaitForSeconds(1);
+
+    Opp_Paddle_Exit(mopseys_Paddle, 1);
+
+    yield return new WaitForSeconds(1);
+    StartCoroutine(Lerp_Transform_Position(mopseys_Mask, mopseys_Mask_Pos, scale_00, 1, 3));
+    bad_Hearts_00_PS.Play();
+
+
+
+    Opp_Paddle_Exit(mopseys_Paddle, 1);
 
 }
 
@@ -2574,6 +2600,37 @@ public async Task Rotate_Object(RectTransform _object_Rec, float x, float y, flo
               Move_Object_Bounce_Bool = switch_Bool;
         }
  
+public void Opp_Paddle_Intro(Sprite paddle, int child_Num)
+		{
+			opponent_Paddle.SetActive(true);   // activate opp paddle.
+			
+			    foreach (Transform t in opponent_Paddle.transform)
+				{
+					t.gameObject.SetActive(false); // deactivate current child.
+				}
+
+			opponent_Paddle_SR.sprite = paddle; // Set sprite to use.
+			opponent_Paddle.transform.GetChild(child_Num).gameObject.SetActive(true); // set particle system to active.
+			
+			Scale_Object(opponent_Paddle, scale_00, scale_01, 0, 1); // Scale sprite to full.
+		}
+
+
+public async void  Opp_Paddle_Exit(Sprite paddle, int child_Num)
+		{
+			    foreach (Transform t in opponent_Paddle.transform)
+				{
+					t.gameObject.SetActive(false); // deactivate current child.
+				}
+
+			opponent_Paddle_SR.sprite = paddle; // Set sprite to use.
+			opponent_Paddle.transform.GetChild(child_Num).gameObject.SetActive(true); // set particle system to active.
+			
+		     Scale_Object(opponent_Paddle, scale_01, scale_00, 0, 1); // Scale sprite to full.
+		     await Task.Delay(5000);
+             opponent_Paddle.SetActive(false);   // deactivate opp paddle.
+}
+
 
 //-----------------------------------End Mopsey's Dialogue-----------------------------------------------
 
