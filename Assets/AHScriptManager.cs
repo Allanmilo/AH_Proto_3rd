@@ -409,7 +409,7 @@ int arrayNum;
     GameObject mopseys_Exiting;
 
 
-    GameObject mopseys_Mask; // added.
+    GameObject opp_Mask; // added.
 
 
 
@@ -510,9 +510,11 @@ int arrayNum;
     [SerializeField] Vector3 scale_01;
     [SerializeField] Vector3 scale_00;
 
-    Vector3 mopseys_Mask_Pos;
+    Vector3 opp_Mask_Pos;
 
-    Vector3 mopseys_Mask_Lower;
+    Vector3 opp_Mask_Center;
+
+    Vector3 opp_Mask_Lower;
 
     
 
@@ -822,9 +824,10 @@ int arrayNum;
 
         #region Mopseys_Start
 
-        mopseys_Mask = GameObject.FindGameObjectWithTag("Mopseys_Mask");
-        mopseys_Mask_Pos = new Vector3(0, 7.5f, 0);
-        mopseys_Mask_Lower = new Vector3(0, -7.5f, 0);
+        opp_Mask = GameObject.FindGameObjectWithTag("Opp_Mask");
+        opp_Mask_Pos = new Vector3(-8.37f, 7.5f, 0);
+        opp_Mask_Center =  new Vector3(-8.37f, -2.2f, 0);
+        opp_Mask_Lower = new Vector3(-8.37f, -11.5f, 0);
 
         mopseys_Text_Color = new Color32(245, 156, 156, 255);
 
@@ -2108,7 +2111,7 @@ IEnumerator Mopseys_Intro()
     Scale_Object(good_Bunny_03, scale_00, body_norm_Size_03, 0, 1);
     hearts_03_PS.Play();
     yield return new WaitForSeconds(1);
-    StartCoroutine(Lerp_Transform_Position(mopseys_Mask, mopseys_Mask_Pos, scale_00, 1, 3));
+    StartCoroutine(Lerp_Transform_Position(opp_Mask, opp_Mask_Pos, opp_Mask_Center, 1, 3));
     hearts_00_PS.Play();
 
    // Change_Paddle(mopseys_Paddle);
@@ -2478,7 +2481,7 @@ IEnumerator Mopseys_Exit()
     Opp_Paddle_Exit(mopseys_Paddle, 1);
 
     yield return new WaitForSeconds(1);
-    StartCoroutine(Lerp_Transform_Position(mopseys_Mask, mopseys_Mask_Pos, scale_00, 1, 3));
+    StartCoroutine(Lerp_Transform_Position(opp_Mask, opp_Mask_Center, opp_Mask_Lower, 0, 1));
     bad_Hearts_00_PS.Play();
 
 

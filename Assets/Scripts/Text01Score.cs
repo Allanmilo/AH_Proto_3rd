@@ -25,7 +25,8 @@ public class Text01Score : MonoBehaviour
     
     public void StartText01()
     {
-        textMeshPro.alpha = 1;
+        Debug.Log("StartText01");
+        textMeshPro.alpha = 255;
         StartCoroutine(Text01Resize(6f, 12f));
     }
 

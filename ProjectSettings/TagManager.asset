@@ -92,6 +92,7 @@ TagManager:
   - TheBalls
   - BackDropGlow
   - Bad_Hearts_00
+  - Opp_Mask
   layers:
   - Default
   - TransparentFX

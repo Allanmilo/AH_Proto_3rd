@@ -34,6 +34,8 @@ public class TextTwoScore : MonoBehaviour
     
     public void StartText02()
     {
+        Debug.Log("StartText02");
+        
         textMeshPro.color = new Color(r_C, g_C, b_C, a_C255);
         StartCoroutine(Text02Resize(6f, 12f));
     }
