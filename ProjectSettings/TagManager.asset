@@ -93,6 +93,9 @@ TagManager:
   - BackDropGlow
   - Bad_Hearts_00
   - Opp_Mask
+  - AB_Body_01
+  - AB_Body_02
+  - AB_Body_03
   layers:
   - Default
   - TransparentFX

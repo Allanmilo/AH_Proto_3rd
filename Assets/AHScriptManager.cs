@@ -372,6 +372,10 @@ int arrayNum;
     GameObject bunny_01;
     GameObject bunny_01_Feet; 
 
+    GameObject aB_Body_01;
+    GameObject aB_Body_02;
+    GameObject aB_Body_03;
+
     GameObject bunny_02;
     GameObject mouth_02;
     GameObject bunny_02_Feet;
@@ -509,6 +513,7 @@ int arrayNum;
     //float cy;
     [SerializeField] Vector3 scale_01;
     [SerializeField] Vector3 scale_00;
+    [SerializeField] Vector3 scale_Y_00;
 
     Vector3 opp_Mask_Pos;
 
@@ -734,6 +739,7 @@ int arrayNum;
 
         scale_01 = new Vector3(1, 1, 1);
         scale_00 = new Vector3(0, 0, 0);
+        scale_Y_00 = new Vector3(1, 0, 0);
 
         bad_Alpha = bad_Arua.color;
 
@@ -2406,7 +2412,7 @@ IEnumerator Bunny_Attack_01_Start()
            
          hungry_Text_TMPro.color = hungry_new_Color_01;
 
-             StartCoroutine(Lerp_TMPro_Color_Alpha(hungry_Text_TMPro, hungry_new_Color_01, zero_Alpha, 5 ,  3f));
+             StartCoroutine(Lerp_TMPro_Color_Alpha(hungry_Text_TMPro, hungry_new_Color_01, zero_Alpha, 5 ,  2f));
              StartCoroutine(Stop_Drops());
 
 
@@ -2457,7 +2463,7 @@ IEnumerator Bunny_Attack_01_Start()
         bunny_01_Rec.localPosition = new Vector3(-.28f, .45f, 1.75f);
         scale_Object_List.Clear();
 
-        // await Task.Delay(0500);
+        await Task.Delay(1000);
         // Start Mopseys exit.
         // Opp_Paddle_Exit(mopseys_Paddle, 1);
         StartCoroutine(Mopseys_Exit());
@@ -2466,27 +2472,42 @@ IEnumerator Bunny_Attack_01_Start()
 
 IEnumerator Mopseys_Exit()
 {
+    // bunny_02_Rec.pivot = new Vector2(.5f, .5f);
+   //  bunny_03_Rec.pivot = new Vector2(.5f, .5f);
+
     yield return new WaitForSeconds(6f);
+bad_Hearts_01_PS.Play();
+Fade_Children(bunny_01);
+  //  Scale_Object(bunny_01, body_norm_Size, scale_Y_00,  3, .1f);
+     yield return new WaitForSeconds(1);
+   
 
-    Scale_Object(bunny_01, body_norm_Size, scale_00,  0, 1);
-    bad_Hearts_01_PS.Play();
-    yield return new WaitForSeconds(1);
-    Scale_Object(bunny_02, body_norm_Size_02, scale_00, 0, 1);
-    bad_Hearts_02_PS.Play();
-    yield return new WaitForSeconds(1);
-    Scale_Object(bunny_03,  body_norm_Size_03, scale_00, 0, 1);
-    bad_Hearts_03_PS.Play();
-    yield return new WaitForSeconds(1);
+bad_Hearts_02_PS.Play();
+Fade_Children(bunny_02);
+   // Scale_Object(bunny_02, body_norm_Size_02, scale_Y_00, 3, .1f);
+     yield return new WaitForSeconds(1);
+    
+    
+bad_Hearts_03_PS.Play();
+Fade_Children(bunny_03);
+    
+    // Scale_Object(bunny_03,  body_norm_Size_03, scale_Y_00, 3, .1f);
+    
+     yield return new WaitForSeconds(1);
+    
+   // yield return new WaitForSeconds(1);
 
     Opp_Paddle_Exit(mopseys_Paddle, 1);
 
+bad_Hearts_00_PS.Play();
+   // yield return new WaitForSeconds(1);
+    StartCoroutine(Lerp_Transform_Position(opp_Mask, opp_Mask_Center, opp_Mask_Lower, 1, 3));
     yield return new WaitForSeconds(1);
-    StartCoroutine(Lerp_Transform_Position(opp_Mask, opp_Mask_Center, opp_Mask_Lower, 0, 1));
-    bad_Hearts_00_PS.Play();
+  
 
 
 
-    Opp_Paddle_Exit(mopseys_Paddle, 1);
+   // Opp_Paddle_Exit(mopseys_Paddle, 1);
 
 }
 
@@ -2498,6 +2519,16 @@ IEnumerator Mopseys_Exit()
         StartCoroutine(Word_Text_Reveal(opponent_TMPro, bunnies_Text, .3f, 0));
         StartCoroutine(Lerp_TMPro_Color_Alpha(opponent_TMPro, oh_No_new_Color_01, oh_No_new_Color, 1.5f,  1));// fade out text.
     }
+
+
+public void Fade_Children(GameObject parent)
+		{	
+			    foreach (Transform t in parent.transform)
+				{
+					SpriteRenderer SR_Child = t.gameObject.GetComponent<SpriteRenderer>();
+					StartCoroutine(Lerp_Color_Alpha(SR_Child, sunGlass_01, sunGlass_00, 1, .5f));
+				}
+		}
 
 
  IEnumerator Stop_Drops()
@@ -2628,8 +2659,8 @@ public async void  Opp_Paddle_Exit(Sprite paddle, int child_Num)
 
 			opponent_Paddle_SR.sprite = paddle; // Set sprite to use.
 			opponent_Paddle.transform.GetChild(child_Num).gameObject.SetActive(true); // set particle system to active.
-			
-		     Scale_Object(opponent_Paddle, scale_01, scale_00, 0, 1); // Scale sprite to full.
+			await Task.Delay(500);
+		     Scale_Object(opponent_Paddle, scale_01, scale_00, 0, .5f); // Scale sprite to full.
 		     await Task.Delay(5000);
              opponent_Paddle.SetActive(false);   // deactivate opp paddle.
 }
