@@ -234,6 +234,7 @@ public string firstToFive;
 Vector2 textBox_width01;
 Vector2 textBox_width02;
 
+Vector2 textBox_width03;
 
 [SerializeField] TMP_FontAsset star_Loses_Font;
 [SerializeField] TMP_FontAsset stars_Font;
@@ -329,7 +330,7 @@ int arrayNum;
     string _Pan_Says;
     public bool rec_Trans_Size_Bool;
 
-    public bool lerp_TMPro_Color_Bool;
+    public bool lerp_TMPro_Color_Bool = false;
 
     public Color current_Color;
 
@@ -556,6 +557,8 @@ int arrayNum;
     public bool Move_Object_Bounce_Bool;
     public bool rotate_Object_Bool;
 
+    public bool glow_On = false;
+
     public bool IsCanceled;
     public static List<bool> scale_Object_List = new List<bool>();
     public static List<bool> rotate_Object_List = new List<bool>();
@@ -605,7 +608,7 @@ int arrayNum;
     public string[] paddle_Trash_Talk_Array;
     void Start()
     {  
-       Debug.Log("start of start");
+     //  Debug.Log("start of start");
         speedUp = false;
         
         _start_Size_Y = new Vector2(6, 0);
@@ -1190,7 +1193,7 @@ void Pan_Intros(string character)
 
         IEnumerator Lerp_TMPro_Color_Alpha(TextMeshPro _textMeshPro, Color start_Color, Color end_Color, float secs_To_Wait,  float duration)
 		{
-
+                lerp_TMPro_Color_Bool = true;
 			 yield return new WaitForSeconds(secs_To_Wait);  
 
 			float start_Point = 0;
@@ -1210,7 +1213,7 @@ void Pan_Intros(string character)
 
 				yield return null ;
 			}		
-             //   lerp_TMPro_Color_Bool = true;	
+               lerp_TMPro_Color_Bool = false;	
 		}
 
 
@@ -1333,7 +1336,7 @@ public async void Size_Object(GameObject object_To_Size, Vector3 start_Size, Vec
        {
             // x is the recttransforms width; y is the recttransform's height.
             // starting point is were the pivot point is placed.
-            size_Object_Bool =true;
+            size_Object_Bool = true;
 
             float time = 0f;
             float x;
@@ -1398,7 +1401,7 @@ IEnumerator Word_Text_Reveal(TextMeshPro objects_TMPro, string words_To_Split, f
         objects_TMPro.text = array[0]; 
 
         objects_TMPro.color = new Color(1, 1, 1, 1);
-
+Debug.Log(opponent_TMPro.color + objects_TMPro.color);
       for( int i = 1 ; i < array.Length ; ++ i)
       {
         yield return new WaitForSeconds(duration);
@@ -1833,13 +1836,15 @@ public void Stars_Dialogue()
   }
 
     public async void Star_Loses()
-    {
+    { 
        
                 await Task.Delay(1500);
                 tmpro_Object.font = star_Loses_Font;
                 opponent_Text_Box_Rec.position = stars_Text_Box_Pos_Losing;
                 trashTalk01 = "<b><size=9><align=right><color=#0e1111>that wasn't very nice.</color></b>";
 				trashTalk02 = "<size=9><color=#0e1111><align=right>i'm gonna tell on you...</color> ";
+        
+
         
                 StartCoroutine(Lerp_Color_Alpha(_sunGlass, sunGlass_00, sunGlass_01, 0, 1f));
 
@@ -1973,7 +1978,7 @@ public void Mopseys_Dialogue()
 				trashTalk02 = "<size=8>Bunnies <br>just like <br>to <br>have fun.";
                  
                 Mopseys_Case_Zero();
-            break;
+            break; 
 
             case 1:
                 trashTalk01 = "<b><size=9>The \nbunnies \nwill \nwait</b>";
@@ -2412,7 +2417,7 @@ IEnumerator Bunny_Attack_01_Start()
            
          hungry_Text_TMPro.color = hungry_new_Color_01;
 
-             StartCoroutine(Lerp_TMPro_Color_Alpha(hungry_Text_TMPro, hungry_new_Color_01, zero_Alpha, 5 ,  2f));
+             StartCoroutine(Lerp_TMPro_Color_Alpha(hungry_Text_TMPro, hungry_new_Color_01, zero_Alpha, 4 ,  1f));
              StartCoroutine(Stop_Drops());
 
 
@@ -2472,44 +2477,119 @@ IEnumerator Bunny_Attack_01_Start()
 
 IEnumerator Mopseys_Exit()
 {
-    // bunny_02_Rec.pivot = new Vector2(.5f, .5f);
-   //  bunny_03_Rec.pivot = new Vector2(.5f, .5f);
+    yield return new WaitForSeconds(2f);
 
-    yield return new WaitForSeconds(6f);
+    StartCoroutine(mopseys_Exit_Text());
+
+    yield return new WaitForSeconds(4f);
+
 bad_Hearts_01_PS.Play();
 Fade_Children(bunny_01);
-  //  Scale_Object(bunny_01, body_norm_Size, scale_Y_00,  3, .1f);
+  
      yield return new WaitForSeconds(1);
    
 
 bad_Hearts_02_PS.Play();
 Fade_Children(bunny_02);
-   // Scale_Object(bunny_02, body_norm_Size_02, scale_Y_00, 3, .1f);
+   
      yield return new WaitForSeconds(1);
     
     
 bad_Hearts_03_PS.Play();
 Fade_Children(bunny_03);
     
-    // Scale_Object(bunny_03,  body_norm_Size_03, scale_Y_00, 3, .1f);
-    
      yield return new WaitForSeconds(1);
-    
-   // yield return new WaitForSeconds(1);
 
     Opp_Paddle_Exit(mopseys_Paddle, 1);
 
 bad_Hearts_00_PS.Play();
-   // yield return new WaitForSeconds(1);
-    StartCoroutine(Lerp_Transform_Position(opp_Mask, opp_Mask_Center, opp_Mask_Lower, 1, 3));
+   
+    StartCoroutine(Lerp_Transform_Position(opp_Mask, opp_Mask_Center, opp_Mask_Lower, 1, 1));
     yield return new WaitForSeconds(1);
-  
-
-
-
-   // Opp_Paddle_Exit(mopseys_Paddle, 1);
 
 }
+
+
+IEnumerator mopseys_Exit_Text()
+		{
+			textBox_width02 = new Vector2(5.5f, 1.5f);
+			opponent_TMPro.text = "<size=7>Just wait!<br>  When<br>Ayre Hawki<br>gets <br> here";
+			Size_Object(opponent_Text_Box, textBox_width01, textBox_width02, 1, 2);
+
+				while(size_Object_Bool == true) 
+				{
+					yield return null;
+				}
+		
+			textBox_width03 = new Vector2(5.5f, 6.5f);
+			Size_Object(opponent_Text_Box, textBox_width02, textBox_width03, 500, 1.5f);
+
+            while(size_Object_Bool == true)
+				{
+					yield return null;
+				}
+
+			StartCoroutine(Lerp_TMPro_Color_Alpha(tmpro_Object, sunGlass_01, sunGlass_00, 0, .5f));
+			
+			while(lerp_TMPro_Color_Bool)
+				{
+					yield return null; 
+				}
+				 
+				opponent_TMPro.text = "<size=10> The<br> fur's<br> gonna<br> fly!"; 
+				// opponent_TMPro.color = new Color(0, 0, 0, 1);
+				StartCoroutine(Word_Text_Reveal(opponent_TMPro, opponent_TMPro.text, .5f, 0));
+				
+				yield return new WaitForSeconds(2f);
+
+				StartCoroutine(GlowAdjust(opponent_TMPro, 0, 1f, .5f));
+				//yield return new WaitForSeconds(2);
+				 StartCoroutine(Lerp_TMPro_Color_Alpha(tmpro_Object, sunGlass_01, sunGlass_00, .8f, 1));
+   
+    	}
+		
+		
+		
+		
+		IEnumerator GlowAdjust(TextMeshPro tMPro, float start, float end,  float duration)
+		{
+			
+			glow_On = true;
+			float glowPower = 0;
+			float time = 0;
+			while(time < duration)
+					{ 
+						glowPower = Mathf.Lerp( start, end, time / duration);
+
+						tMPro.fontSharedMaterial.SetFloat(ShaderUtilities.ID_GlowPower, glowPower); //new Color32(255, 240, 0, 100));
+
+						time += Time.unscaledDeltaTime;
+ 
+					   yield return null;
+					} 
+
+			glowPower = 0;
+			time = 0;
+					while(time < duration)
+					{ 
+						glowPower = Mathf.Lerp( end, start, time / duration);
+
+						tMPro.fontSharedMaterial.SetFloat(ShaderUtilities.ID_GlowPower, glowPower); //new Color32(255, 240, 0, 100));
+
+						time += Time.unscaledDeltaTime;
+
+					   yield return null;
+					} 
+
+					glow_On = false;
+		}
+
+
+
+
+
+
+
 
     public void Angry_Bunnies_Text()
     {
@@ -3111,7 +3191,7 @@ public IEnumerator Pan_Asks_U_To_tryAgain()
             _Pan_Says = "you can still\nwin back\nsome of\nyour diginity!";
              text_Pan_TMPro.text = _Pan_Says;
 
-            Debug.Log("pans text is " + _Pan_Says);
+         //   Debug.Log("pans text is " + _Pan_Says);
 
             text_Pan_Transform.sizeDelta = _start_Size;
             text_Pan_TMPro.color =  sunGlass_01;
@@ -3244,7 +3324,7 @@ public IEnumerator Pan_Asks_U_To_tryAgain()
             
             text_Pan_TMPro.text = text_For_Pan;
 
-        Debug.Log("pans move text is " + text_Pan_TMPro.text);
+     //   Debug.Log("pans move text is " + text_Pan_TMPro.text);
          
             StartCoroutine(Lerp_TMPro_Color_Alpha (text_Pan_TMPro, sunGlass_00, sunGlass_01, wfs, 1));
             StartCoroutine(Lerp_TMPro_Color_Alpha(text_Pan_TMPro, sunGlass_01, sunGlass_00, delay, 1));
@@ -3255,7 +3335,7 @@ public IEnumerator Pan_Asks_U_To_tryAgain()
             Vector2 _end_Size = new Vector2(5, 1);
             text_Pan_Transform.sizeDelta = _end_Size;
 
-        Debug.Log("pans next move text is " + text_Pan_TMPro.text);
+      //  Debug.Log("pans next move text is " + text_Pan_TMPro.text);
         }
 
 public async void Set_Scoreboard(int _sec_2_Wait)
