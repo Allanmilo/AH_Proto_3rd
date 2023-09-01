@@ -53,6 +53,8 @@ Color litePink;
 Color darkPink;
 
  public List<GameObject> gameObject_List; // = new List<GameObject>();
+ public List<SpriteRenderer> sprite_Renderer_List;
+public List<RectTransform> rec_List;
 
                      RectTransform Pans_Rec;  ///????
 
@@ -359,7 +361,7 @@ int arrayNum;
 
 
 
-#region Mopseys_Visit
+#region Mopsey_Variables
 
     GameObject mopseys_Visit; // Not in original
     GameObject good_Bunnies;
@@ -445,6 +447,8 @@ int arrayNum;
     RectTransform second_Camera_Rect;
 
     RectTransform square_Screen_Text_Rec;
+
+    Rigidbody2D good_Bunny_03_Rb;
 
 
     SpriteRenderer dark_Overlay_Renderer;
@@ -577,7 +581,13 @@ int arrayNum;
 
     string bunnies_Text;
 
-    #endregion Mopseys_Visit
+    // Carrots menu.
+
+   
+
+
+
+    #endregion Mopsey_Variables
 
     #region Delegates
 
@@ -606,6 +616,10 @@ int arrayNum;
     public int paddle_Array_Pos;
 
     public string[] paddle_Trash_Talk_Array;
+
+
+
+
     void Start()
     {  
      //  Debug.Log("start of start");
@@ -626,7 +640,8 @@ int arrayNum;
         backDropGlow_SR = backDropGlow.GetComponent<SpriteRenderer>();
 
 
-        gameObject_List = new List<GameObject>();
+        // gameObject_List = new List<GameObject>();
+        
 
         _height_Point = new Vector3(-20, -2, 0);
         first_Curve_Height = new Vector3(-14, -2, 0);
@@ -830,8 +845,7 @@ int arrayNum;
 
         
 
-
-        #region Mopseys_Start
+#region Mopsey_Start
 
         opp_Mask = GameObject.FindGameObjectWithTag("Opp_Mask");
         opp_Mask_Pos = new Vector3(-8.37f, 7.5f, 0);
@@ -879,6 +893,7 @@ int arrayNum;
 
         good_Bunny_03 = GameObject.FindGameObjectWithTag("Good_Bunny_03");
         good_Bunny_03_Rec = good_Bunny_03.GetComponent<RectTransform>();
+        good_Bunny_03_Rb = good_Bunny_03.GetComponent<Rigidbody2D>();
 
         mouth_01 = GameObject.FindGameObjectWithTag("Mouth_01");
         mouth_01_Rec = mouth_01.GetComponent<RectTransform>();
@@ -976,7 +991,10 @@ int arrayNum;
         mopseys_Visit.SetActive(false);
         second_Camera.SetActive(false);
 
-        #endregion Mopseys_Start
+#endregion Mopsey_Start
+// Test_Function();
+
+
 
 
         Pick_Opponent("Star");
@@ -1173,10 +1191,14 @@ void Pan_Intros(string character)
 
 #endregion -----Objects variables-----
 
-#region -----Coroutines-----
+#region -----Coroutines-----      
 
-        IEnumerator Lerp_Color_Alpha(SpriteRenderer sprite_Renderer, Color start_Color, Color end_Color, float secs_To_Wait,  float duration)
+                            // Switch secs_To_Wait and duration.
+
+        IEnumerator Lerp_Color_Alpha(SpriteRenderer sprite_Renderer, Color start_Color, Color end_Color, float duration, float secs_To_Wait)
 		{
+            sprite_Renderer_List.Add(sprite_Renderer);
+
 			 yield return new WaitForSeconds(secs_To_Wait);  
 
 			float start_Point = 0;
@@ -1187,6 +1209,8 @@ void Pan_Intros(string character)
                
 				start_Point += Time.unscaledDeltaTime;
 				yield return null ;
+
+                sprite_Renderer_List.Remove(sprite_Renderer);
 			}		
 		}
 
@@ -1216,8 +1240,7 @@ void Pan_Intros(string character)
                lerp_TMPro_Color_Bool = false;	
 		}
 
-
-        IEnumerator Lerp_Transform_Position(GameObject object_To_Lerp, Vector3 start_Lerp_Pos, Vector3 end_Lerp_Pos, float wait_For_Sec, float duration )
+/*    IEnumerator Lerp_Transform_Position(GameObject object_To_Lerp, Vector3 start_Lerp_Pos, Vector3 end_Lerp_Pos, float wait_For_Sec, float duration )
         {
            
                 float time = 0f;
@@ -1230,7 +1253,25 @@ void Pan_Intros(string character)
                     yield return null;
                 }
         } 
-        
+ */       
+        IEnumerator Lerp_Transform_Position(GameObject object_To_Lerp, Vector3 start_Lerp_Pos, Vector3 end_Lerp_Pos, float duration, float wait_For_Sec )
+        {
+           gameObject_List.Add(object_To_Lerp);
+
+                float time = 0f;
+                yield return new WaitForSeconds( wait_For_Sec );
+                
+                while(time < duration)
+                {
+                    object_To_Lerp.transform.localPosition = Vector3.Lerp( start_Lerp_Pos, end_Lerp_Pos, time / duration );
+                    time += Time.unscaledDeltaTime;
+                    yield return null;
+                }
+
+                gameObject_List.Remove(object_To_Lerp);
+        } 
+
+
         public async void Slerp_Transform_Position(GameObject object_To_Slerp, Vector3 start_Slerp_Pos, Vector3 end_Slerp_Pos, int _sec_2_Wait, float duration )
         {
             
@@ -1304,7 +1345,7 @@ void Pan_Intros(string character)
 }
         
 
-         public async void Scale_Object(GameObject object_To_Scale, Vector3 start_Size, Vector3 end_Size, int _sec_2_Wait, float duration )
+         public async void Scale_Object(GameObject object_To_Scale, Vector3 start_Size, Vector3 end_Size, float duration, int _sec_2_Wait )
             {
                 gameObject_List.Add(object_To_Scale);
 
@@ -1828,7 +1869,7 @@ public void Stars_Dialogue()
                text_To_Use_Is += Second_Text_Line;
 			    StartCoroutine(FadeOutCR( "type", 0, 1.5f));
                 Pan.SetActive(true);
-                StartCoroutine(Lerp_Transform_Position(Pan, endPosLeftOffScreen, gamePosLeft, 0, 1 ));
+                StartCoroutine(Lerp_Transform_Position(Pan, endPosLeftOffScreen, gamePosLeft, 1, 0 ));
                 await Task.Delay(1000);
                 text_Pan_TMPro.color = new Color(0, 0, 0, 1);
                 StartCoroutine(Pan_Asks_U_To_tryAgain());
@@ -1846,7 +1887,7 @@ public void Stars_Dialogue()
         
 
         
-                StartCoroutine(Lerp_Color_Alpha(_sunGlass, sunGlass_00, sunGlass_01, 0, 1f));
+                StartCoroutine(Lerp_Color_Alpha(_sunGlass, sunGlass_00, sunGlass_01, 1f, 0f));
 
                 StartCoroutine(MoveTowards_Object(camera_Rect, main_Cam_Pos_Star, .2f, 0));
                 StartCoroutine(Math_lerp_Cam_Size(camera_01, main_Cam_Size, main_Cam_Size_Star, 1.5f, 0));
@@ -1866,11 +1907,11 @@ public void Stars_Dialogue()
 
                 await Task.Delay(3000);
                 star_Is_Sad.Play();
-                StartCoroutine(Lerp_Transform_Position(star_Girl, Stars_Starting_Position, Stars_Ending_Position, 0, 2.5f ));
+                StartCoroutine(Lerp_Transform_Position(star_Girl, Stars_Starting_Position, Stars_Ending_Position, 2.5f, 0 ));
 
                 StartCoroutine(MoveTowards_Object(camera_Rect, main_Cam_Pos, .6f, .2f));
                 StartCoroutine(Math_lerp_Cam_Size(camera_01, main_Cam_Size_Star, main_Cam_Size, 4, .2f));
-                StartCoroutine(Lerp_Color_Alpha(_sunGlass, sunGlass_01, sunGlass_00, .8f, 1f));
+                StartCoroutine(Lerp_Color_Alpha(_sunGlass, sunGlass_01, sunGlass_00, 1f, .8f));
 
                  opponent_Paddle.SetActive(false);
 
@@ -2027,8 +2068,7 @@ public void Mopseys_Dialogue()
 
     public async void Mopsey_Wins()
     {
-
-        Debug.Log("Mopsey is happy( her bunnies are too!");
+      // StartCoroutine(Start_Carrots());
     }
 
 
@@ -2045,7 +2085,7 @@ public void Change_Paddle(Sprite paddle)
 
         opponent_Paddle_SR.sprite = paddle;
         
-        Scale_Object(opponent_Paddle, scale_00, scale_01, 0, 1);
+        Scale_Object(opponent_Paddle, scale_00, scale_01, 1, 0);
 
       //  play_Paddle_Intro();
        
@@ -2057,7 +2097,7 @@ IEnumerator Pan_Intro_New_Opp()
                 //await Task.Delay(1000);
                 yield return new WaitForSeconds(1);
                 Pan.SetActive(true);
-                StartCoroutine(Lerp_Transform_Position(Pan,  endPosLeftOffScreen, gamePosLeft, 0, 1 )); // Pan lerps in.
+                StartCoroutine(Lerp_Transform_Position(Pan,  endPosLeftOffScreen, gamePosLeft, 1, 0 )); // Pan lerps in.
 
                 Pan_Intros("Mopsey"); // Sets pans dialog.
 
@@ -2113,16 +2153,16 @@ IEnumerator Mopseys_Intro()
 
 
 
-    Scale_Object(good_Bunny_01, scale_00, body_norm_Size, 0, 1);
+    Scale_Object(good_Bunny_01, scale_00, body_norm_Size, 1, 0);
     hearts_01_PS.Play();
     yield return new WaitForSeconds(1);
-    Scale_Object(good_Bunny_02, scale_00, body_norm_Size_02, 0, 1);
+    Scale_Object(good_Bunny_02, scale_00, body_norm_Size_02, 1, 0);
     hearts_02_PS.Play();
     yield return new WaitForSeconds(1);
-    Scale_Object(good_Bunny_03, scale_00, body_norm_Size_03, 0, 1);
+    Scale_Object(good_Bunny_03, scale_00, body_norm_Size_03, 1, 0);
     hearts_03_PS.Play();
     yield return new WaitForSeconds(1);
-    StartCoroutine(Lerp_Transform_Position(opp_Mask, opp_Mask_Pos, opp_Mask_Center, 1, 3));
+    StartCoroutine(Lerp_Transform_Position(opp_Mask, opp_Mask_Pos, opp_Mask_Center, 3, 1));
     hearts_00_PS.Play();
 
    // Change_Paddle(mopseys_Paddle);
@@ -2141,7 +2181,7 @@ IEnumerator Mopseys_Intro()
     Move_Object_Slerp(opponent_Text_Box_Rec, Mopsey_Text_Start_Pos, Mopsey_Text_Hello_Pos, newCenterOffset, .3f);
     //Move_Object_Curve_Async(opponent_Text_Box_Rec, Mopsey_Text_Start_Pos, Mopsey_Text_OffSet_Center01, Mopsey_Text_Origin_Pos, .7f, 0);
 
-    Scale_Object(opponent_Text_Box, scale_00, scale_01, 0, .3f);
+    Scale_Object(opponent_Text_Box, scale_00, scale_01, .3f, 0);
 
     yield return new WaitForSeconds(2);
 
@@ -2150,7 +2190,7 @@ IEnumerator Mopseys_Intro()
      Move_Object_Slerp(opponent_Text_Box_Rec, Mopsey_Text_Hello_Pos, Mopsey_Text_Start_Pos, newCenterOffset, .2f);
    //  Move_Object_Curve_Async(opponent_Text_Box_Rec, Mopsey_Text_Origin_Pos, Mopsey_Text_OffSet_Center02, Mopsey_Text_Start_Pos, .2f, 0);
 
-    Scale_Object(opponent_Text_Box, scale_01, scale_00, 0, .25f);
+    Scale_Object(opponent_Text_Box, scale_01, scale_00, .25f, 0);
 
 
 
@@ -2169,12 +2209,12 @@ IEnumerator Mopseys_Intro()
     opponent_Text_Box_Rec.pivot = new Vector2(.8f, .3f);  // adjust position of box when at scale 1.
     opponent_TMPro.text = "\nI'm \nMopsey.";
 
-    Scale_Object(opponent_Text_Box, scale_00, scale_01, 0, .3f);
+    Scale_Object(opponent_Text_Box, scale_00, scale_01, .3f, 0);
     Move_Object_Slerp(opponent_Text_Box_Rec, Mopsey_Text_Start_Pos, Mopsey_Text_Hello_Pos, newCenterOffset, .3f);
 
     yield return new WaitForSeconds(1);
 
-    Scale_Object(opponent_Text_Box, scale_01, scale_00, 0, .2f);
+    Scale_Object(opponent_Text_Box, scale_01, scale_00, .2f, 0);
     Move_Object_Slerp(opponent_Text_Box_Rec, Mopsey_Text_Hello_Pos, Mopsey_Text_Start_Pos, newCenterOffset, .2f);
     
     yield return new WaitForSeconds(1.5f);
@@ -2289,11 +2329,11 @@ IEnumerator Bunny_Attack_01_Start()
         Set_Font(square_Screen_Text_TMPro, oh_No_new_Color, oh_No, oh_No_font_Size);
 
     // Ohno! fades in and out.
-    StartCoroutine(Lerp_Color_Alpha(square_Screen_Renderer, square_Screen_Color, square_Screen_Color_01, 0,  1));// fade in black screen with 'Oh no!' text.
+    StartCoroutine(Lerp_Color_Alpha(square_Screen_Renderer, square_Screen_Color, square_Screen_Color_01, 1, 0));// fade in black screen with 'Oh no!' text.
     StartCoroutine(Lerp_TMPro_Color_Alpha(square_Screen_Text_TMPro, oh_No_new_Color, oh_No_new_Color_01, 0,  1));
     
     StartCoroutine(Lerp_TMPro_Color_Alpha(square_Screen_Text_TMPro, oh_No_new_Color_01, oh_No_new_Color, 1,  1));  // fade out text.
-    StartCoroutine(Lerp_Color_Alpha(square_Screen_Renderer, square_Screen_Color_01, square_Screen_Color, 2,  1)); // fade out color screen.
+    StartCoroutine(Lerp_Color_Alpha(square_Screen_Renderer, square_Screen_Color_01, square_Screen_Color, 1, 2)); // fade out color screen.
    
    yield return new WaitForSeconds(2f);
 
@@ -2330,19 +2370,19 @@ IEnumerator Bunny_Attack_01_Start()
 
 
         // angry bunnies snap at you.
-        StartCoroutine(Scale_Object(mouth_01_Rec, mouth_Close_Size, Mouth_Wide_Size,  0f, .3f, true)) ;
-        StartCoroutine(Scale_Object(bunny_01_Rec, start_Size, scale_factor, .4f, .3f, true)) ;
-        StartCoroutine(Scale_Object(bunny_01_Feet_Rec, bunny_02_Feet_Start, bunny_02_Feet_Forward, .4f, .3f, true)) ;
+        StartCoroutine(Scale_Object(mouth_01_Rec, mouth_Close_Size, Mouth_Wide_Size, .3f, 0)) ;
+        StartCoroutine(Scale_Object(bunny_01_Rec, start_Size, scale_factor, .3f, .4f)) ;
+        StartCoroutine(Scale_Object(bunny_01_Feet_Rec, bunny_02_Feet_Start, bunny_02_Feet_Forward, .3f, .4f)) ;
 
-        StartCoroutine(Scale_Object(bunny_02_Rec, start_Size_02, scale_factor_02, .4f, .3f, true)) ;
-        StartCoroutine(Scale_Object(bunny_02_Feet_Rec, bunny_02_Feet_Start, bunny_02_Feet_Forward, .4f, .3f, true)) ;
-        StartCoroutine(Scale_Object(mouth_02_Rec, mouth_Close_Size, Mouth_Wide_Size, 0f, .3f, true)) ;
-        Rotate_Object(bunny_02_Rec, 0, 0, -.1f, 1, 1, 100, false);
+        StartCoroutine(Scale_Object(bunny_02_Rec, start_Size_02, scale_factor_02, .4f, 0.3f)) ;
+        StartCoroutine(Scale_Object(bunny_02_Feet_Rec, bunny_02_Feet_Start, bunny_02_Feet_Forward, 1.3f, .4f)) ;
+        StartCoroutine(Scale_Object(mouth_02_Rec, mouth_Close_Size, Mouth_Wide_Size, .3f, 0)) ;
+        Rotate_Object(bunny_02_Rec, 0, 0, -.1f, 1, 1, 100);
 
-        StartCoroutine(Scale_Object(mouth_03_Rec, mouth_Close_Size, Mouth_Wide_Size, 0, .3f, true)) ;
-        StartCoroutine(Scale_Object(bunny_03_Rec, start_Size_03, scale_factor_03, .4f, .3f, true)) ;
-        StartCoroutine(Scale_Object(bunny_03_Feet_Rec, bunny_02_Feet_Start, bunny_02_Feet_Forward, .4f, .3f, true)) ;
-        Rotate_Object(bunny_03_Rec, 0, 0, .1f, 1, 1, 0, true);
+        StartCoroutine(Scale_Object(mouth_03_Rec, mouth_Close_Size, Mouth_Wide_Size, .3f, 0)) ;
+        StartCoroutine(Scale_Object(bunny_03_Rec, start_Size_03, scale_factor_03, .3f, .4f)) ;
+        StartCoroutine(Scale_Object(bunny_03_Feet_Rec, bunny_02_Feet_Start, bunny_02_Feet_Forward, .3f, .4f)) ;
+        Rotate_Object(bunny_03_Rec, 0, 0, .1f, 1, 1, 0);
         
 
          while(scale_Object_List.Count < 9)
@@ -2353,19 +2393,19 @@ IEnumerator Bunny_Attack_01_Start()
 
         scale_Object_List.Clear();
 
-        StartCoroutine(Scale_Object(mouth_01_Rec, Mouth_Wide_Size, mouth_Close_Size, 0f, 1f, false));
-        StartCoroutine(Scale_Object(bunny_01_Rec, scale_factor, start_Size, 0f, 1f, false));
-        StartCoroutine(Scale_Object(bunny_01_Feet_Rec, bunny_02_Feet_Forward, bunny_02_Feet_Start, 0f, 1f, false));
+        StartCoroutine(Scale_Object(mouth_01_Rec, Mouth_Wide_Size, mouth_Close_Size, 1f, 0));
+        StartCoroutine(Scale_Object(bunny_01_Rec, scale_factor, start_Size, 1f, 0));
+        StartCoroutine(Scale_Object(bunny_01_Feet_Rec, bunny_02_Feet_Forward, bunny_02_Feet_Start, 1f, 0));
 
-        StartCoroutine(Scale_Object(mouth_02_Rec, Mouth_Wide_Size, mouth_Close_Size, 0f, 1f, false));
-        StartCoroutine(Scale_Object(bunny_02_Rec, scale_factor_02, start_Size_02, 0f, 1f, false));
-        StartCoroutine(Scale_Object(bunny_02_Feet_Rec, bunny_02_Feet_Forward, bunny_02_Feet_Start, 0f, 1f, false));
-        Rotate_Object(bunny_02_Rec, 0, 0, 0f, 1, 1, 100, true);
+        StartCoroutine(Scale_Object(mouth_02_Rec, Mouth_Wide_Size, mouth_Close_Size, 1f, 0));
+        StartCoroutine(Scale_Object(bunny_02_Rec, scale_factor_02, start_Size_02, 1f, 0));
+        StartCoroutine(Scale_Object(bunny_02_Feet_Rec, bunny_02_Feet_Forward, bunny_02_Feet_Start, 1f, 0));
+        Rotate_Object(bunny_02_Rec, 0, 0, 0f, 1, 1, 100);
 
-        StartCoroutine(Scale_Object(mouth_03_Rec, Mouth_Wide_Size_03, mouth_Close_Size_03, 0f, 1f, false));
-        StartCoroutine(Scale_Object(bunny_03_Rec, scale_factor_03, start_Size_03,  0f, 1f, false));
-        StartCoroutine(Scale_Object(bunny_03_Feet_Rec, bunny_02_Feet_Forward, bunny_02_Feet_Start, 0f, 1f, false));
-        Rotate_Object(bunny_03_Rec, 0, 0, 0f, 1, 1, 0, true);
+        StartCoroutine(Scale_Object(mouth_03_Rec, Mouth_Wide_Size_03, mouth_Close_Size_03, 1f, 0));
+        StartCoroutine(Scale_Object(bunny_03_Rec, scale_factor_03, start_Size_03,  1f, 0));
+        StartCoroutine(Scale_Object(bunny_03_Feet_Rec, bunny_02_Feet_Forward, bunny_02_Feet_Start, 1f, 0));
+        Rotate_Object(bunny_03_Rec, 0, 0, 0f, 1, 1, 0);
 
 
         while(scale_Object_List.Count < 9)
@@ -2386,20 +2426,20 @@ IEnumerator Bunny_Attack_01_Start()
 {
 
        // Angry bunnies lunge and bite.
-        StartCoroutine(Scale_Object(mouth_01_Rec, mouth_Close_Size, Mouth_Wide_Size,  0f, .3f, true)) ;
-        StartCoroutine(Scale_Object(bunny_01_Rec, body_norm_Size, body_forward_Size, .4f, .3f, true)) ;
-        StartCoroutine(Scale_Object(bunny_01_Feet_Rec, bunny_02_Feet_Start, bunny_02_Feet_Forward, .4f, .3f, true)) ;
+        StartCoroutine(Scale_Object(mouth_01_Rec, mouth_Close_Size, Mouth_Wide_Size,  .3f, 0f)) ;
+        StartCoroutine(Scale_Object(bunny_01_Rec, body_norm_Size, body_forward_Size, .3f, .4f)) ;
+        StartCoroutine(Scale_Object(bunny_01_Feet_Rec, bunny_02_Feet_Start, bunny_02_Feet_Forward, .3f, .4f)) ;
         StartCoroutine(Move_Object_Math(bunny_01_Rec, 0, 8, .4f, 0.3f));
 
-        StartCoroutine(Scale_Object(bunny_02_Rec, body_norm_Size_02, body_forward_Size_02, .4f, .3f, true)) ;
-        StartCoroutine(Scale_Object(bunny_02_Feet_Rec, bunny_02_Feet_Start, bunny_02_Feet_Forward, .4f, .3f, true)) ;
-        StartCoroutine(Scale_Object(mouth_02_Rec, mouth_Close_Size, Mouth_Wide_Size, 0f, 1f, true)) ;
-        Rotate_Object(bunny_02_Rec, 0, 0, -.1f, 1, 1, 100, false);
+        StartCoroutine(Scale_Object(bunny_02_Rec, body_norm_Size_02, body_forward_Size_02, .3f, .4f)) ;
+        StartCoroutine(Scale_Object(bunny_02_Feet_Rec, bunny_02_Feet_Start, bunny_02_Feet_Forward, .3f, .4f)) ;
+        StartCoroutine(Scale_Object(mouth_02_Rec, mouth_Close_Size, Mouth_Wide_Size, 1f, 0)) ;
+        Rotate_Object(bunny_02_Rec, 0, 0, -.1f, 1, 1, 100);
 
-        StartCoroutine(Scale_Object(mouth_03_Rec, mouth_Close_Size, Mouth_Wide_Size, 0, .3f, true)) ;
-        StartCoroutine(Scale_Object(bunny_03_Rec, body_norm_Size_03, body_forward_Size_03, .4f, .3f, true)) ;
-        StartCoroutine(Scale_Object(bunny_03_Feet_Rec, bunny_02_Feet_Start, bunny_02_Feet_Forward, .4f, .3f, true)) ;
-        Rotate_Object(bunny_03_Rec, 0, 0, .1f, 1, 1, 0, true);
+        StartCoroutine(Scale_Object(mouth_03_Rec, mouth_Close_Size, Mouth_Wide_Size, .3f, 0)) ;
+        StartCoroutine(Scale_Object(bunny_03_Rec, body_norm_Size_03, body_forward_Size_03, .3f, .4f)) ;
+        StartCoroutine(Scale_Object(bunny_03_Feet_Rec, bunny_02_Feet_Start, bunny_02_Feet_Forward, .3f, .4f)) ;
+        Rotate_Object(bunny_03_Rec, 0, 0, .1f, 1, 1, 0);
 
         
 
@@ -2413,7 +2453,7 @@ IEnumerator Bunny_Attack_01_Start()
 
  // hungry_Container.SetActive(true);
           // red screen and hungry text activates and fades out.
-         StartCoroutine(Lerp_Color_Alpha(square_Screen_Renderer, hungry_new_Color_01, hungry_new_Color, 0,  3));
+         StartCoroutine(Lerp_Color_Alpha(square_Screen_Renderer, hungry_new_Color_01, hungry_new_Color, 3, 0));
            
          hungry_Text_TMPro.color = hungry_new_Color_01;
 
@@ -2422,20 +2462,20 @@ IEnumerator Bunny_Attack_01_Start()
 
 
         // angry bunnies sit back down.
-        StartCoroutine(Scale_Object(mouth_01_Rec, Mouth_Wide_Size, mouth_Close_Size, 0f, .1f, false));
-        StartCoroutine(Scale_Object(bunny_01_Rec, body_forward_Size, body_norm_Size, 0f, .1f, false));
-        StartCoroutine(Scale_Object(bunny_01_Feet_Rec, bunny_02_Feet_Forward, bunny_02_Feet_Start, 0f, .1f, false));
+        StartCoroutine(Scale_Object(mouth_01_Rec, Mouth_Wide_Size, mouth_Close_Size, 0f, .1f));
+        StartCoroutine(Scale_Object(bunny_01_Rec, body_forward_Size, body_norm_Size, 0f, .1f));
+        StartCoroutine(Scale_Object(bunny_01_Feet_Rec, bunny_02_Feet_Forward, bunny_02_Feet_Start, .1f, 0));
        // StartCoroutine(Move_Object_Math(bunny_01_Rec, 0, -8, 0f, .5f));
 
-        StartCoroutine(Scale_Object(mouth_02_Rec, Mouth_Wide_Size, mouth_Close_Size, 0f, .1f, false));
-        StartCoroutine(Scale_Object(bunny_02_Rec, body_forward_Size_02, body_norm_Size_02, 0f, .1f, false));
-        StartCoroutine(Scale_Object(bunny_02_Feet_Rec, bunny_02_Feet_Forward, bunny_02_Feet_Start, 0f, .1f, false));
-        Rotate_Object(bunny_02_Rec, 0, 0, 0f, 1, 1, 100, true);
+        StartCoroutine(Scale_Object(mouth_02_Rec, Mouth_Wide_Size, mouth_Close_Size, .1f, 0));
+        StartCoroutine(Scale_Object(bunny_02_Rec, body_forward_Size_02, body_norm_Size_02, .1f, 0));
+        StartCoroutine(Scale_Object(bunny_02_Feet_Rec, bunny_02_Feet_Forward, bunny_02_Feet_Start, .1f, 0));
+        Rotate_Object(bunny_02_Rec, 0, 0, 0f, 1, 1, 100);
 
-        StartCoroutine(Scale_Object(mouth_03_Rec, Mouth_Wide_Size_03, mouth_Close_Size_03, 0f, .1f, false));
-        StartCoroutine(Scale_Object(bunny_03_Rec, body_forward_Size_03, body_norm_Size_03,  0f, .1f, false));
-        StartCoroutine(Scale_Object(bunny_03_Feet_Rec, bunny_02_Feet_Forward, bunny_02_Feet_Start, 0f, .1f, false));
-        Rotate_Object(bunny_03_Rec, 0, 0, 0f, 1, 1, 0, true);
+        StartCoroutine(Scale_Object(mouth_03_Rec, Mouth_Wide_Size_03, mouth_Close_Size_03, .1f, 0));
+        StartCoroutine(Scale_Object(bunny_03_Rec, body_forward_Size_03, body_norm_Size_03,  .1f, 0));
+        StartCoroutine(Scale_Object(bunny_03_Feet_Rec, bunny_02_Feet_Forward, bunny_02_Feet_Start, .1f, 0));
+        Rotate_Object(bunny_03_Rec, 0, 0, 0f, 1, 1, 0);
 
  Switch_Cameras(camera, second_Camera);
     hungry_Container.SetActive(true);
@@ -2586,11 +2626,6 @@ IEnumerator mopseys_Exit_Text()
 
 
 
-
-
-
-
-
     public void Angry_Bunnies_Text()
     {
 
@@ -2601,12 +2636,15 @@ IEnumerator mopseys_Exit_Text()
     }
 
 
+
+
+
 public void Fade_Children(GameObject parent)
 		{	
 			    foreach (Transform t in parent.transform)
 				{
 					SpriteRenderer SR_Child = t.gameObject.GetComponent<SpriteRenderer>();
-					StartCoroutine(Lerp_Color_Alpha(SR_Child, sunGlass_01, sunGlass_00, 1, .5f));
+					StartCoroutine(Lerp_Color_Alpha(SR_Child, sunGlass_01, sunGlass_00, .5f, 1f));
 				}
 		}
 
@@ -2630,8 +2668,10 @@ public void Fade_Children(GameObject parent)
         camera_02.SetActive(false);
     }
 
-public async Task Rotate_Object(RectTransform _object_Rec, float x, float y, float z, float w, float duration, int WFS, bool onOff)
+public async Task Rotate_Object(RectTransform _object_Rec, float x, float y, float z, float w, float duration, int WFS)
 {
+    rec_List.Add(_object_Rec);
+
         await Task.Delay(WFS);
         float time = 0;
 
@@ -2648,13 +2688,13 @@ public async Task Rotate_Object(RectTransform _object_Rec, float x, float y, flo
                         await Task.Yield();
                     }
 
-           rotate_Object_List.Add(onOff);
-
+           // rotate_Object_List.Add(onOff);
+            rec_List.Remove(_object_Rec);
           await Task.Yield();
 }
 
 
-            IEnumerator Scale_Object(RectTransform object_To_Scale, Vector3 start_Size, Vector3 end_Size,  float WFS, float duration,  bool onOff)
+            IEnumerator Scale_Object(RectTransform object_To_Scale, Vector3 start_Size, Vector3 end_Size,  float duration, float WFS)
             {
                 //  scale_Object_Bool = false;
 
@@ -2669,7 +2709,7 @@ public async Task Rotate_Object(RectTransform _object_Rec, float x, float y, flo
                        yield return null;
                     }
 
-                    scale_Object_List.Add(onOff);
+                    scale_Object_List.Add(true);
 
                      // scale_Object_Bool = true; 
 
@@ -2726,7 +2766,7 @@ public void Opp_Paddle_Intro(Sprite paddle, int child_Num)
 			opponent_Paddle_SR.sprite = paddle; // Set sprite to use.
 			opponent_Paddle.transform.GetChild(child_Num).gameObject.SetActive(true); // set particle system to active.
 			
-			Scale_Object(opponent_Paddle, scale_00, scale_01, 0, 1); // Scale sprite to full.
+			Scale_Object(opponent_Paddle, scale_00, scale_01, 1, 0); // Scale sprite to full.
 		}
 
 
@@ -2740,7 +2780,7 @@ public async void  Opp_Paddle_Exit(Sprite paddle, int child_Num)
 			opponent_Paddle_SR.sprite = paddle; // Set sprite to use.
 			opponent_Paddle.transform.GetChild(child_Num).gameObject.SetActive(true); // set particle system to active.
 			await Task.Delay(500);
-		     Scale_Object(opponent_Paddle, scale_01, scale_00, 0, .5f); // Scale sprite to full.
+		     Scale_Object(opponent_Paddle, scale_01, scale_00, .5f, 0); // Scale sprite to full.
 		     await Task.Delay(5000);
              opponent_Paddle.SetActive(false);   // deactivate opp paddle.
 }
@@ -3065,7 +3105,7 @@ public void UnFreezeCircles()
           public void restoreMenu()
         {
             speedUp = false;
-            Scale_Object(Pan, small, large, 0, 1 );
+            Scale_Object(Pan, small, large, 1, 0 );
 
             Pan.SetActive(true);
             endPosLeftOffScreen = panTrans.position;
@@ -3115,7 +3155,7 @@ void LowerTheScreen()
      _text01Score.FadeTextScore01();
      _textTwoScore.FadeTextScore02();
   
-    StartCoroutine(Lerp_Transform_Position(prefabHolder, offScreenCB, centerScreenCB, 0, 1 ));
+    StartCoroutine(Lerp_Transform_Position(prefabHolder, offScreenCB, centerScreenCB, 1, 0 ));
     
     ActivateReturnMenu(false, false);
      _puck.SetActive(false);   
@@ -3315,7 +3355,7 @@ public IEnumerator Pan_Asks_U_To_tryAgain()
             {
                 // Slerp_Transform_Position( Pan, originalPos, gamePosLeft, 600, 1 );
                 Move_Object_Curve_Async(panTrans, originalPos, first_Curve_Height, gamePosLeft, 1, 600);
-                Scale_Object(Pan, large, small, 600, 1 );
+                Scale_Object(Pan, large, small, 1, 600 );
                 Set_Scoreboard(300);
             }
 
@@ -3329,7 +3369,7 @@ public IEnumerator Pan_Asks_U_To_tryAgain()
             StartCoroutine(Lerp_TMPro_Color_Alpha (text_Pan_TMPro, sunGlass_00, sunGlass_01, wfs, 1));
             StartCoroutine(Lerp_TMPro_Color_Alpha(text_Pan_TMPro, sunGlass_01, sunGlass_00, delay, 1));
            
-            StartCoroutine(Lerp_Transform_Position(Pan, gamePosLeft, endPosLeftOffScreen, delay, 1 ));
+            StartCoroutine(Lerp_Transform_Position(Pan, gamePosLeft, endPosLeftOffScreen, 1, delay ));
             
             StartCoroutine(Set_Object_Activate(Pan, false, 7));
             Vector2 _end_Size = new Vector2(5, 1);

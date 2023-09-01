@@ -96,6 +96,12 @@ TagManager:
   - AB_Body_01
   - AB_Body_02
   - AB_Body_03
+  - Carrot_Left
+  - Open_Mouth
+  - Carrots
+  - Carrot_Right
+  - Carrot_Right_Glow
+  - Carrot_Left_Glow
   layers:
   - Default
   - TransparentFX
