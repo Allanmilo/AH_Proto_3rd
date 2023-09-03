@@ -1025,7 +1025,7 @@ Vector3 one;
        down = new Vector3(0, -6.5f, 0); 
 
         good_Bunny3_Start_Pos = new Vector3(-5.8f, -6.7f, 0);
-        good_Bunny3_End_Pos = new Vector3(-7.3f, -6.7f, 0);
+        good_Bunny3_End_Pos = new Vector3(-6.5f, -6.7f, 0);
 
         zero = new Vector3(0, 0, 0);
         one = new Vector3(1, 1, 1);
@@ -2602,9 +2602,9 @@ IEnumerator Bunny_Attack_01_Start()
 
     IEnumerator Bunny_Takes_A_Bite()
 {
-      Rotate_Object(good_Bunny_02_Rec, 0, 0, .1f, 1, .2f, 0) ;  //Rotate
+      Rotate_Object(good_Bunny_02_Rec, 0, 0, .1f, 1, .1f, 0) ;  //Rotate
 			StartCoroutine(Lerp_Transform_Position(good_Bunny_02, good_Bunny3_Start_Pos, good_Bunny3_End_Pos, .2f, 0 ));
-      Scale_Object(open_Mouth, zero, one,  .5f, 0 );
+      Scale_Object(open_Mouth, zero, one,  .2f, 0 );
 	//		Invoke("Turn_Off_Carrot", .5f);
  
  	// yield return new WaitForSeconds( .5f );

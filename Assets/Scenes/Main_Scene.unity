@@ -52771,7 +52771,7 @@ GameObject:
   - component: {fileID: 1417801157}
   - component: {fileID: 1417801158}
   m_Layer: 0
-  m_Name: Bunny_left_ear
+  m_Name: Bunny_left_Ear_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89282,7 +89282,7 @@ GameObject:
   - component: {fileID: 2048588150}
   - component: {fileID: 2048588151}
   m_Layer: 0
-  m_Name: Bunny_right_ear
+  m_Name: Bunny_left_Ear_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
