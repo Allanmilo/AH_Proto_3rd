@@ -107,6 +107,13 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
      <Compile Include="Assets\AH_Menu\AH_Menu_Scripts\PuckColliderScript.cs" />
      <Compile Include="Assets\Scripts\CountDown.cs" />
+     <Compile Include="Assets\Scripts\Carrot_Scripts\Bunny_Left_Script.cs" />
+     <Compile Include="Assets\Scripts\Carrot_Scripts\TMProWarpText.cs" />
+     <Compile Include="Assets\Scripts\Carrot_Scripts\Curve_Text.cs" />
+     <Compile Include="Assets\Scripts\Carrot_Scripts\Left_Bunnies_Animation.cs" />
+     <Compile Include="Assets\Scripts\Carrot_Scripts\Carrot_Right_Script.cs" />
+     <Compile Include="Assets\Scripts\Carrot_Scripts\Carrot_Left_Script.cs" />
+     <Compile Include="Assets\Scripts\Carrot_Scripts\Raise_Carrots.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

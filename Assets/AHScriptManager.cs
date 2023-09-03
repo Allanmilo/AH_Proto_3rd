@@ -589,6 +589,37 @@ int arrayNum;
 
     #endregion Mopsey_Variables
 
+
+#region Mopseys_Carrot_Menu
+    GameObject carrots;
+ GameObject Carrot_Left_Glow;
+
+GameObject Carrot_Bitten_Glow;
+
+GameObject carrot_Right;
+
+GameObject open_Mouth;
+
+    Vector3 down;
+    Vector3 up;
+
+ Vector3 good_Bunny3_Start_Pos;
+ Vector3 good_Bunny3_End_Pos;
+ 
+Vector3 zero;
+Vector3 one;
+
+ SpriteRenderer Carrot_Left_Glow_SR;
+ SpriteRenderer Carrot_Bitten_Glow_SR;
+ Color color_Max;
+ Color color_Zero;
+
+ Color show_Color;
+ Color alpha_Zero;
+ private Animator left_Bunnies_Animator; 
+ 
+ #endregion Mopseys_Carrot_Menu
+
     #region Delegates
 
     public delegate void Character();
@@ -982,6 +1013,44 @@ int arrayNum;
 
         bunny_02_Feet_Start = new Vector3(1.2f, 1.2f , 0);
         bunny_02_Feet_Forward = new Vector3(1.6f, 1.6f, 0);
+#endregion Mopsey_Start
+
+#region Mopsey_Carrot_Menu_Start
+
+        carrots = GameObject.FindGameObjectWithTag("Carrots");
+        carrot_Right = GameObject.FindGameObjectWithTag("Carrot_Right");
+        open_Mouth = GameObject.FindGameObjectWithTag("Open_Mouth");
+
+        up = new Vector3(0, 1, 0);
+       down = new Vector3(0, -6.5f, 0); 
+
+        good_Bunny3_Start_Pos = new Vector3(-5.8f, -6.7f, 0);
+        good_Bunny3_End_Pos = new Vector3(-7.3f, -6.7f, 0);
+
+        zero = new Vector3(0, 0, 0);
+        one = new Vector3(1, 1, 1);
+
+		left_Bunnies_Animator = good_Bunny_03.GetComponent<Animator>();
+  
+		Carrot_Left_Glow = GameObject.FindGameObjectWithTag("Carrot_Left_Glow");
+        
+		Carrot_Left_Glow_SR = Carrot_Left_Glow.GetComponent<SpriteRenderer>();
+
+        Carrot_Bitten_Glow = GameObject.FindGameObjectWithTag("Carrot_Right_Glow");
+		Carrot_Bitten_Glow_SR = Carrot_Bitten_Glow.GetComponent<SpriteRenderer>();
+
+        show_Color = Carrot_Left_Glow_SR.material.color;
+
+		color_Max = new Color(show_Color.r ,show_Color.g , show_Color.b, 1.1f);
+		color_Zero = new Color(show_Color.r ,show_Color.g , show_Color.b, 0);
+
+		Carrot_Left_Glow_SR.material.color = color_Zero; 		
+        Carrot_Bitten_Glow_SR.material.color = color_Zero; 
+		
+
+		
+#endregion Mopsey_Carrot_Menu_Start
+
 
         hungry_Container.SetActive(false);
         //mopsey_Text_Box.SetActive(false);
@@ -990,11 +1059,6 @@ int arrayNum;
         dark_Overlay.SetActive(false);
         mopseys_Visit.SetActive(false);
         second_Camera.SetActive(false);
-
-#endregion Mopsey_Start
-// Test_Function();
-
-
 
 
         Pick_Opponent("Star");
@@ -2066,10 +2130,7 @@ public void Mopseys_Dialogue()
 
 
 
-    public async void Mopsey_Wins()
-    {
-      // StartCoroutine(Start_Carrots());
-    }
+   
 
 
     public async void Mopsey_Loses()
@@ -2514,6 +2575,104 @@ IEnumerator Bunny_Attack_01_Start()
         StartCoroutine(Mopseys_Exit());
         
 }
+
+
+#region Mopsey_Wins_Functions
+
+ public async void Mopsey_Wins() // used as character_Wins. Called by FlashFade?
+    {
+      StartCoroutine(Start_Carrots());
+    }
+
+ IEnumerator Start_Carrots()
+    {
+      Carrot_Bitten_Glow.SetActive(false);
+
+       StartCoroutine(Lerp_Transform_Position(carrots, down, up, .7f, 0 ));
+            StartCoroutine(Unfreeze());
+
+            while(gameObject_List.Contains(carrots))
+            {
+                  yield return null;
+            }
+
+            StartCoroutine(Bunny_Takes_A_Bite());
+    }
+
+
+    IEnumerator Bunny_Takes_A_Bite()
+{
+      Rotate_Object(good_Bunny_02_Rec, 0, 0, .1f, 1, .2f, 0) ;  //Rotate
+			StartCoroutine(Lerp_Transform_Position(good_Bunny_02, good_Bunny3_Start_Pos, good_Bunny3_End_Pos, .2f, 0 ));
+      Scale_Object(open_Mouth, zero, one,  .5f, 0 );
+	//		Invoke("Turn_Off_Carrot", .5f);
+ 
+ 	// yield return new WaitForSeconds( .5f );
+
+   while(rec_List.Contains(good_Bunny_02_Rec ) || gameObject_List.Contains(open_Mouth) )
+   {
+        yield return null;
+   }
+
+      carrot_Right.SetActive(false);
+
+      Scale_Object(open_Mouth, one, zero, .2f, 0 );
+			Rotate_Object(good_Bunny_02_Rec, 0, 0, 0f, 1, 1, 0)	;
+			StartCoroutine(Lerp_Transform_Position(good_Bunny_02, good_Bunny3_End_Pos, good_Bunny3_Start_Pos, .5f, 0 ));
+
+      Carrot_Bitten_Glow.SetActive(true);
+}
+
+
+public void Carrot_Left_MO()
+		{
+			//Carrot_Left_Glow.SetActive(true); // Enable glow carrot sprite.
+			StartCoroutine(Lerp_Color_Alpha(Carrot_Left_Glow_SR, color_Zero, color_Max, .5f, 0f));  // lerp glow carrot alpha to max.
+			 
+			left_Bunnies_Animator.speed = 2f;
+      left_Bunnies_Animator.Play("Base Layer.good_Bunny_03_MO",-1 , 0);  // Make bunny twitch. S
+		}
+
+
+public void Carrot_Left_ME()
+		{				
+			StartCoroutine(Lerp_Color_Alpha(Carrot_Left_Glow_SR, color_Max, color_Zero, .5f, 0f));  // lerp glow carrot alpha to zero.
+			
+		}
+
+
+public void Carrot_Right_MO()
+		{
+			//Carrot_Left_Glow.SetActive(true); // Enable glow carrot sprite.
+			StartCoroutine(Lerp_Color_Alpha(Carrot_Bitten_Glow_SR, color_Zero, color_Max, .5f, 0f));  // lerp glow carrot alpha to max.
+			 
+			//.speed = 2f;
+     // left_Bunnies_Animator.Play("Base Layer.good_Bunny_03_MO",-1 , 0);  // Make bunny twitch. 
+		}
+
+
+public void Carrot_Right_ME()
+		{				
+			StartCoroutine(Lerp_Color_Alpha(Carrot_Bitten_Glow_SR, color_Max, color_Zero, .5f, 0f));  // lerp glow carrot alpha to zero.
+			
+		}
+
+
+void Turn_Off_Carrot()
+			{
+				carrot_Right.SetActive(false);
+			}
+
+
+    IEnumerator Unfreeze()
+    {
+       yield return new WaitForSeconds( .1f );
+         good_Bunny_03_Rb.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
+    }
+
+
+#endregion Mopsey_Wins_Functions
+
 
 IEnumerator Mopseys_Exit()
 {

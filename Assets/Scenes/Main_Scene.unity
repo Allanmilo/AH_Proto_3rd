@@ -7444,6 +7444,7 @@ GameObject:
   - component: {fileID: 214834236}
   - component: {fileID: 214834235}
   - component: {fileID: 214834239}
+  - component: {fileID: 214834237}
   m_Layer: 0
   m_Name: Try Try
   m_TagString: Untagged
@@ -7467,7 +7468,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 20.785}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.15, y: -0.17}
+  m_AnchoredPosition: {x: 1.15, y: 0.05}
   m_SizeDelta: {x: 3.815092, y: 1.0087733}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &214834235
@@ -7602,6 +7603,53 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &214834237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214834233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e53d8677c45360645925a89bf5481ca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 214834235}
+  vertexCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 30
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0
+      outWeight: 0.01
+    - serializedVersion: 3
+      time: 0.5
+      value: 0.25
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -30
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.01
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  yCurveScaling: 3
 --- !u!210 &214834239
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -24402,7 +24450,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &507040736
 Transform:
   m_ObjectHideFlags: 0
@@ -35852,7 +35900,7 @@ GameObject:
   - component: {fileID: 808496272}
   m_Layer: 0
   m_Name: Carrot_unbitten
-  m_TagString: Untagged
+  m_TagString: Carrot_Right
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35865,7 +35913,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 808496270}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.44, y: -6.08, z: 0}
+  m_LocalPosition: {x: 0.56, y: -6.06, z: 0}
   m_LocalScale: {x: 0.723469, y: 0.8544869, z: 1}
   m_Children: []
   m_Father: {fileID: 874498756}
@@ -35910,7 +35958,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1934997069
   m_SortingLayer: 9
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: ddc6c244d4609d143a51270d8383e316, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -35964,7 +36012,7 @@ GameObject:
   - component: {fileID: 847140327}
   m_Layer: 0
   m_Name: carrot_Bitten
-  m_TagString: Carrot_Right
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36154,7 +36202,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.03, y: -0.13}
+  m_AnchoredPosition: {x: 0.22, y: -0.96}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!210 &874498757
@@ -51331,6 +51379,7 @@ GameObject:
   - component: {fileID: 1149277542}
   - component: {fileID: 1149277543}
   - component: {fileID: 1149277544}
+  - component: {fileID: 1149277545}
   m_Layer: 0
   m_Name: Carrot_Right_Glow
   m_TagString: Carrot_Right_Glow
@@ -51346,8 +51395,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1149277541}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.53, y: -5.96, z: 0}
-  m_LocalScale: {x: 0.723469, y: 0.8544869, z: 1}
+  m_LocalPosition: {x: 0.56, y: -6.07, z: 0}
+  m_LocalScale: {x: 0.7540415, y: 0.8736526, z: 1}
   m_Children: []
   m_Father: {fileID: 874498756}
   m_RootOrder: 1
@@ -51389,9 +51438,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1934997069
+  m_SortingLayer: 9
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: da00532032a8f1b4b93e012aa1230b04, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -51419,6 +51468,20 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.7}
   m_Size: {x: 3, y: 4}
   m_Direction: 0
+--- !u!114 &1149277545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149277541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc116a4a928538e41a7643ed2ec87b09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TextComponent: {fileID: 1406074863}
+  duration: 2
 --- !u!1 &1177386591
 GameObject:
   m_ObjectHideFlags: 0
@@ -51708,7 +51771,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1294332841}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.68, y: -7.78, z: 0}
+  m_LocalPosition: {x: -1.64, y: -7.78, z: 0}
   m_LocalScale: {x: 0.7362288, y: 0.806986, z: 1}
   m_Children: []
   m_Father: {fileID: 1960545526}
@@ -52206,6 +52269,7 @@ GameObject:
   - component: {fileID: 1373217379}
   - component: {fileID: 1373217381}
   - component: {fileID: 1373217380}
+  - component: {fileID: 1373217382}
   m_Layer: 0
   m_Name: Carrot_left
   m_TagString: Carrot_Left
@@ -52294,7 +52358,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.5, y: -0.6}
+  m_Offset: {x: 0.5, y: -0.3}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -52319,7 +52383,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10000
+  m_Mass: 100000
   m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -52328,6 +52392,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 7
+--- !u!114 &1373217382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373217377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcb7ce4b8dd809b419c9e4f0caaf94ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1387687331
 GameObject:
   m_ObjectHideFlags: 0
@@ -52464,7 +52540,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 1934997069
   m_SortingLayer: 9
-  m_SortingOrder: 0
+  m_SortingOrder: 6
 --- !u!114 &1406074863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58420,20 +58496,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1564614990
-Transform:
+--- !u!224 &1564614990
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1564614989}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.29, y: -0.69, z: -1.2558994}
-  m_LocalScale: {x: 0.83333325, y: 0.83333325, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1.2558994}
+  m_LocalScale: {x: 0, y: 0, z: 1}
   m_Children: []
   m_Father: {fileID: 1134878646}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.29, y: -0.69}
+  m_SizeDelta: {x: 0.74, y: 0.98}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &1564614991
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -58471,9 +58552,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1934997069
-  m_SortingLayer: 9
-  m_SortingOrder: 0
+  m_SortingLayerID: 1250350045
+  m_SortingLayer: 8
+  m_SortingOrder: 7
   m_Sprite: {fileID: 21300000, guid: 4a295c30277885c4881a04210c217a1b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -78569,6 +78650,7 @@ GameObject:
   - component: {fileID: 1786541592}
   - component: {fileID: 1786541591}
   - component: {fileID: 1786541590}
+  - component: {fileID: 1786541593}
   m_Layer: 8
   m_Name: Bunny_03
   m_TagString: Good_Bunny_03
@@ -78672,6 +78754,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 3
+--- !u!114 &1786541593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786541588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bcc6af818d807e429181b3ed65b3041, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hit_Bunny: {fileID: 7400000, guid: fb41a9659a2d15f4e9a33260696ff0f7, type: 2}
 --- !u!1 &1788348705
 GameObject:
   m_ObjectHideFlags: 0
@@ -83899,6 +83994,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1960545526}
+  - component: {fileID: 1960545527}
   m_Layer: 0
   m_Name: Carrots
   m_TagString: Carrots
@@ -83928,6 +84024,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -6.54}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1960545527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960545525}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f8fba264bb302441abe8a9111135bdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameObject_List: []
+  rec_List: []
 --- !u!1 &1976715808
 GameObject:
   m_ObjectHideFlags: 0
@@ -88944,6 +89054,7 @@ GameObject:
   - component: {fileID: 2034500084}
   - component: {fileID: 2034500083}
   - component: {fileID: 2034500081}
+  - component: {fileID: 2034500082}
   m_Layer: 0
   m_Name: Again
   m_TagString: Untagged
@@ -88958,16 +89069,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2034500079}
-  m_LocalRotation: {x: -0, y: -0, z: 0.1695934, w: 0.98551416}
+  m_LocalRotation: {x: -0, y: -0, z: 0.1986937, w: 0.9800616}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1373217378}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 19.528}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 22.921}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.03, y: -1.28}
+  m_AnchoredPosition: {x: 0.88, y: -0.85}
   m_SizeDelta: {x: 2.4147263, y: 1.2154651}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!210 &2034500081
@@ -88981,6 +89092,53 @@ SortingGroup:
   m_SortingLayerID: 1934997069
   m_SortingLayer: 9
   m_SortingOrder: 0
+--- !u!114 &2034500082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034500079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e53d8677c45360645925a89bf5481ca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 2034500083}
+  vertexCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 30
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0
+      outWeight: 0.01
+    - serializedVersion: 3
+      time: 0.5
+      value: 0.25
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -30
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.01
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  yCurveScaling: 2
 --- !u!114 &2034500083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94645,7 +94803,7 @@ GameObject:
   - component: {fileID: 2106372180}
   m_Layer: 0
   m_Name: Carrot_Left_Glow
-  m_TagString: Untagged
+  m_TagString: Carrot_Left_Glow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
