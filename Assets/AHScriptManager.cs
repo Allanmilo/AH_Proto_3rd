@@ -2630,7 +2630,7 @@ public void Carrot_Left_MO()
 			StartCoroutine(Lerp_Color_Alpha(Carrot_Left_Glow_SR, color_Zero, color_Max, .5f, 0f));  // lerp glow carrot alpha to max.
 			 
 			left_Bunnies_Animator.speed = 2f;
-      left_Bunnies_Animator.Play("Base Layer.good_Bunny_03_MO",-1 , 0);  // Make bunny twitch. S
+      left_Bunnies_Animator.Play("Base Layer.Bunny_Left_MO",-1 , 0);  // Make bunny twitch. S
 		}
 
 
