@@ -829,7 +829,7 @@ Vector3 one;
         main_Cam_Pos = new Vector3(0, 0, -10);
         main_Cam_Pos_Star = new Vector3(-8.45f, -3.7f, -10);
 
-        main_Cam_Size = 9;
+        main_Cam_Size = 10;
        main_Cam_Size_Star = 7f;
 
     IsCanceled = false;
