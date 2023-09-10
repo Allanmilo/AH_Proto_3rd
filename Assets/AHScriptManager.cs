@@ -1024,8 +1024,8 @@ Vector3 one;
         up = new Vector3(0, 1, 0);
        down = new Vector3(0, -6.5f, 0); 
 
-        good_Bunny3_Start_Pos = new Vector3(-5.8f, -6.7f, 0);
-        good_Bunny3_End_Pos = new Vector3(-6.5f, -6.7f, 0);
+        good_Bunny3_Start_Pos = new Vector3(-6.6f, -6.7f, 0);
+        good_Bunny3_End_Pos = new Vector3(-8.0f, -6.7f, 0);
 
         zero = new Vector3(0, 0, 0);
         one = new Vector3(1, 1, 1);
@@ -1050,7 +1050,6 @@ Vector3 one;
 
 		
 #endregion Mopsey_Carrot_Menu_Start
-
 
         hungry_Container.SetActive(false);
         //mopsey_Text_Box.SetActive(false);
@@ -3255,6 +3254,7 @@ public void UnFreezeCircles()
          foreach (GameObject menuCircle_00  in menuCircleScript)
          {
             menuCircle_00.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None; 
+            menu_Frame.SetActive(false);
          }
         
          

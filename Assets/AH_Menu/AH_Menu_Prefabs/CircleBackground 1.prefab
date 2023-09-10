@@ -4240,8 +4240,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e877b38b386d3d4494ca8fcb675eccd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exitSpeed: 10
-  pad_Num: 0
   audioClips:
   - {fileID: 8300000, guid: c587c1229e883f646bcbe6a3af080826, type: 3}
   - {fileID: 8300000, guid: ee0993bf234130c49bcfd540ff0787d0, type: 3}
@@ -9646,7 +9644,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paddle: []
   listPick: 0
-  onOff: 0
   stop_Col: 0
   ball_Ran: {fileID: 0}
   next_Ball: {fileID: 0}
@@ -11474,8 +11471,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e877b38b386d3d4494ca8fcb675eccd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exitSpeed: 10
-  pad_Num: 0
   audioClips:
   - {fileID: 8300000, guid: c3ba49901e189da4196199ee8143f67e, type: 3}
   - {fileID: 8300000, guid: b7503410c9863eb4e9af99c1739c3ac7, type: 3}
@@ -14773,7 +14768,7 @@ SpriteRenderer:
   m_SortingLayer: 9
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 2c23f90db86baef43a779e9af25448c0, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.15294118, g: 0.15294118, b: 0.15294118, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -29166,8 +29161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e877b38b386d3d4494ca8fcb675eccd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exitSpeed: 10
-  pad_Num: 0
   audioClips:
   - {fileID: 8300000, guid: 5ab55cefc26c1ce4dac339db42176e7f, type: 3}
   - {fileID: 8300000, guid: 1136962b8e1c3a848a6abda2edf8d773, type: 3}
