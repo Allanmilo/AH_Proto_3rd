@@ -71,20 +71,9 @@ public class Flower_Buttons : MonoBehaviour
 
     void OnMouseUp()
     {
-      //  if(_AHManager.Pan_Asks_U_To_tryAgain_bool)
-     //   {
-     //       _AHManager.StopCoroutine(_AHManager.Pan_Asks_U_To_tryAgain());  //end pan's coroutine
-     //   }
-
         _menuButtonAlpha.a = 0f;
          GetComponent<SpriteRenderer>().color = _menuButtonAlpha; // gets text sprite renderer component and sets alpha to zero.
-        _AHManager.Try_Again_Star();
-        _AHManager.flower_Speed_01 = 5;
-        _AHManager.flower_Speed_02 = 5;
-        scoreScaling.Score_Text(); 
-        _AHManager.StartOver(); 
-        _countDown.StartCount(1); 
-        _AHManager.MovePan(false, "Go get her!", 0, 1);  // _AHManager.firstToFive
+        _AHManager.Character_Try_Again_Fun();
     }
 
 

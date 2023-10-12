@@ -114,7 +114,6 @@ void OnMouseOver()
       if(gameObject.tag == "MainMenu")
 
       {
-
         foreach(SpriteRenderer sr in GetComponentsInChildren<SpriteRenderer>()) 
         {
             sr.material.color = start_Hue_All;
@@ -196,6 +195,10 @@ void OnMouseOver()
 
            _AHManager.StartOver();
             _AHManager.Switch_Menus();
+
+            _AHManager.Pick_Opponent("Star"); 
+            
+	 
 
         }
             

@@ -109,7 +109,7 @@ public class CountDown : MonoBehaviour
 
 
     public void StartCount(float wfs)
-    {   
+    {   Debug.Log("start count equeals " + _AHManager.start_Count);
         if( _AHManager.start_Count)
         {
         StartCoroutine(MathfSin(wfs));
@@ -119,7 +119,7 @@ public class CountDown : MonoBehaviour
    
     public IEnumerator MathfSin(float wfs)
     {
-       // Debug.Log("stopCo is " + stopCO);
+        Debug.Log("stopCo is " + stopCO);
         if(stopCO)
         {
             
@@ -143,7 +143,7 @@ public class CountDown : MonoBehaviour
 
             if(count != 0)
             {
-               // Debug.Log("count one is " + count);
+                Debug.Log("count one is " + count);
 
                 Nums.text = (count.ToString());
         

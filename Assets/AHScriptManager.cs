@@ -24,19 +24,22 @@ public class AHScriptManager : MonoBehaviour
                      GameObject[] menuCircleScript;
                      GameObject star_Girl;
                      GameObject star_Boy;
+               public GameObject character;
                      GameObject Pan;
                     GameObject opponent_Paddle;
                     GameObject menu_Frame;
                     PolygonCollider2D menu_Frame_Col;
 
-
+GameObject textCountDown;
+    CountDown _countDown;
 
 GameObject backDropGlow;
 SpriteRenderer backDropGlow_SR;
 public float transparency;
 public float changeSpeed;
 
-
+GameObject _Score;
+    ScoreScaling scoreScaling;
 
 SpriteRenderer opponent_Paddle_SR;
 
@@ -190,7 +193,7 @@ public List<RectTransform> rec_List;
     public bool switching_Menu;
 
   public bool start_Count;
-  GameObject textCountDown;
+  // GameObject textCountDown;
 
     ParticleSystem star_Is_Happy;
 
@@ -307,7 +310,7 @@ int arrayNum;
     RectTransform opponent_Text_Box_Rec;
 
 
-
+    Color mat_Color;
 
     Color stars_TMPro_Color; 
 
@@ -536,6 +539,8 @@ int arrayNum;
     Vector3 Mopsey_Text_OffSet_Center02;
 
     Vector3 slerp_Center_Pos_02;
+
+    Vector3 bunny_3_Pos;
     public float slerp_Center_Offset;
 
     public float speed;
@@ -581,7 +586,7 @@ int arrayNum;
 
     string bunnies_Text;
 
-    // Carrots menu.
+   
 
    
 
@@ -622,8 +627,8 @@ Vector3 one;
 
     #region Delegates
 
-    public delegate void Character();
-	public static event Character character;
+    // public delegate void Character();
+	// public static event Character character;
 
 
 	public delegate void Character_Dialogue();
@@ -631,6 +636,26 @@ Vector3 one;
 
 	public delegate void Character_Wins();
 	public static event Character_Wins character_Wins;
+
+
+string pan_Try_Again_Text_01;
+
+string pan_Try_Again_Text_02;
+
+string char_Try_Again_Text_01;
+
+string char_Try_Again_Text_02;
+		
+string pan_Try_Again_Exit;
+
+
+public delegate void Character_Try_Again();
+public static event Character_Try_Again character_Try_Again;
+	
+    
+    public delegate void Win_Try_Again();
+    public static event Win_Try_Again win_Try_Again;
+    
 
 	public delegate void Character_Loses();
 	public static event Character_Loses character_Loses;
@@ -648,7 +673,7 @@ Vector3 one;
 
     public string[] paddle_Trash_Talk_Array;
 
-
+   
 
 
     void Start()
@@ -711,8 +736,11 @@ Vector3 one;
 
         // worked here Test_Function();
 
+   textCountDown = GameObject.FindGameObjectWithTag("TextCountDown");
+		_countDown =  textCountDown.GetComponent<CountDown>();
 
-        
+        _Score = GameObject.FindGameObjectWithTag("Score");
+		scoreScaling =  _Score.GetComponent<ScoreScaling>();
 
         flowers_Particle_01 = _flowers_Particles_01.GetComponent<ParticleSystem>();
         flowers_Particle_02 = _flowers_Particles_02.GetComponent<ParticleSystem>();
@@ -849,7 +877,6 @@ Vector3 one;
         opponent_Text_Box = GameObject.FindGameObjectWithTag("Opponent_Text_Box");
         opponent_TMPro = opponent_Text_Box.GetComponent<TextMeshPro>();
         opponent_Text_Box_Rec = opponent_Text_Box.GetComponent<RectTransform>();
-
 
 
         boys_Text_Box = GameObject.FindGameObjectWithTag("Text_Boy");
@@ -1022,7 +1049,7 @@ Vector3 one;
         open_Mouth = GameObject.FindGameObjectWithTag("Open_Mouth");
 
         up = new Vector3(0, 1, 0);
-       down = new Vector3(0, -6.5f, 0); 
+       down = new Vector3(0f, -7f, 0); 
 
         good_Bunny3_Start_Pos = new Vector3(-6.6f, -6.7f, 0);
         good_Bunny3_End_Pos = new Vector3(-8.0f, -6.7f, 0);
@@ -1047,7 +1074,7 @@ Vector3 one;
 		Carrot_Left_Glow_SR.material.color = color_Zero; 		
         Carrot_Bitten_Glow_SR.material.color = color_Zero; 
 		
-
+        
 		
 #endregion Mopsey_Carrot_Menu_Start
 
@@ -1072,6 +1099,8 @@ Vector3 one;
         pan_text_Intros_02 = " ";
         pan_text_Intros_03 = " ";
     
+    //bunny_3_Pos = bunny_03_Rec.position;
+    //bunny_3_Pos.y = Mathf.Clamp(bunny_3_Pos.y, -7.23f, 7.0f);
       
        Pick_Player();
 
@@ -1081,6 +1110,8 @@ Vector3 one;
         darkPink = new Color32(238, 134, 134, 255);
 
         stars_TMPro_Color = new Color32(255, 255, 255, 255);
+
+        character = star_Girl;
 
     }
 
@@ -1106,10 +1137,19 @@ Vector3 one;
                 transparency = Mathf.Lerp(.5f, 1f, pingpong);
             }
 
+
+
             if (Input.GetKeyUp(KeyCode.S))
         {
-            Mopseys_Dialogue();
+                 StartCoroutine(Unfreeze(good_Bunny_03_Rb, .1f));
         }
+
+             if (Input.GetKeyDown(KeyCode.W))
+        {
+                   StartCoroutine(Freeze(good_Bunny_03_Rb, 0f));
+        }
+
+
 
         }
 
@@ -1132,38 +1172,70 @@ public void Pick_Opponent(string opponent)
 {
     if(opponent == "Star")
     {
+      if(character != null)
+      { 
+        character.SetActive(false);
         character = null;
+      }
         character_Dialogue = null;
         character_Intro = null;
         character_Wins = null;
+        win_Try_Again = null;
+       character_Try_Again = null;
         character_Loses = null;
 
+        character = star_Girl;
         character_Dialogue += Stars_Dialogue; // is used to start text.
         character_Wins += Star_Wins;
+       // win_Try_Again += Star_Try_Again;
+        character_Try_Again += Star_Try_Again;
         character_Loses += Star_Loses;
 
+        // Set characters beginning settings.
+        character.SetActive(true);
         Change_Opponent_Text_Box (stars_Text_Box_Size, stars_Text_Box_Pos, stars_Pivot, stars_Font, stars_TMPro_Color, 10);
+        mat_Color = bad_Arua.color;
+        bad_Arua.color = new Color(mat_Color.r, mat_Color.g, mat_Color.b, 0);
+        star_Girl.transform.position = Stars_Starting_Position;  
+        opponent_Paddle_SR.sprite = stars_Paddle; 
+        opponent_Paddle.SetActive(true);
+
+        Reset_Flowers();
     }
 
     if(opponent == "Mopsey")
     {
         Debug.Log("Mopsey starting...");
 
+        character.SetActive(false);
         character = null;
         character_Dialogue = null;
         character_Intro = null;
         character_Wins = null;
         character_Loses = null;
-                //  not used yet
+        character_Try_Again = null;
+                
+        character = mopseys_Visit;
         character_Dialogue += Mopseys_Dialogue;  //  not used yet
         character_Intro += Mopseys_Intro_Start;
         character_Wins += Mopsey_Wins;
         character_Loses += Mopsey_Loses;
-        
+        character_Try_Again += Mopsey_Try_Again;
+
+        mopseys_Visit.SetActive(false);
+        mopsey_Is_Angry.SetActive(false);
+        attack_Bunnies.SetActive(false);
+
+        good_Bunny_01_Rec.localScale = scale_00 ;
+        good_Bunny_02_Rec.localScale = scale_00 ;
+        good_Bunny_03_Rec.localScale = scale_00 ;
+        // good_Bunny_03_Rec.position.y = Mathf.Clamp(good_Bunny_03_Rec.position.y, -7.23f, 7.0f);
+        opponent_Text_Box_Rec.localScale = scale_00;
+       opp_Mask.transform.position =  opp_Mask_Pos; 
        // play_Paddle_Intro += Mopseys_Paddle_Intro;
       //  play_Paddle_Exit += Mopseys_Paddle_Exit;
 
-
+        // Carrot_Bitten_Glow.SetActive(false);
 
 
         Change_Opponent_Text_Box(mopseys_Box_Fullsize, Mopsey_Text_Start_Pos, mopseys_Pivot, Mopseys_Font, mopseys_Text_Color, 10);
@@ -1909,18 +1981,26 @@ public void Stars_Dialogue()
 
  public async void Star_Wins()
     {
-            //  allTalk = Stars_TMPro;  // chose text box.
+        pan_Try_Again_Text_01 = "It's not her\nbedtime yet,";
+
+		pan_Try_Again_Text_02 = "you can still\nwin back\nsome of\nyour diginity!";
+
+		char_Try_Again_Text_01 = "<b><size=12><align=right><color=#780987>That was FUN!</color></b>";
+
+		char_Try_Again_Text_02 = "<size=12><align=right><color=#780987>Wanna lose again?</color>";
+		
+		pan_Try_Again_Exit = "Go get her!";
+
+            //  Function to show try again menu.
                 star_Is_Happy.Play();
                 Slerp_In_Flowers();
 
+
                 text_To_Use_Is = null;
-
-              //  maskingTextBox =stars_Text_Box_RecTrans; // chose text box container for slide effect.
-                trashTalk01 = "<b><size=12><align=right><color=#780987>That was FUN!</color></b>";
-				trashTalk02 = "<size=12><align=right><color=#780987>Wanna lose again?</color>";
+              
+                trashTalk01 = char_Try_Again_Text_01;
+				trashTalk02 = char_Try_Again_Text_02;
                 text_To_Use_Is += First_Text_Line;
-
-               
 
                 StartCoroutine(FadeOutCR("fade", 0, 1.5f));
 
@@ -1935,8 +2015,12 @@ public void Stars_Dialogue()
                 StartCoroutine(Lerp_Transform_Position(Pan, endPosLeftOffScreen, gamePosLeft, 1, 0 ));
                 await Task.Delay(1000);
                 text_Pan_TMPro.color = new Color(0, 0, 0, 1);
-                StartCoroutine(Pan_Asks_U_To_tryAgain());
-                
+                StartCoroutine(Pan_Asks_U_To_tryAgain());               
+  }
+
+  public void Character_Try_Again_Fun()
+  {
+        character_Try_Again();
   }
 
     public async void Star_Loses()
@@ -2076,7 +2160,7 @@ public void Mopseys_Dialogue()
         tmpro_Object.text = " ";
 
         switch (orderList[arrayPos])
-        {
+    {
             case 0:
                 trashTalk01 = "<b><size=9>Don't \nbe \nAfraid!</b>";
 				trashTalk02 = "<size=8>Bunnies <br>just like <br>to <br>have fun.";
@@ -2127,7 +2211,10 @@ public void Mopseys_Dialogue()
 
 
 
+public void Mopsey_Try_Again()
+{
 
+}
 
    
 
@@ -2201,11 +2288,12 @@ IEnumerator Mopseys_Intro()
 
 
 
-    mopseys_Visit.SetActive(true);
+   mopseys_Visit.SetActive(true);
+    
    // mopsey_Text_Box.SetActive(true);
     mopsey_Is_Angry.SetActive(false);
     attack_Bunnies.SetActive(false);
-
+    carrots.SetActive(false);
     good_Bunny_01_Rec.localScale = scale_00 ;
     good_Bunny_02_Rec.localScale = scale_00 ;
     good_Bunny_03_Rec.localScale = scale_00 ;
@@ -2228,6 +2316,7 @@ IEnumerator Mopseys_Intro()
    // Change_Paddle(mopseys_Paddle);
 
     Opp_Paddle_Intro(mopseys_Paddle, 0);
+
 
 
     // Mopsey says Hi!.
@@ -2580,15 +2669,54 @@ IEnumerator Bunny_Attack_01_Start()
 
  public async void Mopsey_Wins() // used as character_Wins. Called by FlashFade?
     {
+        pan_Try_Again_Text_01 = "Beaten by a bunch of bunnies?";
+
+		pan_Try_Again_Text_02 = "Afraid you'll lose again?";
+
+		char_Try_Again_Text_01 = "The bunnies Call you CARROT.";
+
+		char_Try_Again_Text_02 = " ";
+		
+		pan_Try_Again_Exit = "Show'em what you're made of!";
+
       StartCoroutine(Start_Carrots());
+
+      
+				text_To_Use_Is = null;
+
+              //  maskingTextBox =stars_Text_Box_RecTrans; // chose text box container for slide effect.
+                trashTalk01 = char_Try_Again_Text_01;   // "<b><size=12><align=right><color=#780987>That was FUN!</color></b>"
+				trashTalk02 = char_Try_Again_Text_02;   // "<size=12><align=right><color=#780987>Wanna lose again?</color>"
+                text_To_Use_Is += First_Text_Line;
+
+                StartCoroutine(FadeOutCR("fade", 0, 1.5f));
+
+                while(function_Done == false)
+                    {
+                        await Task.Yield();
+                    }
+                
+                text_To_Use_Is += Second_Text_Line;
+			    StartCoroutine(FadeOutCR( "type", 0, 1.5f));
+
+      Pan.SetActive(true);
+      StartCoroutine(Lerp_Transform_Position(Pan, endPosLeftOffScreen, gamePosLeft, 1, 0 ));
+  
+     await Task.Delay(2000); // asyncneeded delay- is it? 
+                text_Pan_TMPro.color = new Color(0, 0, 0, 1);
+                StartCoroutine(Pan_Asks_U_To_tryAgain()); 
+  
     }
 
  IEnumerator Start_Carrots()
     {
+        carrots.SetActive(true);
       Carrot_Bitten_Glow.SetActive(false);
+	  
+	  yield return new WaitForSeconds(.5f);
 
        StartCoroutine(Lerp_Transform_Position(carrots, down, up, .7f, 0 ));
-            StartCoroutine(Unfreeze());
+            StartCoroutine(Unfreeze(good_Bunny_03_Rb, .1f));
 
             while(gameObject_List.Contains(carrots))
             {
@@ -2629,7 +2757,7 @@ public void Carrot_Left_MO()
 			StartCoroutine(Lerp_Color_Alpha(Carrot_Left_Glow_SR, color_Zero, color_Max, .5f, 0f));  // lerp glow carrot alpha to max.
 			 
 			left_Bunnies_Animator.speed = 2f;
-      left_Bunnies_Animator.Play("Base Layer.Bunny_Left_MO",-1 , 0);  // Make bunny twitch. S
+      left_Bunnies_Animator.Play("Base Layer.Bunny_Left_MO" ,-1 , 0);  // Make bunny twitch. S
 		}
 
 
@@ -2639,6 +2767,67 @@ public void Carrot_Left_ME()
 			
 		}
 
+
+
+/*
+public async void Carrot_Left_MUP()
+		{		
+			StartCoroutine(Lerp_Transform_Position(carrots, up, down, .7f, 0 ));
+
+            bool stop_y = true;
+            float min = -5.23f;
+            Vector3 b3_pos;
+
+            while(gameObject_List.Contains(carrots))
+            {
+                b3_pos = good_Bunny_03_Rec.position;
+                Debug.Log("pos bunny 3 " + good_Bunny_03_Rec.position);
+                Debug.Log("pos bunny 3 b3pos " + b3_pos);
+                
+                if( b3_pos.y <= min && stop_y == true)
+                {
+                    good_Bunny_03_Rec.position = new Vector3(b3_pos.x, min, b3_pos.z);
+                    left_Bunnies_Animator.Play("Base Layer.Bunny_Left",-1 , 0);
+                    stop_y = false;
+                    StartCoroutine(Freeze(good_Bunny_03_Rb, 0f));
+                    Debug.Log("pos bunny 3 end " + good_Bunny_03_Rec.position);
+                    Debug.Log("pos bunny 3 end b3pos " + b3_pos);
+                }
+                    await Task.Yield();
+            }
+
+           // StartCoroutine(Freeze(good_Bunny_03_Rb, .1f));
+            StartOver();
+            Opp_Paddle_Intro(stars_Paddle, 2);
+             _countDown.StartCount(1); 
+             MovePan(false, "Try not to screw-up!", 0, 1); 
+        
+		}
+    */
+
+public async void Carrot_Left_MUP()
+		{		
+
+			StartCoroutine(Lerp_Transform_Position(carrots, up, down, .7f, 0 ));
+
+            float min = -7f;
+            Vector3 b3_pos = new Vector3(-13.23f, 7.0f, 0);
+
+            while(good_Bunny_03_Rec.position.y  > min)
+            {
+                await Task.Yield();
+            }
+                
+                left_Bunnies_Animator.Play("Base Layer.Bunny_Left",-1 , 0);
+                StartCoroutine(Freeze(good_Bunny_03_Rb, 0f));
+
+            // use for each try again restart.
+            StartOver();
+            start_Count = true;
+            _countDown.StartCount(1); 
+            MovePan(false, pan_Try_Again_Exit, 0, 1); 
+        
+		}
 
 public void Carrot_Right_MO()
 		{
@@ -2655,20 +2844,33 @@ public void Carrot_Right_ME()
 			StartCoroutine(Lerp_Color_Alpha(Carrot_Bitten_Glow_SR, color_Max, color_Zero, .5f, 0f));  // lerp glow carrot alpha to zero.
 			
 		}
+		
 
+public void Carrot_Right_MUP()
+		{				
+			
+		}
 
+		
 void Turn_Off_Carrot()
 			{
 				carrot_Right.SetActive(false);
 			}
 
 
-    IEnumerator Unfreeze()
+    IEnumerator Unfreeze(Rigidbody2D rb2D, float wfs)
     {
-       yield return new WaitForSeconds( .1f );
-         good_Bunny_03_Rb.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
+       yield return new WaitForSeconds( wfs);
+         rb2D.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
     }
 
+IEnumerator Freeze(Rigidbody2D rb2D, float wfs)
+    {
+        yield return new WaitForSeconds( wfs);
+        // rb2D.constraints &= RigidbodyConstraints2D.FreezePositionY;
+        rb2D.constraints = RigidbodyConstraints2D.FreezeAll; 
+
+    }
 
 #endregion Mopsey_Wins_Functions
 
@@ -3172,10 +3374,9 @@ IEnumerator ScaleMidMenuDown( )
 
 
 
-public void StartOver()
+	  
+	  public void StartOver()
 {
-           // Debug.Log("startover started");
-
             scoreText01.text = "0";
             scoreText02.text = "0";
             _flashFade.scoreValue02 = 0;
@@ -3186,9 +3387,8 @@ public void StartOver()
 			startingPuck.SetActive(false);
             Set_Random_Array();
             text_To_Use_Is = null;
-
-           
-}           
+			 
+}        
 
 
 
@@ -3351,7 +3551,7 @@ void LowerTheScreen()
         {
             float counter = 0;
             float duration = .3f;
-            Color mat_Color = bad_Arua.color;
+           // Color mat_Color = bad_Arua.color;
 
             while (counter < duration)
             {
@@ -3372,10 +3572,10 @@ public IEnumerator Pan_Asks_U_To_tryAgain()
 
             text_Pan_TMPro.color =  sunGlass_00;
             Vector2 _start_Size = new Vector2(5.7f, 0);
-            Vector2 _end_Size = new Vector2(5.7f, 5);
+            Vector2 _end_Size = new Vector2(5.7f, 6);
 
 
-            _Pan_Says = "It's not her\nbedtime yet,";
+            _Pan_Says = pan_Try_Again_Text_01;
              text_Pan_TMPro.text = _Pan_Says;
 
              text_Pan_Transform.sizeDelta = _end_Size;
@@ -3387,7 +3587,7 @@ public IEnumerator Pan_Asks_U_To_tryAgain()
             
         if(!end_Pan_Asks_U_To_tryAgain)
         {
-            _Pan_Says = "you can still\nwin back\nsome of\nyour diginity!";
+            _Pan_Says = pan_Try_Again_Text_02;
              text_Pan_TMPro.text = _Pan_Says;
 
          //   Debug.Log("pans text is " + _Pan_Says);
@@ -3456,7 +3656,7 @@ public IEnumerator Pan_Asks_U_To_tryAgain()
          _flower_Menu.localScale = small_Flowers;
         }
 
-
+/*
         public void Try_Again( )
         {
             start_Count = true;
@@ -3471,22 +3671,36 @@ public IEnumerator Pan_Asks_U_To_tryAgain()
 
             countDown.delay = 1f;
         }
+*/
 
 
-
-        public void Try_Again_Star()
+        public void Star_Try_Again()
         {
-        end_Pan_Asks_U_To_tryAgain = true;
+            end_Pan_Asks_U_To_tryAgain = true;
+
             if(Pan_Asks_U_To_tryAgain_bool)
             {
                 StopCoroutine(Pan_Asks_U_To_tryAgain());  //end pan's coroutine
             }
 
-        Try_Again();
+            start_Count = true;
+            start_Game = false;
+            switching_Menu = false;
+            try_Again.SetActive(false);
+            back_To_Menu.SetActive(false);
+            _scoreScaling.Score_Text();
+            countDown.delay = 1f;
 
-        flowers_Particle_01.Play();
-        flowers_Particle_02.Play();
-        Invoke("Reset_Flowers", 5);
+        // Function to remove try againmenu.
+            flowers_Particle_01.Play();
+            flowers_Particle_02.Play();
+            Invoke("Reset_Flowers", 5);
+
+
+            scoreScaling.Score_Text(); 
+            StartOver(); 
+            _countDown.StartCount(1); 
+            MovePan(false, pan_Try_Again_Exit, 0, 1);  
         }
 
 

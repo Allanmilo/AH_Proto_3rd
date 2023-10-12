@@ -35,4 +35,11 @@ void OnMouseExit()
 		{				
 			_AHManager.Carrot_Left_ME();
 		}
+
+
+    void OnMouseUp()
+		{
+			_AHManager.Carrot_Left_MUP();
+            
+        }
 }
