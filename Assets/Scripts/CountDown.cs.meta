@@ -3,7 +3,12 @@ guid: 1061b1bf33f0d2f4daf31e9396e65277
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Nums: {instanceID: 0}
+  - startingPuck: {instanceID: 0}
+  - puckGlow: {instanceID: 0}
+  - countDownRT: {instanceID: 0}
+  - paddle_Neutral: {fileID: 21300000, guid: 8dc1827ae22e3fd469bf0d61f594c958, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

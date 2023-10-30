@@ -35507,8 +35507,8 @@ SpriteRenderer:
   m_SortingLayerID: -1248539571
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1b5d07f78805db44d84d707c190d3c21, type: 3}
-  m_Color: {r: 1, g: 0.9669811, b: 0.9669811, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 8dc1827ae22e3fd469bf0d61f594c958, type: 3}
+  m_Color: {r: 1, g: 0.99805427, b: 0.9858491, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -78500,8 +78500,25 @@ MonoBehaviour:
   changeSpeed: 1
   stars_Paddle: {fileID: 21300000, guid: 32d7fdee02ce27344a6cdd2ff4d293ed, type: 3}
   mopseys_Paddle: {fileID: 21300000, guid: 4d1ec6c8c14ca8044b7634bf5a38e4c8, type: 3}
+  face_One: {fileID: 21300000, guid: 0f062a83569afaf4aa41becbd3b76133, type: 3}
+  face_Two: {fileID: 21300000, guid: 14bb1b07d04d39640ba9647b1e188192, type: 3}
+  face_Three: {fileID: 21300000, guid: ee60e612793092540b1b9b1bb0851a2d, type: 3}
+  your_Paddle: {fileID: 0}
+  your_Paddle_SR: {fileID: 0}
+  moveForward: 0
   heart_Sprite: {fileID: 21300000, guid: ab0d6d9b59a4f724f99cbee292f53e6b, type: 3}
   heart_material: {fileID: 2100000, guid: b85a45c765ce928469f6458ef08f9032, type: 2}
+  color01:
+    serializedVersion: 2
+    rgba: 0
+  color02:
+    serializedVersion: 2
+    rgba: 0
+  paddle_Face_List:
+  - {fileID: 21300000, guid: 34ef2aa6fe7dbfc43b808f17037b7815, type: 3}
+  - {fileID: 21300000, guid: 1b5d07f78805db44d84d707c190d3c21, type: 3}
+  - {fileID: 21300000, guid: 34ef2aa6fe7dbfc43b808f17037b7815, type: 3}
+  - {fileID: 21300000, guid: ee60e612793092540b1b9b1bb0851a2d, type: 3}
   gameObject_List: []
   sprite_Renderer_List: []
   rec_List: []
@@ -78589,11 +78606,33 @@ MonoBehaviour:
   rotate_Object_Bool: 0
   glow_On: 0
   IsCanceled: 0
+  paddle_Face_Array:
+  - {fileID: 21300000, guid: 10544bbbb8f8e8d4d995f680263246e8, type: 3}
+  - {fileID: 21300000, guid: ee60e612793092540b1b9b1bb0851a2d, type: 3}
+  - {fileID: 21300000, guid: 4d1ec6c8c14ca8044b7634bf5a38e4c8, type: 3}
+  - {fileID: 21300000, guid: ee60e612793092540b1b9b1bb0851a2d, type: 3}
   oh_No: {fileID: 11400000, guid: 5a7b7c6d2e2310f4d8c35855f075abc4, type: 2}
   hungry: {fileID: 11400000, guid: 1aece5944d4e36f43823fddd88aa0e98, type: 2}
+  color_Pulse_Bool: 0
+  pulse_Speed: 10
   speedUp: 0
   paddle_Array_Pos: 0
   paddle_Trash_Talk_Array: []
+  paddle_Fight_Sprites:
+  - {fileID: 21300000, guid: 353c228f3eceafd49bbd695c5fd25133, type: 3}
+  - {fileID: 21300000, guid: c44d26411bab63746b03dd45a2f3dbac, type: 3}
+  - {fileID: 21300000, guid: aa173f55fc2eba6469ed055908ebaf2d, type: 3}
+  - {fileID: 21300000, guid: 19f42f78f4bb7de46a34804e9563c022, type: 3}
+  paddle_Win_Sprites:
+  - {fileID: 21300000, guid: cbafec119abe0af4b9678dd7994afba7, type: 3}
+  - {fileID: 21300000, guid: bb7af590f9a20124ebc63e08d437b1b9, type: 3}
+  - {fileID: 21300000, guid: 9ebc34a854c8e274ba53cf0a59c72233, type: 3}
+  - {fileID: 21300000, guid: c518f9f02a82cb74a8e6580e2fc41e31, type: 3}
+  paddle_Lose_Sprites:
+  - {fileID: 21300000, guid: 5204f76621e2b1043a2025df0a81f2cd, type: 3}
+  - {fileID: 21300000, guid: c7ea3afafa372bc47af3c0d316629fa7, type: 3}
+  - {fileID: 21300000, guid: 8b782c7a1102d39489e0cdfbcfd6a3e9, type: 3}
+  - {fileID: 21300000, guid: fd5467872a1a3324d90bb15f9523dda0, type: 3}
 --- !u!4 &1743815474
 Transform:
   m_ObjectHideFlags: 0
@@ -99671,6 +99710,7 @@ MonoBehaviour:
   countDownRT: {fileID: 2090912398}
   _counting: 0
   delay: 0
+  paddle_Neutral: {fileID: 0}
 --- !u!1 &2105179664
 GameObject:
   m_ObjectHideFlags: 0

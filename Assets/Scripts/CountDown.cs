@@ -52,6 +52,9 @@ public class CountDown : MonoBehaviour
     public int _counting;
 
     public float delay;
+
+    public Sprite paddle_Neutral;
+
  void Start () 
     {   
         _counting = 0;
@@ -109,9 +112,11 @@ public class CountDown : MonoBehaviour
 
 
     public void StartCount(float wfs)
-    {   Debug.Log("start count equeals " + _AHManager.start_Count);
+    {   
         if( _AHManager.start_Count)
         {
+           //  _AHManager.your_Paddle_SR.sprite = paddle_Neutral;
+        //    _AHManager.your_Paddle_SR.sprite = _AHManager.paddle_Lose_Sprites[Random.Range(0, 3)];
         StartCoroutine(MathfSin(wfs));
         }
     }
@@ -119,7 +124,7 @@ public class CountDown : MonoBehaviour
    
     public IEnumerator MathfSin(float wfs)
     {
-        Debug.Log("stopCo is " + stopCO);
+       // Debug.Log("stopCo is " + stopCO);
         if(stopCO)
         {
             
@@ -138,12 +143,13 @@ public class CountDown : MonoBehaviour
                  Nums.text = "Go";
                  yield return StartCoroutine(Scaling());  
                  Invoke ("PuckDrop", dropDelay);
+                //  _AHManager.your_Paddle_SR.sprite = _AHManager.face_One;
                  yield break;
             } 
 
             if(count != 0)
             {
-                Debug.Log("count one is " + count);
+             //   Debug.Log("count one is " + count);
 
                 Nums.text = (count.ToString());
         

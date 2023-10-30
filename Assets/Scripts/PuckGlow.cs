@@ -25,6 +25,11 @@ public class PuckGlow : MonoBehaviour
     GameObject _AHScriptManager;
     AHScriptManager _AHManager;
 
+    Color32 color01;
+	Color32 color02;
+
+    //int moveForward = 0;
+
     void Start()
     {
         _AHScriptManager = GameObject.FindGameObjectWithTag("AHManager");
@@ -46,7 +51,7 @@ public class PuckGlow : MonoBehaviour
     {
         maxSpeed = _AHManager._maxPuckSpeed;
         
-        StartCoroutine(EdgeGlow());
+        // StartCoroutine(EdgeGlow());
 
          speed = (transform.position - this.mLastPosition).magnitude / Time.deltaTime;
          this.mLastPosition = transform.position;
@@ -71,24 +76,44 @@ public class PuckGlow : MonoBehaviour
 
     public void ResetGlow()
     {
-        StartCoroutine(EdgeGlow());
+      //  StartCoroutine(EdgeGlow());
     }
     
     IEnumerator EdgeGlow()
                 {
-                    Color32 color01 = puckEdge.GetComponent<Renderer>().material.color;
-	                color01 = new Color32(255, 204, 204, 255);
+                    Color32 color11 = puckEdge.GetComponent<Renderer>().material.color;
+	                color11 = new Color32(255, 204, 204, 255);
 
 		            Color32 color02 = puckEdge.GetComponent<Renderer>().material.color;
 	                color02 = new Color32(153, 0, 0, 255);
 
                     while(true)
                     {
-                    newColor = Color.Lerp(color01, color02, Mathf.PingPong(frequency * Time.time, 1));
+                    newColor = Color.Lerp(color11, color02, Mathf.PingPong(frequency * Time.time, 1));
                     puckEdge.GetComponent<Renderer>().material.color = newColor;
                     yield return null;
                     }
-                        
-            
                 }   
+
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+
+        if (col.gameObject.tag == "Player")
+        {
+         //    StopAllCoroutines();
+         //   _AHManager.color_Pulse_Bool = false;
+        //    _AHManager.your_Paddle_SR.sprite = _AHManager.paddle_Fight_Sprites[Random.Range(0, 3)];
+        //    color01 = new Color32(250, 140, 140, 255);
+		//	color02 = new Color32(255, 110, 110, 255);
+		//	StartCoroutine(_AHManager.Color_Pulse(_AHManager.your_Paddle_SR, color01, color02, 1));
+		//_AHManager.your_Paddle_SR.color = Color.white;
+
+            
+            if(_AHManager.moveForward < 3)
+            {
+                 _AHManager.moveForward += 1;
+		    }
+        }
+	}
 }

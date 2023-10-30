@@ -46,6 +46,14 @@ SpriteRenderer opponent_Paddle_SR;
 public Sprite stars_Paddle;
 public Sprite mopseys_Paddle;
 
+public Sprite face_One;
+public Sprite face_Two;
+public Sprite face_Three;
+	public	GameObject your_Paddle;
+	public	SpriteRenderer your_Paddle_SR;
+
+   public int moveForward;
+
 Sprite opp_paddle_Sprite;
 
 [SerializeField] Sprite heart_Sprite;
@@ -55,6 +63,11 @@ Sprite opp_paddle_Sprite;
 Color litePink;
 Color darkPink;
 
+public Color32 color01;
+public Color32 color02;
+
+
+public List<Sprite> paddle_Face_List;
  public List<GameObject> gameObject_List; // = new List<GameObject>();
  public List<SpriteRenderer> sprite_Renderer_List;
 public List<RectTransform> rec_List;
@@ -572,7 +585,8 @@ int arrayNum;
     public static List<bool> scale_Object_List = new List<bool>();
     public static List<bool> rotate_Object_List = new List<bool>();
 
-
+    public Sprite[] paddle_Face_Array;
+    
     [SerializeField]TMP_FontAsset oh_No;
     [SerializeField]TMP_FontAsset hungry;
 	float oh_No_font_Size;
@@ -586,10 +600,10 @@ int arrayNum;
 
     string bunnies_Text;
 
-   
+   public bool color_Pulse_Bool;
 
    
-
+public float pulse_Speed;
 
 
     #endregion Mopsey_Variables
@@ -673,14 +687,15 @@ public static event Character_Try_Again character_Try_Again;
 
     public string[] paddle_Trash_Talk_Array;
 
-   
-
+    public Sprite[] paddle_Fight_Sprites;
+    public Sprite[] paddle_Win_Sprites;
+    public Sprite[] paddle_Lose_Sprites;
 
     void Start()
     {  
      //  Debug.Log("start of start");
         speedUp = false;
-        
+       //  moveForward = 0;
         _start_Size_Y = new Vector2(6, 0);
         _mid_Size_Y = new Vector2(6, 1);
         _mid02_Size_Y = new Vector2(6, 4);
@@ -695,8 +710,10 @@ public static event Character_Try_Again character_Try_Again;
         backDropGlow = GameObject.FindGameObjectWithTag("BackDropGlow");
         backDropGlow_SR = backDropGlow.GetComponent<SpriteRenderer>();
 
+        // paddle_Face_List = new List<Sprite>();
 
         // gameObject_List = new List<GameObject>();
+        
         
 
         _height_Point = new Vector3(-20, -2, 0);
@@ -758,8 +775,11 @@ public static event Character_Try_Again character_Try_Again;
         // worked here Test_Function();
 
         opponent_Paddle = GameObject.FindGameObjectWithTag("Opponent");
-
         opponent_Paddle_SR = opponent_Paddle.GetComponent<SpriteRenderer>();
+
+
+		your_Paddle = GameObject.FindGameObjectWithTag("Player");
+        your_Paddle_SR = your_Paddle.GetComponent<SpriteRenderer>();
 
        // Opp_Paddle_PS = opponent_Paddle.GetComponent<ParticleSystem>();
 
@@ -1374,6 +1394,22 @@ void Pan_Intros(string character)
 			}		
                lerp_TMPro_Color_Bool = false;	
 		}
+
+    public IEnumerator Color_Pulse(SpriteRenderer renderer, Color32 color001, Color32 color002, float duration)
+{
+   
+ //Color32 start_Color = renderer.color;
+
+//Color32 newColor = color002;
+float tt =0;
+	while( tt < duration)
+	{
+        tt += Time.deltaTime / 1.0f;
+     renderer.color = Color.Lerp(color001, color002, tt );
+     // tt += .01f;
+      yield return null;
+    }
+}	
 
 /*    IEnumerator Lerp_Transform_Position(GameObject object_To_Lerp, Vector3 start_Lerp_Pos, Vector3 end_Lerp_Pos, float wait_For_Sec, float duration )
         {

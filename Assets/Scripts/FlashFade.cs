@@ -44,6 +44,11 @@ public class FlashFade : MonoBehaviour
 	GameObject AHScriptManager;
     AHScriptManager _AHManager;
 
+	Color32 color01;
+	Color32 color02;
+
+
+	
 /*
 	public delegate void Character();
 	public static event Character character;
@@ -71,13 +76,28 @@ public class FlashFade : MonoBehaviour
 	}
 
 	
-    void OnCollisionEnter2D(Collision2D col)
+    void OnCollisionEnter2D(Collision2D bottom)
     {
 
-        if (col.gameObject.tag == "Puck")
+        if (bottom.gameObject.tag == "Puck")
 		
         {	
+			color01 = _AHManager.your_Paddle_SR.color;
+			
+			// _AHManager.color_Pulse_Bool = false;
+			// StopCoroutine(_AHManager.Color_Pulse(_AHManager.your_Paddle_SR, _AHManager.color01, _AHManager.color02, 1));
+		 // StopAllCoroutines();
+		 _AHManager.color_Pulse_Bool = false;
+			_AHManager.your_Paddle_SR.sprite = _AHManager.paddle_Lose_Sprites[Random.Range(0, 4)];
 
+			
+			// blue
+			// color01 = new Color32(160, 215, 250, 255);
+			color02 = new Color32(0, 195, 255, 255);
+			StartCoroutine(_AHManager.Color_Pulse(_AHManager.your_Paddle_SR, color01, color02, 1));
+		// _AHManager.your_Paddle_SR.color = Color.white;
+			
+			// _AHManager.your_Paddle_SR.sprite = paddle_Neutral;
 			//	_AHManager.Pick_Opponent();
 
 			scoreValue02 += 1;
@@ -99,11 +119,13 @@ public class FlashFade : MonoBehaviour
 				text01Score.StartText01();
 				_AHManager.Characters_Text();
 
-
+				//_AHManager.your_Paddle_SR.sprite = _AHManager.paddle_Lose_Sprites[Random.Range(0, 3)];
 				_AHManager.Start_The_Count();
 				startingPuck.SetActive(false);
 				
 				topGoalScore.text = ("" + scoreValue02);
+
+				_AHManager.moveForward = 0;
 			}
 
 
@@ -121,12 +143,23 @@ public class FlashFade : MonoBehaviour
 				fireWorks01.FireWorks01();
 				text01Score.StartText01();
 				startingPuck.SetActive(false);
+
+/*
+				_AHManager.color01 = new Color32(160, 215, 250, 255);
+				_AHManager.color02 = new Color32(0, 195, 255, 255);
+				StartCoroutine(_AHManager.Color_Pulse(_AHManager.your_Paddle_SR, _AHManager.color01, _AHManager.color01, 3));
+
+				_AHManager.your_Paddle_SR.sprite = _AHManager.paddle_Lose_Sprites[Random.Range(0, 3)];
+*/				
+				Debug.Log("moveforward flashfade is " + _AHManager.paddle_Face_Array[_AHManager.moveForward] + _AHManager.moveForward);
+				
 				_AHManager.Start_Character_Wins();
+				
 				_AHManager.start_Count = false;
 				
 				topGoalScore.text = ("" + scoreValue02);
 
-
+				_AHManager.moveForward = 0;
 			}
         }
     }

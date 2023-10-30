@@ -49,7 +49,8 @@ public class FlashFadeTop : MonoBehaviour
 	public delegate void Player_Wins();
 	public static event Player_Wins player_Wins;
 
-
+	Color32 color01;
+	Color32 color02;
 	void Awake()
 	{
 		  AHScriptManager = GameObject.FindGameObjectWithTag("AHManager");
@@ -70,10 +71,25 @@ public class FlashFadeTop : MonoBehaviour
 
 
 
-	void OnCollisionEnter2D(Collision2D col)
+	void OnCollisionEnter2D(Collision2D top)
 	{
-		if (col.gameObject.tag == "Puck")
+		if (top.gameObject.tag == "Puck")
 		{
+			color01 = _AHManager.your_Paddle_SR.color;
+			
+			 _AHManager.color_Pulse_Bool = false;
+			// StopCoroutine(_AHManager.Color_Pulse(_AHManager.your_Paddle_SR, _AHManager.color01, _AHManager.color02, 3));
+		// StopAllCoroutines();
+		 _AHManager.color_Pulse_Bool = false;
+			_AHManager.your_Paddle_SR.sprite = _AHManager.paddle_Win_Sprites[Random.Range(0, 4)];
+
+		// yellow.
+		// color01 = new Color32(250, 210, 140, 255);
+		color02 = new Color32(250, 185, 75, 255);
+			
+			StartCoroutine(_AHManager.Color_Pulse(_AHManager.your_Paddle_SR, color01, color02, 1));
+		// _AHManager.your_Paddle_SR.color = Color.white;
+
 			//_AHManager.Pick_Player();
 			scoreValue01 += 1;
 
@@ -107,6 +123,8 @@ public class FlashFadeTop : MonoBehaviour
 				_AHManager.Start_The_Count();
 				startingPuck.SetActive(false);
 				bottomGoalScore.text = ("" + scoreValue01);
+
+				_AHManager.moveForward = 0;
 			}
 
 			if (scoreValue01 == 5)
@@ -121,7 +139,9 @@ public class FlashFadeTop : MonoBehaviour
 				fireWorks02.FireWorks02();
 				 textTwoScore.StartText02();
 				startingPuck.SetActive(false);
-				
+				//	_AHManager.your_Paddle_SR.sprite = _AHManager.face_Two;
+					_AHManager.moveForward = 0;
+					Debug.Log("moveforward flashfadetop is " + _AHManager.moveForward);
 				_AHManager.Start_Character_Loses();
 
 				bottomGoalScore.text = ("" + scoreValue01);
