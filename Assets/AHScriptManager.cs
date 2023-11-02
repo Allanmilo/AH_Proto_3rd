@@ -1395,21 +1395,43 @@ void Pan_Intros(string character)
                lerp_TMPro_Color_Bool = false;	
 		}
 
-    public IEnumerator Color_Pulse(SpriteRenderer renderer, Color32 color001, Color32 color002, float duration)
+    public IEnumerator Color_Pulse(SpriteRenderer renderer, Color color001, Color color002, float duration, float speed)
 {
-   
- //Color32 start_Color = renderer.color;
 
-//Color32 newColor = color002;
+Color color_Start = renderer.color;
+color_Pulse_Bool = true;
 float tt =0;
 	while( tt < duration)
 	{
-        tt += Time.deltaTime / 1.0f;
-     renderer.color = Color.Lerp(color001, color002, tt );
+    tt += Time.deltaTime / 1.0f;
+     renderer.color = Color.Lerp(color_Start, color001, tt );
      // tt += .01f;
       yield return null;
     }
-}	
+
+     while(true)
+    { 
+        renderer.color = Color.Lerp(color001, color002, Mathf.PingPong(Time.time * speed, 1));
+        yield return null;
+    }
+    
+}
+
+
+ 
+
+public void Start_Color_Pulse(SpriteRenderer renderer, Color color001, Color color002, float duration, float speed)
+{
+    StartCoroutine(Color_Pulse(your_Paddle_SR, color001, color002, duration, speed));
+}
+
+
+public void stop_Routines()
+{
+    StopAllCoroutines();
+}
+
+
 
 /*    IEnumerator Lerp_Transform_Position(GameObject object_To_Lerp, Vector3 start_Lerp_Pos, Vector3 end_Lerp_Pos, float wait_For_Sec, float duration )
         {

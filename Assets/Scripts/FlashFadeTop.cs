@@ -51,6 +51,9 @@ public class FlashFadeTop : MonoBehaviour
 
 	Color32 color01;
 	Color32 color02;
+
+	[SerializeField]float speed;
+
 	void Awake()
 	{
 		  AHScriptManager = GameObject.FindGameObjectWithTag("AHManager");
@@ -75,19 +78,19 @@ public class FlashFadeTop : MonoBehaviour
 	{
 		if (top.gameObject.tag == "Puck")
 		{
-			color01 = _AHManager.your_Paddle_SR.color;
+			//color01 = _AHManager.your_Paddle_SR.color;
 			
-			 _AHManager.color_Pulse_Bool = false;
+			//  _AHManager.color_Pulse_Bool = false;
 			// StopCoroutine(_AHManager.Color_Pulse(_AHManager.your_Paddle_SR, _AHManager.color01, _AHManager.color02, 3));
-		// StopAllCoroutines();
+		 _AHManager.stop_Routines();
 		 _AHManager.color_Pulse_Bool = false;
 			_AHManager.your_Paddle_SR.sprite = _AHManager.paddle_Win_Sprites[Random.Range(0, 4)];
 
 		// yellow.
-		// color01 = new Color32(250, 210, 140, 255);
-		color02 = new Color32(250, 185, 75, 255);
+		 color01 = new Color(.4f, .4f, 0, 1);
+		color02 = new Color(1f, 1f, 0, 1);
 			
-			StartCoroutine(_AHManager.Color_Pulse(_AHManager.your_Paddle_SR, color01, color02, 1));
+			_AHManager.Start_Color_Pulse(_AHManager.your_Paddle_SR, color01, color02, 1, speed);
 		// _AHManager.your_Paddle_SR.color = Color.white;
 
 			//_AHManager.Pick_Player();

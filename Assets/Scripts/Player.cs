@@ -23,6 +23,10 @@ public class Player : MonoBehaviour
     Color32 color_Start;
 
     Color32 color_End;
+
+    public float timing;
+
+    [SerializeField]float speed;
     void Awake()
     {
         toggle = false;
@@ -39,6 +43,8 @@ public class Player : MonoBehaviour
 
         _AHScriptManager = GameObject.FindGameObjectWithTag("AHManager");
 		_AHManager =  _AHScriptManager.GetComponent<AHScriptManager>();
+
+        speed = 1;
     }
 
     void FixedUpdate()
@@ -98,13 +104,13 @@ public class Player : MonoBehaviour
 
         if (col.gameObject.tag == "Puck")
         {
-            color_Start = _AHManager.your_Paddle_SR.color;
-           //  StopAllCoroutines();
+           // color_Start = _AHManager.your_Paddle_SR.color;
+             _AHManager.stop_Routines();
             _AHManager.color_Pulse_Bool = false;
             _AHManager.your_Paddle_SR.sprite = _AHManager.paddle_Fight_Sprites[Random.Range(0, 3)];
-            // color_Start = new Color32(250, 140, 140, 255);
-			color_End = new Color32(255, 110, 110, 255);
-			StartCoroutine(_AHManager.Color_Pulse(_AHManager.your_Paddle_SR, color_Start, color_End, 1f));
+             color_Start = new Color(.5f, 0, .1f, 1);
+			color_End = new Color(1, 0, .1f, 1);
+			_AHManager.Start_Color_Pulse(_AHManager.your_Paddle_SR, color_Start, color_End, timing, speed);
 		//_AHManager.your_Paddle_SR.color = Color.white;
         }
 	}

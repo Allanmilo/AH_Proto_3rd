@@ -18698,6 +18698,7 @@ MonoBehaviour:
   starGirlText: {fileID: 0}
   text01Score: {fileID: 1938427087}
   _scoreScaling: {fileID: 1976715809}
+  speed: 3
 --- !u!68 &418363598
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -35546,6 +35547,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toggle: 0
   BoundaryHolder: {fileID: 1093804742}
+  timing: 1
+  speed: 0
 --- !u!1 &766489161
 GameObject:
   m_ObjectHideFlags: 0
@@ -45989,6 +45992,7 @@ MonoBehaviour:
   starGirlText: {fileID: 0}
   countDown: {fileID: 2090912402}
   _scoreScaling: {fileID: 1976715809}
+  speed: 6
 --- !u!68 &941635800
 EdgeCollider2D:
   m_ObjectHideFlags: 0

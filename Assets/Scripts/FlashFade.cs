@@ -47,7 +47,7 @@ public class FlashFade : MonoBehaviour
 	Color32 color01;
 	Color32 color02;
 
-
+	[SerializeField]float speed;
 	
 /*
 	public delegate void Character();
@@ -82,19 +82,23 @@ public class FlashFade : MonoBehaviour
         if (bottom.gameObject.tag == "Puck")
 		
         {	
-			color01 = _AHManager.your_Paddle_SR.color;
+			// color01 = _AHManager.your_Paddle_SR.color;
 			
-			// _AHManager.color_Pulse_Bool = false;
+			//  _AHManager.color_Pulse_Bool = false;
 			// StopCoroutine(_AHManager.Color_Pulse(_AHManager.your_Paddle_SR, _AHManager.color01, _AHManager.color02, 1));
-		 // StopAllCoroutines();
+		  
 		 _AHManager.color_Pulse_Bool = false;
+		 
+
 			_AHManager.your_Paddle_SR.sprite = _AHManager.paddle_Lose_Sprites[Random.Range(0, 4)];
 
 			
 			// blue
-			// color01 = new Color32(160, 215, 250, 255);
-			color02 = new Color32(0, 195, 255, 255);
-			StartCoroutine(_AHManager.Color_Pulse(_AHManager.your_Paddle_SR, color01, color02, 1));
+			color01 = new Color(.1f, 0, .5f, 1);
+			color02 = new Color(.1f, 0, 1f, 1);
+			_AHManager.stop_Routines();
+			_AHManager.Start_Color_Pulse(_AHManager.your_Paddle_SR, color01, color02, 1, speed);
+			
 		// _AHManager.your_Paddle_SR.color = Color.white;
 			
 			// _AHManager.your_Paddle_SR.sprite = paddle_Neutral;
