@@ -20,14 +20,17 @@ public class Player : MonoBehaviour
     GameObject _AHScriptManager;
     AHScriptManager _AHManager;
 
-    Color32 color_Start;
+    //Color32 color_Start;
 
-    Color32 color_End;
+   // Color32 color_End;
 
     public float timing;
 
     [SerializeField]float speed;
-    void Awake()
+
+     [SerializeField] Color color_Start;
+		 [SerializeField] Color	color_End;
+    void Awake() 
     {
         toggle = false;
         rb = GetComponent<Rigidbody2D>();
@@ -106,10 +109,10 @@ public class Player : MonoBehaviour
         {
            // color_Start = _AHManager.your_Paddle_SR.color;
              _AHManager.stop_Routines();
-            _AHManager.color_Pulse_Bool = false;
+          //  _AHManager.stop_Routine = false;
             _AHManager.your_Paddle_SR.sprite = _AHManager.paddle_Fight_Sprites[Random.Range(0, 3)];
-             color_Start = new Color(.5f, 0, .1f, 1);
-			color_End = new Color(1, 0, .1f, 1);
+        //     color_Start = new Color(.5f, 0, .1f, 1);
+		//	color_End = new Color(1, 0, .1f, 1);
 			_AHManager.Start_Color_Pulse(_AHManager.your_Paddle_SR, color_Start, color_End, timing, speed);
 		//_AHManager.your_Paddle_SR.color = Color.white;
         }

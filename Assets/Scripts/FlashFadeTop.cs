@@ -49,8 +49,8 @@ public class FlashFadeTop : MonoBehaviour
 	public delegate void Player_Wins();
 	public static event Player_Wins player_Wins;
 
-	Color32 color01;
-	Color32 color02;
+	[SerializeField] Color color01;
+	[SerializeField] Color color02;
 
 	[SerializeField]float speed;
 
@@ -83,12 +83,12 @@ public class FlashFadeTop : MonoBehaviour
 			//  _AHManager.color_Pulse_Bool = false;
 			// StopCoroutine(_AHManager.Color_Pulse(_AHManager.your_Paddle_SR, _AHManager.color01, _AHManager.color02, 3));
 		 _AHManager.stop_Routines();
-		 _AHManager.color_Pulse_Bool = false;
+		// _AHManager.color_Pulse_Bool = false;
 			_AHManager.your_Paddle_SR.sprite = _AHManager.paddle_Win_Sprites[Random.Range(0, 4)];
 
 		// yellow.
-		 color01 = new Color(.4f, .4f, 0, 1);
-		color02 = new Color(1f, 1f, 0, 1);
+		// color01 = new Color(.4f, .4f, 0, 1);
+		// color02 = new Color(1f, 1f, 0, 1);
 			
 			_AHManager.Start_Color_Pulse(_AHManager.your_Paddle_SR, color01, color02, 1, speed);
 		// _AHManager.your_Paddle_SR.color = Color.white;

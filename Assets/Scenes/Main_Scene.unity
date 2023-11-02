@@ -18698,7 +18698,9 @@ MonoBehaviour:
   starGirlText: {fileID: 0}
   text01Score: {fileID: 1938427087}
   _scoreScaling: {fileID: 1976715809}
-  speed: 3
+  color01: {r: 0.59460664, g: 0.59460664, b: 0.9622642, a: 1}
+  color02: {r: 0.20705767, g: 0.2830187, b: 0.9339623, a: 1}
+  speed: 1
 --- !u!68 &418363598
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -35548,7 +35550,9 @@ MonoBehaviour:
   toggle: 0
   BoundaryHolder: {fileID: 1093804742}
   timing: 1
-  speed: 0
+  speed: 4
+  color_Start: {r: 0.990566, g: 0.54668033, b: 0.54668033, a: 1}
+  color_End: {r: 0.9716981, g: 0.18792273, b: 0.255438, a: 1}
 --- !u!1 &766489161
 GameObject:
   m_ObjectHideFlags: 0
@@ -45992,7 +45996,9 @@ MonoBehaviour:
   starGirlText: {fileID: 0}
   countDown: {fileID: 2090912402}
   _scoreScaling: {fileID: 1976715809}
-  speed: 6
+  color01: {r: 0.990566, g: 0.7314974, b: 0.4719206, a: 1}
+  color02: {r: 0.990566, g: 0.74689454, b: 0.051397298, a: 0}
+  speed: 3
 --- !u!68 &941635800
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -78617,7 +78623,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ee60e612793092540b1b9b1bb0851a2d, type: 3}
   oh_No: {fileID: 11400000, guid: 5a7b7c6d2e2310f4d8c35855f075abc4, type: 2}
   hungry: {fileID: 11400000, guid: 1aece5944d4e36f43823fddd88aa0e98, type: 2}
-  color_Pulse_Bool: 0
+  stop_Routine: 0
   pulse_Speed: 10
   speedUp: 0
   paddle_Array_Pos: 0

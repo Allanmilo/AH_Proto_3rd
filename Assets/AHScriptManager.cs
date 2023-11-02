@@ -600,7 +600,7 @@ int arrayNum;
 
     string bunnies_Text;
 
-   public bool color_Pulse_Bool;
+   public bool stop_Routine;
 
    
 public float pulse_Speed;
@@ -1398,20 +1398,40 @@ void Pan_Intros(string character)
     public IEnumerator Color_Pulse(SpriteRenderer renderer, Color color001, Color color002, float duration, float speed)
 {
 
-Color color_Start = renderer.color;
-color_Pulse_Bool = true;
+Color color_Start = renderer.color; // current color of game object.
 float tt =0;
-	while( tt < duration)
+
+
+if(stop_Routine == false) // loops will only run if this bool is true. Call stop_Routines() function to change to false.
+{
+    stop_Routine = true;
+}
+
+	while( tt < duration) // Duratin adjest how long it takes to change color.
 	{
+       
+          if(stop_Routine == false) // used to stop coroutine.
+        {
+            yield break;
+        }
     tt += Time.deltaTime / 1.0f;
-     renderer.color = Color.Lerp(color_Start, color001, tt );
-     // tt += .01f;
+     renderer.color = Color.Lerp(color_Start, color001, tt ); // Change from current color to new color.
+     // tt += .01f; 
       yield return null;
     }
 
-     while(true)
+   
+
+     while( true)
     { 
-        renderer.color = Color.Lerp(color001, color002, Mathf.PingPong(Time.time * speed, 1));
+        Debug.Log("bool is " + stop_Routine); // used to stop coroutine.
+
+        if(stop_Routine == false)
+        {
+            yield break;
+        }
+                    // loop through new color and secondary color.
+        renderer.color = Color.Lerp(color001, color002, Mathf.PingPong(Time.time * speed, 1)); // speed adjusts how fast colors loop.
         yield return null;
     }
     
@@ -1429,6 +1449,7 @@ public void Start_Color_Pulse(SpriteRenderer renderer, Color color001, Color col
 public void stop_Routines()
 {
     StopAllCoroutines();
+    stop_Routine = false;
 }
 
 
