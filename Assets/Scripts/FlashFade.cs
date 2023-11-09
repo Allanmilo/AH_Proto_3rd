@@ -97,7 +97,7 @@ public class FlashFade : MonoBehaviour
 			// color01 = new Color(.1f, 0, .5f, 1);
 			// color02 = new Color(.1f, 0, 1f, 1);
 			_AHManager.stop_Routines();
-			_AHManager.Start_Color_Pulse(_AHManager.your_Paddle_SR, color01, color02, 1, speed);
+			_AHManager.Start_Color_Pulse(_AHManager.your_Paddle_SR, color01, color02, 2, speed);
 			
 		// _AHManager.your_Paddle_SR.color = Color.white;
 			

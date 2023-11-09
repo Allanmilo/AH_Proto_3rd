@@ -18683,8 +18683,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb9bdcb42650b24f9387c8c9a74a8c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startColor: {r: 0.8113208, g: 0.35252553, b: 0.04209684, a: 0}
-  endColor: {r: 0.6792453, g: 0.49049228, b: 0.06087574, a: 1}
+  startColor: {r: 0.9622642, g: 0.74019915, b: 0.31318974, a: 0.9843137}
+  endColor: {r: 1, g: 0.7072467, b: 0.042452812, a: 1}
   fadeInTime: 3
   fadeOutTime: 5
   fadeDelay: 0.7
@@ -35549,7 +35549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toggle: 0
   BoundaryHolder: {fileID: 1093804742}
-  timing: 1
+  timing: 2
   speed: 4
   color_Start: {r: 0.990566, g: 0.54668033, b: 0.54668033, a: 1}
   color_End: {r: 0.9716981, g: 0.18792273, b: 0.255438, a: 1}
@@ -45996,8 +45996,8 @@ MonoBehaviour:
   starGirlText: {fileID: 0}
   countDown: {fileID: 2090912402}
   _scoreScaling: {fileID: 1976715809}
-  color01: {r: 0.990566, g: 0.7314974, b: 0.4719206, a: 1}
-  color02: {r: 0.990566, g: 0.74689454, b: 0.051397298, a: 0}
+  color01: {r: 0.9811321, g: 0.7905149, b: 0.5970096, a: 1}
+  color02: {r: 0.8584906, g: 0.6363258, b: 0.01214843, a: 0.99215686}
   speed: 3
 --- !u!68 &941635800
 EdgeCollider2D:

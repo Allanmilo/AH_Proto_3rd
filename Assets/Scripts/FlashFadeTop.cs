@@ -90,7 +90,7 @@ public class FlashFadeTop : MonoBehaviour
 		// color01 = new Color(.4f, .4f, 0, 1);
 		// color02 = new Color(1f, 1f, 0, 1);
 			
-			_AHManager.Start_Color_Pulse(_AHManager.your_Paddle_SR, color01, color02, 1, speed);
+			_AHManager.Start_Color_Pulse(_AHManager.your_Paddle_SR, color01, color02, 2, speed);
 		// _AHManager.your_Paddle_SR.color = Color.white;
 
 			//_AHManager.Pick_Player();

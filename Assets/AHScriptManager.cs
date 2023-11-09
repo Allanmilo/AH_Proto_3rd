@@ -7,6 +7,8 @@ using UnityEngine.Events;
 using TMPro;
 using UnityEngine.UI;
 using System.Threading.Tasks;
+//using System;
+
 
 public class AHScriptManager : MonoBehaviour
 {
@@ -690,6 +692,9 @@ public static event Character_Try_Again character_Try_Again;
     public Sprite[] paddle_Fight_Sprites;
     public Sprite[] paddle_Win_Sprites;
     public Sprite[] paddle_Lose_Sprites;
+
+    string fadeOutCR_Pick_01;
+    string fadeOutCR_Pick_02;
 
     void Start()
     {  
@@ -1796,6 +1801,9 @@ void First_Text_Line() // Sets text to trashTalk01.
         }
 
 //------------------------------StarBoy's Dialogue----------------------------------
+
+/*
+
 async void Boys_Case_Zero()
            {
             text_To_Use_Is = null;
@@ -1867,7 +1875,7 @@ async void Boys_Case_One()
                 text_To_Use_Is += Second_Text_Line;
                 StartCoroutine(FadeOutCR("slide", 0, 3));
            }  
-    
+ */   
     public void Boys_Dialogue()
     {
         // text_Box_Object = boys_Text_Box;
@@ -1882,38 +1890,43 @@ async void Boys_Case_One()
             case 0:
                 trashTalk01 = "<color=#D6C207>It's hard,</color>";
 				trashTalk02 = "<color=#D6C207>Being this good!</color>";
-
-                Boys_Case_Zero();
+                 fadeOutCR_Pick_01 = "fade"; 
+                fadeOutCR_Pick_02 = "type";
+                 Character_Switch_Case(); 
                 
             break;
 
             case 1:
                 trashTalk01 = "<color=#D6C207>I've seen worse.</color>";
 				trashTalk02 = "<color=#D6C207><size=8>But not much worse.</color>";
-
-                Boys_Case_One();
+                 fadeOutCR_Pick_01 = "fade"; 
+                fadeOutCR_Pick_02 = "type";
+                 Character_Switch_Case(); 
               
             break;
 
             case 2:
                 trashTalk01 = "<color=#D6C207>It could be worse,</color>";
 				trashTalk02 = "<color=#D6C207><size=8>It could be me playing that bad. </color>";
-
-                Boys_Case_Two();
+                 fadeOutCR_Pick_01 = "fade"; 
+                fadeOutCR_Pick_02 = "type";
+                Character_Switch_Case(); 
             break;
 
             case 3:
                 trashTalk01 = "<color=#D6C207>Gotta ask-</color>";
                 trashTalk02 = "<color=#D6C207><size=8>Ya know which goal is yours, right? </color>";
-
-                Boys_Case_Three();
+                 fadeOutCR_Pick_01 = "fade"; 
+                fadeOutCR_Pick_02 = "type";
+                Character_Switch_Case(); 
             break;
 
             case 4:  
                 trashTalk01 = "<color=#D6C207><size=9>Nothin' worse than losing,</color>";
 				trashTalk02 = "<color=#D6C207>So I've heard. </color>";
-
-                Boys_Case_Four();
+                 fadeOutCR_Pick_01 = "fade"; 
+                fadeOutCR_Pick_02 = "type";
+                 Character_Switch_Case(); 
             break;
         }
               if (arrayPos >= orderList.Length - 1)
@@ -1930,7 +1943,21 @@ async void Boys_Case_One()
 //--------------------------------End Star Boy's Dialogue-------------------------------------------
 //-----------------------------------Star's Dialogue------------------------------------------------
 
+async void Character_Switch_Case()
+           {
+                text_To_Use_Is += First_Text_Line;
+                StartCoroutine(FadeOutCR(fadeOutCR_Pick_01, 0, 1.5f));
+                
+             while( function_Done == false )
+                  {
+                        await Task.Yield();
+                  }
 
+                text_To_Use_Is += Second_Text_Line;
+                StartCoroutine(FadeOutCR(fadeOutCR_Pick_02, 0, 1.5f));
+           }  
+
+/*
 async void Stars_Case_Zero()
            {
                 text_To_Use_Is += First_Text_Line;
@@ -1994,12 +2021,18 @@ async void Stars_Case_One()
                 
              while( function_Done == false )
                   {
+        
+        
                         await Task.Yield();
                   }
 
                 text_To_Use_Is += Second_Text_Line;
                 StartCoroutine(FadeOutCR("slide", 0, 2f));
            }  
+
+*/
+
+
 
 
 public void Stars_Dialogue()
@@ -2013,40 +2046,44 @@ public void Stars_Dialogue()
             case 0:
                 trashTalk01 = "<b><size=12><align=right><color=#780987>Don't Run!</color></b>";
 				trashTalk02 = "<size=9><align=right><color=#780987>The puck doesn't bite!</color>";
-                 
-                Stars_Case_Zero();
+                fadeOutCR_Pick_01 = "fade"; 
+                fadeOutCR_Pick_02 = "type";
+                Character_Switch_Case();
             break;
 
             case 1:
                 trashTalk01 = "<b><size=12><align=right><color=#780987>Did you see that?</b>";
 				trashTalk02 = "<size=9><align=right><color=#780987>No. I guess you didn't</color>";
-
-                Stars_Case_One();
-              
+                 fadeOutCR_Pick_01 = "fade"; 
+                fadeOutCR_Pick_02 = "type";
+                Character_Switch_Case();
             break;
 
             case 2:
                 trashTalk01 = "<b><size=12><align=right><color=#780987>Say...</color></b>";
 				trashTalk02 = "<size=9><align=right><color=#780987>is that goal AWAYS open?</color>";
-                
-                Stars_Case_Two(); 
+                 fadeOutCR_Pick_01 = "fade"; 
+                fadeOutCR_Pick_02 = "type";
+                Character_Switch_Case(); 
             break;
 
             case 3:
                 trashTalk01 = "<b><size=12><align=right><color=#780987>Hello?</color></b>";
                 trashTalk02 = "<size=10><align=right><color=#780987>Are you AFK?</color>";
-                
-                Stars_Case_Three();
+                 fadeOutCR_Pick_01 = "fade"; 
+                fadeOutCR_Pick_02 = "type";
+                Character_Switch_Case();
             break;
 
             case 4:  
                 trashTalk01 = "<b><size=12><align=right><color=#780987>That's so sweet</color></b>";
 				trashTalk02 = "<size=9><align=right><color=#780987>You're letting me win!</color>";
-                
-                Stars_Case_Four();
-
+                 fadeOutCR_Pick_01 = "type"; 
+                fadeOutCR_Pick_02 = "slide";
+                Character_Switch_Case();
             break;
         }
+
               if (arrayPos >= orderList.Length - 1)
         {
             arrayPos = 0;
@@ -2072,6 +2109,10 @@ public void Stars_Dialogue()
 
             //  Function to show try again menu.
                 star_Is_Happy.Play();
+
+
+
+
                 Slerp_In_Flowers();
 
 
@@ -2160,7 +2201,7 @@ public void Stars_Dialogue()
     
 
     
-            async void Mopseys_Case_Zero()
+     /*       async void Mopseys_Case_Zero()
            {
                 text_To_Use_Is += First_Text_Line;
                 StartCoroutine(FadeOutCR("type", 0, 1f));
@@ -2230,7 +2271,7 @@ public void Stars_Dialogue()
                 StartCoroutine(FadeOutCR("fade", 0, 1.5f));
            }  
 
-
+*/
 public void Mopseys_Dialogue()
     {
         tmpro_Object = opponent_TMPro;
@@ -2243,37 +2284,42 @@ public void Mopseys_Dialogue()
             case 0:
                 trashTalk01 = "<b><size=9>Don't \nbe \nAfraid!</b>";
 				trashTalk02 = "<size=8>Bunnies <br>just like <br>to <br>have fun.";
-                 
-                Mopseys_Case_Zero();
+                 fadeOutCR_Pick_01 = "fade"; 
+                fadeOutCR_Pick_02 = "type"; 
+                Character_Switch_Case();
             break; 
 
             case 1:
                 trashTalk01 = "<b><size=9>The \nbunnies \nwill \nwait</b>";
 				trashTalk02 = "<size=9>If you need a nap.";
-
-                Mopseys_Case_One();
+                 fadeOutCR_Pick_01 = "fade"; 
+                fadeOutCR_Pick_02 = "type";
+                Character_Switch_Case();
               
             break;
 
             case 2:
                 trashTalk01 = "<b><size=10>Want \na \ncarrot?</b>";
 				trashTalk02 = "<size=9>They're <br>good for <br>the eyes.";
-                
-                Mopseys_Case_Two(); 
+                 fadeOutCR_Pick_01 = "fade"; 
+                fadeOutCR_Pick_02 = "type";
+                Character_Switch_Case(); 
             break;
 
             case 3:
                 trashTalk01 = "<b><size=8>We don't\nhave enough\nrabbits feet</b>";
                 trashTalk02 = "<size=9>to \nimprove \nyour \nluck.";
-                
-                Mopseys_Case_Three();
+                 fadeOutCR_Pick_01 = "fade"; 
+                fadeOutCR_Pick_02 = "type";
+                Character_Switch_Case();
             break;
 
             case 4:  
                 trashTalk01 = "<b><size=9>The \nbunnies \nare \nsad</b>";
 				trashTalk02 = "<size=8>They were \nhoping \nfor a \nchallenge.";
-                
-                Mopseys_Case_Four();
+                 fadeOutCR_Pick_01 = "fade"; 
+                fadeOutCR_Pick_02 = "type";
+                Character_Switch_Case();
 
             break;
         }
