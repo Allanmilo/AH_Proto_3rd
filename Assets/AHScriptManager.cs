@@ -178,6 +178,13 @@ public List<RectTransform> rec_List;
     Renderer Opp_Paddle_Renderer;
 
 
+// Menu Stars.
+
+    [SerializeField] GameObject menu_Star_01;
+    [SerializeField] GameObject menu_Star_02;
+    [SerializeField] GameObject menu_Star_03;
+    [SerializeField] GameObject menu_Star_04;
+
 
 // Menu Flowers.
     
@@ -1148,12 +1155,22 @@ public static event Character_Try_Again character_Try_Again;
         
              alpha02 = _ringFillAlpha.a;  
 
+/*
                 if(spin_Flowers)
                     {
                         menu_Flower_01.transform.Rotate( rotate_Flower * flower_Speed_01 * Time.deltaTime);
                         menu_Flower_02.transform.Rotate( rotate_Flower * flower_Speed_02 * Time.deltaTime);
                     }
-              
+
+                     if(spin_Flowers)
+                    {
+                        menu_Star_01.transform.Rotate( rotate_Flower * flower_Speed_01 * Time.deltaTime);
+                        menu_Star_02.transform.Rotate( rotate_Flower * flower_Speed_02 * Time.deltaTime);
+                         menu_Star_03.transform.Rotate( rotate_Flower * flower_Speed_01 * Time.deltaTime);
+                        menu_Star_04.transform.Rotate( rotate_Flower * flower_Speed_02 * Time.deltaTime);
+
+                    }
+  */            
 
             if(Pan)
             {
@@ -3179,6 +3196,35 @@ public async Task Rotate_Object(RectTransform _object_Rec, float x, float y, flo
 }
 
 
+public async Task Rotate_Object_02(GameObject _object, Quaternion current, Vector4 xyzw, float duration, int WFS)
+{
+    gameObject_List.Add(_object);
+
+        await Task.Delay(WFS);
+        float time = 0;
+
+                    Quaternion rotation = new Quaternion(xyzw.x, xyzw.y, xyzw.z, xyzw.w);
+
+                   // Quaternion current = _object.transform.localRotation;  Make as a variable to enter as current argument.
+
+                     while(time < duration)
+                    {
+                        _object.transform.rotation =  Quaternion.Slerp(current, rotation, time * 3);
+
+                        time = time + Time.deltaTime;
+
+                        await Task.Yield();
+                    }
+
+            gameObject_List.Remove(_object);
+          await Task.Yield();
+}
+
+
+
+
+
+
             IEnumerator Scale_Object(RectTransform object_To_Scale, Vector3 start_Size, Vector3 end_Size,  float duration, float WFS)
             {
                 //  scale_Object_Bool = false;
@@ -3741,6 +3787,7 @@ public IEnumerator Pan_Asks_U_To_tryAgain()
         {
             spin_Flowers = true;
             ActivateReturnMenu(true, true);
+           
 
             if(try_Again.activeSelf == false || back_To_Menu.activeSelf == false)
             {
@@ -3771,8 +3818,6 @@ public IEnumerator Pan_Asks_U_To_tryAgain()
 
         }
 
-    
-
 
         public void Reset_Flowers()
         {
@@ -3796,7 +3841,50 @@ public IEnumerator Pan_Asks_U_To_tryAgain()
 
             countDown.delay = 1f;
         }
-*/
+*/   public void Slerp_In_Stars()
+        {
+            spin_Flowers = true;
+            ActivateReturnMenu(true, true);
+
+            if(try_Again.activeSelf == false || back_To_Menu.activeSelf == false)
+            {
+                try_Again.SetActive(true);
+                back_To_Menu.SetActive(true);
+            }
+
+            StartCoroutine(SlerpingFlowers());
+        }
+
+
+        IEnumerator SlerpingStars()
+        {
+            float time = 0f;
+            float duration = 1f;
+
+            yield return new WaitForSeconds(4);
+
+           // StartCoroutine(Lerp_Transform_Position(Pan, endPosLeftOffScreen, gamePosLeft, 0, 1 ));
+
+            while(time < duration)
+            {
+                _flower_Menu.localPosition = Vector3.Slerp(  flowers_Start, flowers_End, time / duration);
+               _flower_Menu.localScale = Vector3.Lerp( small_Flowers, large_Flowers, time / duration );
+                time += Time.unscaledDeltaTime;
+                yield return null;
+            }  
+
+        }
+
+
+        public void Reset_Stars()
+        {
+                spin_Flowers = false;
+            _flower_Menu.localPosition = flowers_Start;
+         _flower_Menu.localScale = small_Flowers;
+        }
+
+
+
 
 
         public void Star_Try_Again()
