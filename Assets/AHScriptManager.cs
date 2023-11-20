@@ -732,7 +732,7 @@ public static event Character_Try_Again character_Try_Again;
         first_Curve_Height = new Vector3(-14, -2, 0);
         slerp_Center_Pos = new Vector3(0, -8, 0);
         slerp_Center_Pos_02 = new Vector3(0, -7, 0);
-        endPosLeftOffScreen = new Vector3(-19f, 4f, 0);
+        endPosLeftOffScreen = new Vector3(-22f, 4f, 0);
 
         center = originalPos * 0.5f;   // Originally - center = (originalPos + gamePos)* 0.5f;
 
@@ -902,7 +902,7 @@ public static event Character_Try_Again character_Try_Again;
 
         gamePosLeft = new Vector3(-13f, 4f, 0);
 
-        endPosLeftOffScreen = new Vector3(-19f, 4f, 0);
+        // endPosLeftOffScreen = new Vector3(-19f, 4f, 0);
 
 
 
@@ -1691,7 +1691,6 @@ Debug.Log(opponent_TMPro.color + objects_TMPro.color);
     {
         yield return new WaitForSeconds(WFS);
         object_To_Set.SetActive(on_Off);
-        // StartCoroutine(Set_Object_Activate(GameObject object_To_Set, bool on_Off, float WFS));
     }
 
 public void Set_Font(TextMeshPro _TMPro, Color32 new_Color, TMP_FontAsset font_Settings, float font_Size)

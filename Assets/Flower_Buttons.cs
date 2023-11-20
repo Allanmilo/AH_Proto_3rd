@@ -94,21 +94,7 @@ public async void Spinning_Menus()
          child_00_Speed = 20;
          rotate_Object_02.z = -1; // spin opposite direction.
         Debug.Log("2 " + rotate_Object_02);
-
-        StartCoroutine (Text_Glowing(1, 50));
-         /*
-        _menuButtonAlpha.a = 255f;
-        GetComponent<SpriteRenderer>().color = _menuButtonAlpha; // gets text sprite renderer component and sets alpha to .4.   
-
-        if(gameObject.name == "Menu_Flower_over_Again")
-        {
-            _AHManager.flower_Speed_01 = 20; 
-        }
-
-        else
-        {
-            _AHManager.flower_Speed_02 = 20;
-        }*/
+          text_Light_Glow.intensity = 50;
 
     }
 
@@ -116,7 +102,7 @@ public async void Spinning_Menus()
      void OnMouseExit()
     {
          text_Light_Glow.intensity = 0;
-      StopCoroutine(Text_Glowing(1, 1));
+      // StopCoroutine(Text_Glowing(1, 1));
 
          child_00_Speed = 5;
          rotate_Object_02.z = 1;
@@ -124,9 +110,17 @@ public async void Spinning_Menus()
 
     void OnMouseUp()
     {
-     //   _menuButtonAlpha.a = 0f;
-      //   GetComponent<SpriteRenderer>().color = _menuButtonAlpha; // gets text sprite renderer component and sets alpha to zero.
-        _AHManager.Character_Try_Again_Fun();
+        text_Light_Glow.intensity = 0;
+
+        if(gameObject.tag == "Try_Again")
+        {
+             _AHManager.Character_Try_Again_Fun();
+        }
+        else
+        {
+                _AHManager.restoreMenu();
+        }
+
     }
 
 IEnumerator Text_Glowing(float Speed, float Amplitude)

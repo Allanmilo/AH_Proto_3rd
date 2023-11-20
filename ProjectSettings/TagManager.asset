@@ -102,6 +102,9 @@ TagManager:
   - Carrot_Right
   - Carrot_Right_Glow
   - Carrot_Left_Glow
+  - Again_Inner_Star
+  - Menu_Flower_02
+  - Try_Again
   layers:
   - Default
   - TransparentFX
