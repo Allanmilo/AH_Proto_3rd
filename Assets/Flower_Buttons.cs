@@ -113,13 +113,21 @@ public async void Spinning_Menus()
         text_Light_Glow.intensity = 0;
 
         if(gameObject.tag == "Try_Again")
-        {
+        { _AHManager.Pan_Leaves_Screen = true;
              _AHManager.Character_Try_Again_Fun();
+            
         }
         else
         {
                 _AHManager.restoreMenu();
+                _AHManager.Pan_Leaves_Screen = false;
         }
+
+        text_Light_Glow.intensity = 0;
+      // StopCoroutine(Text_Glowing(1, 1));
+
+         child_00_Speed = 5;
+         rotate_Object_02.z = 1;
 
     }
 

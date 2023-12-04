@@ -210,6 +210,8 @@ public List<RectTransform> rec_List;
     Vector3 endPosLeftOffScreen;
     Vector3 gamePosLeft;
 
+    Vector3 endPosLeftOffScreen_Fixed;
+
 
 
     public bool switching_Menu;
@@ -363,6 +365,8 @@ int arrayNum;
 
     public bool size_Object_Bool;
     public bool scale_Object_Bool;
+
+public bool Pan_Leaves_Screen;
 
     Vector2 _start_Size_Y;
 
@@ -705,7 +709,7 @@ public static event Character_Try_Again character_Try_Again;
 
     void Start()
     {  
-     //  Debug.Log("start of start");
+        Pan_Leaves_Screen = true;
         speedUp = false;
        //  moveForward = 0;
         _start_Size_Y = new Vector2(6, 0);
@@ -733,6 +737,7 @@ public static event Character_Try_Again character_Try_Again;
         slerp_Center_Pos = new Vector3(0, -8, 0);
         slerp_Center_Pos_02 = new Vector3(0, -7, 0);
         endPosLeftOffScreen = new Vector3(-22f, 4f, 0);
+        endPosLeftOffScreen_Fixed = new Vector3(-22f, 4f, 0);
 
         center = originalPos * 0.5f;   // Originally - center = (originalPos + gamePos)* 0.5f;
 
@@ -2148,7 +2153,7 @@ public void Stars_Dialogue()
                text_To_Use_Is += Second_Text_Line;
 			    StartCoroutine(FadeOutCR( "type", 0, 1.5f));
                 Pan.SetActive(true);
-                StartCoroutine(Lerp_Transform_Position(Pan, endPosLeftOffScreen, gamePosLeft, 1, 0 ));
+                StartCoroutine(Lerp_Transform_Position(Pan, endPosLeftOffScreen_Fixed, gamePosLeft, 1, 0 ));
                 await Task.Delay(1000);
                 text_Pan_TMPro.color = new Color(0, 0, 0, 1);
                 StartCoroutine(Pan_Asks_U_To_tryAgain());               
@@ -3640,7 +3645,6 @@ public void UnFreezeCircles()
             endPosLeftOffScreen = panTrans.position;
 
             Move_Object_Slerp(panTrans, endPosLeftOffScreen, originalPos, slerp_Center_Pos, 1f);
-           // Move_Object_Curve_Async(panTrans, endPosLeftOffScreen, _height_Point, originalPos, 1, 0);
 
 
            Set_Prefab_Var();
@@ -3805,8 +3809,6 @@ public IEnumerator Pan_Asks_U_To_tryAgain()
 
             yield return new WaitForSeconds(4);
 
-           // StartCoroutine(Lerp_Transform_Position(Pan, endPosLeftOffScreen, gamePosLeft, 0, 1 ));
-
             while(time < duration)
             {
                 _flower_Menu.localPosition = Vector3.Slerp(  flowers_Start, flowers_End, time / duration);
@@ -3861,8 +3863,6 @@ public IEnumerator Pan_Asks_U_To_tryAgain()
             float duration = 1f;
 
             yield return new WaitForSeconds(4);
-
-           // StartCoroutine(Lerp_Transform_Position(Pan, endPosLeftOffScreen, gamePosLeft, 0, 1 ));
 
             while(time < duration)
             {
@@ -3938,7 +3938,6 @@ public IEnumerator Pan_Asks_U_To_tryAgain()
 
             if(curving == true)
             {
-                // Slerp_Transform_Position( Pan, originalPos, gamePosLeft, 600, 1 );
                 Move_Object_Curve_Async(panTrans, originalPos, first_Curve_Height, gamePosLeft, 1, 600);
                 Scale_Object(Pan, large, small, 1, 600 );
                 Set_Scoreboard(300);
@@ -3954,12 +3953,14 @@ public IEnumerator Pan_Asks_U_To_tryAgain()
             StartCoroutine(Lerp_TMPro_Color_Alpha (text_Pan_TMPro, sunGlass_00, sunGlass_01, wfs, 1));
             StartCoroutine(Lerp_TMPro_Color_Alpha(text_Pan_TMPro, sunGlass_01, sunGlass_00, delay, 1));
            
-            StartCoroutine(Lerp_Transform_Position(Pan, gamePosLeft, endPosLeftOffScreen, 1, delay ));
+           			if(Pan_Leaves_Screen) // added.
+{
+            StartCoroutine(Lerp_Transform_Position(Pan, gamePosLeft, endPosLeftOffScreen_Fixed, 1, delay ));
             
             StartCoroutine(Set_Object_Activate(Pan, false, 7));
             Vector2 _end_Size = new Vector2(5, 1);
             text_Pan_Transform.sizeDelta = _end_Size;
-
+}
       //  Debug.Log("pans next move text is " + text_Pan_TMPro.text);
         }
 

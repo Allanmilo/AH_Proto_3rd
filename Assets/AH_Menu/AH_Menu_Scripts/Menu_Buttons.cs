@@ -190,6 +190,7 @@ void OnMouseOver()
 
         if (gameObject.name == "StartOver")
         {       
+            _AHManager.Pan_Leaves_Screen = true;
              _AHManager.start_Game = true;
             _AHManager.switching_Menu = true;
 

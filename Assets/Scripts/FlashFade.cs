@@ -155,7 +155,7 @@ public class FlashFade : MonoBehaviour
 
 				_AHManager.your_Paddle_SR.sprite = _AHManager.paddle_Lose_Sprites[Random.Range(0, 3)];
 */				
-				Debug.Log("moveforward flashfade is " + _AHManager.paddle_Face_Array[_AHManager.moveForward] + _AHManager.moveForward);
+				// Debug.Log("moveforward flashfade is " + _AHManager.paddle_Face_Array[_AHManager.moveForward] + _AHManager.moveForward);
 				
 				_AHManager.Start_Character_Wins();
 				
