@@ -128,6 +128,7 @@ void OnMouseOver()
 
         if (gameObject.name == "BeGentle")
         {
+            _AHManager.diff_Level = 1;
             _AHManager._maxPuckSpeed = 20f;  
 
             _AHManager._maxAISpeed = 8f;
@@ -144,6 +145,8 @@ void OnMouseOver()
         
         if (gameObject.name == "UpANotch")
         {
+            _AHManager.diff_Level = 2;
+            
            _AHManager._maxPuckSpeed = 35f;  
 
             _AHManager._maxAISpeed = 30f;
@@ -158,6 +161,8 @@ void OnMouseOver()
 
         if (gameObject.name == "BringItOn")
         {
+            _AHManager.diff_Level = 3;
+
            _AHManager._maxPuckSpeed = 80f;  
 
             _AHManager._maxAISpeed = 40f;

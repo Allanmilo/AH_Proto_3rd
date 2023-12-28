@@ -2509,7 +2509,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: bda43b7441af7084da29f7118255380f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9019,7 +9019,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 523231048}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -25015,6 +25015,7 @@ Transform:
   m_LocalPosition: {x: -0.5, y: 5.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1545390909}
   - {fileID: 1672856866}
   - {fileID: 367559497}
   - {fileID: 1148881823}
@@ -25042,6 +25043,8 @@ MonoBehaviour:
   _hasChanged: 0
   _activeSelf: 0
   _activeInHierarchy: 0
+  carrot: {fileID: 2932338381457891285, guid: bdc2825507bf2f04c91810c3b1db6556, type: 3}
+  carrotPos: {fileID: 1545390909}
 --- !u!1 &523889083
 GameObject:
   m_ObjectHideFlags: 0
@@ -36392,7 +36395,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.86, y: -0.96}
+  m_AnchoredPosition: {x: -1.07, y: -0.3}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!210 &874498757
@@ -51609,7 +51612,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 523231048}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -63552,6 +63555,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1545390908
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1545390909}
+  m_Layer: 10
+  m_Name: Paddle_Weapons
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1545390909
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545390908}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 523231048}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1563315139 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7183800846893815899, guid: 01a886e1659c54949a3024798d9f7bda, type: 3}
@@ -68762,7 +68800,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 523231048}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -78851,6 +78889,7 @@ MonoBehaviour:
   current_Color: {r: 0, g: 0, b: 0, a: 0}
   size_Object_Bool: 0
   scale_Object_Bool: 0
+  Pan_Leaves_Screen: 0
   Pan_Asks_U_To_tryAgain_bool: 0
   camera_Rect_Rotation: {x: 0, y: 0, z: 0, w: 0}
   start_Pos_Bunny_01: {x: 0, y: 0, z: 0}
@@ -78858,6 +78897,7 @@ MonoBehaviour:
   scale_01: {x: 0, y: 0, z: 0}
   scale_00: {x: 0, y: 0, z: 0}
   scale_Y_00: {x: 0, y: 0, z: 0}
+  diff_Level: 0
   slerp_Center_Offset: 0
   speed: 0
   size: 0

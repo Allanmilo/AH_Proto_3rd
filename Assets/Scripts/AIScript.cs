@@ -36,10 +36,17 @@ public class AIScript : MonoBehaviour
     GameObject _AHScriptManager;
     AHScriptManager _AHManager;
 
+    public GameObject carrot;
+	public RectTransform carrotPos;
+
+    GameObject mopseys_Visit;
+
     void Start()
     {
         _AHScriptManager = GameObject.FindGameObjectWithTag("AHManager");
 		_AHManager =  _AHScriptManager.GetComponent<AHScriptManager>();
+
+        mopseys_Visit = GameObject.FindGameObjectWithTag("Mopseys_Visit");
 
         paddlePos = transform.position;
 
@@ -160,6 +167,25 @@ public class AIScript : MonoBehaviour
             {
                 
             oppPuck = true;
+
+            if(_AHManager.character == mopseys_Visit)
+				{
+					if(_AHManager.diff_Level == 1)
+					{
+						Invoke("Shoot_Carrot", 1);	
+					}
+
+                    if(_AHManager.diff_Level == 2)
+					{
+						Invoke("Shoot_Carrot", 1);	
+					}
+	
+					if(_AHManager.diff_Level == 3)
+					{
+						Invoke("Shoot_Carrot", 1);
+						Invoke("Shoot_Carrot", 2);
+					}
+				}
                
             }
         }
@@ -177,4 +203,11 @@ public void Pace()
             
             transform.position = paddlePos + new Vector3(Mathf.PingPong(Time.time * ratex, 1f), Mathf.Cos(Time.time * ratey) * .03f, transform.position.z);
         }
+
+
+    public void Shoot_Carrot()
+    {
+        Instantiate(carrot, carrotPos.position, Quaternion.identity);;
+    }
+
 }

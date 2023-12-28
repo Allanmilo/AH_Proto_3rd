@@ -567,6 +567,8 @@ public bool Pan_Leaves_Screen;
     Vector3 slerp_Center_Pos_02;
 
     Vector3 bunny_3_Pos;
+
+    public int diff_Level;
     public float slerp_Center_Offset;
 
     public float speed;
@@ -1451,7 +1453,7 @@ if(stop_Routine == false) // loops will only run if this bool is true. Call stop
 
      while( true)
     { 
-        Debug.Log("bool is " + stop_Routine); // used to stop coroutine.
+       //  Debug.Log("bool is " + stop_Routine); // used to stop coroutine.
 
         if(stop_Routine == false)
         {
