@@ -7,6 +7,12 @@ public class Carrot_Weapons : MonoBehaviour
     	// All in one script.
 GameObject _AHScriptManager;
 AHScriptManager _AHManager;
+
+public GameObject carrot_Explosion;
+
+ RectTransform carrot_Pos;
+
+ParticleSystem ps;
 	
 public GameObject player_Paddle;
 public Transform player_Paddle_Rect;
@@ -16,24 +22,29 @@ public Vector2 force; // controls speed of carrot.
 public  float speed; // controls speed of carrot.
 public float rotation_Speed;
 
+
+
 void Start()
 {
 	_AHScriptManager = GameObject.FindGameObjectWithTag("AHManager");
 	_AHManager =  _AHScriptManager.GetComponent<AHScriptManager>();
 
 	carrot_RB = GetComponent<Rigidbody2D>();
+	carrot_Pos = GetComponent<RectTransform>();
 	player_Paddle = GameObject.FindGameObjectWithTag("Player");
     player_Paddle_Rect = player_Paddle.GetComponent<Transform>();
 
+	ps = GetComponent<ParticleSystem>();
+
 		if(_AHManager.diff_Level == 1)
 		{
-			force = new Vector2(3, 3); // controls speed of carrot.
+			force = new Vector2(9, 9); // controls speed of carrot.
 			Carrot_Bullet();
 		}
 		
 		if(_AHManager.diff_Level == 2)
 		{
-			speed = 2; // controls speed of carrot.
+			speed = 9; // controls speed of carrot.
 			rotation_Speed = 2;
 			StartCoroutine(Carrot_Missile());
 		}
@@ -45,11 +56,35 @@ void Start()
 			StartCoroutine(Carrot_Missile());
 		}
 
-		Debug.Log("level is " + _AHManager.diff_Level);
+		
 }
 	
 	
+	void OnCollisionEnter2D(Collision2D colPuck)
+        {
+           // if (colPuck.gameObject.tag == "Puck")
+            
+		Instantiate(carrot_Explosion, carrot_Pos.position, Quaternion.identity);
+           Destroy(gameObject);
+
+					if(_AHManager.diff_Level == 1)
+					{
+						Debug.Log("Level is " + _AHManager.diff_Level);
+					}
+                    if(_AHManager.diff_Level == 2)
+					{	
+							Debug.Log("Level is " + _AHManager.diff_Level);
+					}
 	
+					if(_AHManager.diff_Level == 3)
+					{
+						Debug.Log("Level is " + _AHManager.diff_Level);
+					}
+				
+               
+            
+        }
+
 	// shoots carrot to location player was at when carrot spawned.
 	public void Carrot_Bullet()
 	{
@@ -59,11 +94,11 @@ void Start()
 		//Velocity of carrot.
 		carrot_RB.velocity = new Vector2(direction.x, direction.y).normalized * force;
 		
-		float rotation = Mathf.Atan2(-direction.x, -direction.y) * Mathf.Rad2Deg; // Mathf.Rad2Deg converts number to degrees?
-		transform.rotation = Quaternion.Euler(0, 0, rotation + 0); // degrees turned to point at player
-
-		Debug.Log("velocity is " + carrot_RB.velocity);
+		float rotation = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg; // Mathf.Rad2Deg converts number to degrees?
+		transform.rotation = Quaternion.Euler(0, 0, rotation + 270); //  turned to point at player
 	}
+		
+	
 	
 	
 	
