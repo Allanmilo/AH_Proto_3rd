@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
 {
     private Rigidbody2D rb;
     Collider2D playerCollider;
+
+    Transform trans_ThisGameObject;
     public bool toggle;
     private Vector2 returnPos;
     //private Vector2 newTranPos;
@@ -30,11 +32,20 @@ public class Player : MonoBehaviour
 
      [SerializeField] Color color_Start;
 		 [SerializeField] Color	color_End;
+
+Vector3 paddle_Scale;
+
+public float scale_adjust;
+
+Vector3 small_Scale;
+
     void Awake() 
+
     {
         toggle = false;
         rb = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<Collider2D>();
+        trans_ThisGameObject = GetComponent<Transform>();
 
         playerBoundary = new Boundary(BoundaryHolder.GetChild(0).position.y,
                                       BoundaryHolder.GetChild(1).position.y,
@@ -48,6 +59,11 @@ public class Player : MonoBehaviour
 		_AHManager =  _AHScriptManager.GetComponent<AHScriptManager>();
 
         speed = 1;
+
+        _AHManager.float_Pulse = 0.284f;
+        paddle_Scale = trans_ThisGameObject.localScale;
+
+        small_Scale = new Vector3(scale_adjust, scale_adjust, 0);
     }
 
     void FixedUpdate()
@@ -116,5 +132,34 @@ public class Player : MonoBehaviour
 			_AHManager.Start_Color_Pulse(_AHManager.your_Paddle_SR, color_Start, color_End, timing, speed);
 		//_AHManager.your_Paddle_SR.color = Color.white;
         }
+
+        if(col.gameObject.tag == "Carrot_Missile")
+        {
+             
+            StartCoroutine(Scale_Paddle());
+        }
 	}
+
+    IEnumerator Scale_Paddle()
+    {
+        _AHManager.gameObject_List.Clear();
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+            _AHManager.Scale_Object(this.gameObject, paddle_Scale, small_Scale, .3f, 0);
+           
+                    while(_AHManager.gameObject_List.Count > 0 )
+                    {
+                         yield return null;
+                    }
+
+           _AHManager.Scale_Object(this.gameObject, small_Scale, paddle_Scale, .3f, 0);
+
+                  while(_AHManager.gameObject_List.Count > 0  )
+                    {
+                         yield return null;
+                    } 
+
+                    rb.constraints &= ~RigidbodyConstraints2D.FreezePositionY; 
+                    rb.constraints &= ~RigidbodyConstraints2D.FreezePositionX; 
+    }
 }

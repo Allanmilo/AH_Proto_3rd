@@ -74,6 +74,8 @@ public List<Sprite> paddle_Face_List;
  public List<SpriteRenderer> sprite_Renderer_List;
 public List<RectTransform> rec_List;
 
+public List<int> carrot_Bullet_List;
+
                      RectTransform Pans_Rec;  ///????
 
 
@@ -599,6 +601,8 @@ public bool Pan_Leaves_Screen;
     public bool IsCanceled;
     public static List<bool> scale_Object_List = new List<bool>();
     public static List<bool> rotate_Object_List = new List<bool>();
+
+    public float float_Pulse;
 
     public Sprite[] paddle_Face_Array;
     
@@ -1597,7 +1601,7 @@ public void stop_Routines()
                                 {
                                     result += item.ToString() + ", ";
                                 }
-                                
+                                Debug.Log(result);
 
                 float time = 0f;
                   
@@ -1612,7 +1616,13 @@ public void stop_Routines()
 
                 object_To_Scale.transform.localScale = end_Size;
                 gameObject_List.Remove(object_To_Scale);
-                    
+
+                 string result02 = "end List contents: ";
+                                foreach (var item in gameObject_List)
+                                {
+                                    result02 += item.ToString() + ", ";
+                                }
+                    Debug.Log(result02);
             }
 
 
@@ -1692,6 +1702,35 @@ Debug.Log(opponent_TMPro.color + objects_TMPro.color);
         objects_TMPro.text += " " + array[i]; 
       }
     }
+
+
+public IEnumerator Float_Pulse(float scale_Start, float Speed, float Amplitude, bool float_Positive)
+    {
+        float y = scale_Start;
+        float time = 0;
+
+                while (y >= 0)
+					{
+						float angle = time * Time.deltaTime * Mathf.PI / Speed;
+						y = Amplitude * (Mathf.Sin(angle));
+					
+						if(float_Positive)
+							{
+								float_Pulse = y;   // used to go negative= x = -Mathf.Abs(x); or x + -x;
+								time += 1f;
+							}
+						
+						if(!float_Positive)
+							{
+								float_Pulse = -y;   // used to go negative= x = -Mathf.Abs(x); or x + -x;
+								time += 1f;
+							}
+					
+					
+						yield return null;
+					}  
+    }
+
 
 
     IEnumerator Set_Object_Activate(GameObject object_To_Set, bool on_Off, float WFS)

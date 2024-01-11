@@ -90,13 +90,13 @@ public class PushPaddle : MonoBehaviour
 
     void OnCollisionExit2D(Collision2D collision)
     {
-       Debug.Log("one ");
+    //   Debug.Log("one ");
       if(splashLoad02 == null)
       {
                                                                    
          if(_control_Script.stop_Col == false && collision.gameObject.tag == "MenuPucks")
         {
-            Debug.Log("two ");
+           // Debug.Log("two ");
                 _control_Script.stop_Col = true;
                                             
                 _control_Script.paddle.Add(thisBall);

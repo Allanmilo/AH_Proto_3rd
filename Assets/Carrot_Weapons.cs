@@ -26,6 +26,8 @@ public float rotation_Speed;
 
 void Start()
 {
+	 
+
 	_AHScriptManager = GameObject.FindGameObjectWithTag("AHManager");
 	_AHManager =  _AHScriptManager.GetComponent<AHScriptManager>();
 
@@ -56,15 +58,19 @@ void Start()
 			StartCoroutine(Carrot_Missile());
 		}
 
-		
+		// _AHManager.carrot_Bullet_List.Add(1);
 }
 	
 	
 	void OnCollisionEnter2D(Collision2D colPuck)
         {
-           // if (colPuck.gameObject.tag == "Puck")
+            if (colPuck.gameObject.tag != "Opponent")
             
 		Instantiate(carrot_Explosion, carrot_Pos.position, Quaternion.identity);
+
+               
+		 _AHManager.carrot_Bullet_List.Remove(1);
+		 
            Destroy(gameObject);
 
 					if(_AHManager.diff_Level == 1)

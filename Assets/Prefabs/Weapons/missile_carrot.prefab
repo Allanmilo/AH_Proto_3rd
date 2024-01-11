@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5362888159999593176}
   m_Layer: 0
   m_Name: missile_carrot
-  m_TagString: Untagged
+  m_TagString: Carrot_Missile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,9 +38,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.88, y: -7.94}
+  m_AnchoredPosition: {x: 4.34, y: -10.52}
   m_SizeDelta: {x: 4.41, y: 9.04}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0.49999973}
 --- !u!212 &2932338381457891281
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -337,8 +337,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.04160734, g: 0.8018868, b: 0.2138489, a: 1}
-      maxColor: {r: 0.4405482, g: 0.9433962, b: 0.6149536, a: 1}
+      minColor: {r: 0.021181926, g: 0.6415094, b: 0.16260368, a: 1}
+      maxColor: {r: 0.5454343, g: 0.9716981, b: 0.69413096, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -400,8 +400,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
-      minScalar: 0.2
+      scalar: 1.5
+      minScalar: 0.3
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -716,7 +716,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0.5
-    maxNumParticles: 1000
+    maxNumParticles: 200
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -1034,7 +1034,7 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 7
       minScalar: 0
       maxCurve:
         serializedVersion: 2

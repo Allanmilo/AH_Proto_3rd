@@ -71,7 +71,7 @@ public class PuckGlow : MonoBehaviour
             rb2DPuck.velocity = Vector3.ClampMagnitude(rb2DPuck.velocity, maxSpeed);
           }
 
-         
+        // Debug.Log(rb2DPuck.velocity);
     }
 
     public void ResetGlow()
@@ -114,6 +114,13 @@ public class PuckGlow : MonoBehaviour
             {
                  _AHManager.moveForward += 1;
 		    }
+        }
+
+        if (col.gameObject.tag == "Carrot_Missile")
+        {
+            
+            rb2DPuck.velocity = rb2DPuck.velocity * 100;
+             _AHManager.carrot_Bullet_List.Remove(1);
         }
 	}
 }

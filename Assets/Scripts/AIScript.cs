@@ -170,19 +170,21 @@ public class AIScript : MonoBehaviour
 
             if(_AHManager.character == mopseys_Visit)
 				{
-					if(_AHManager.diff_Level == 1)
+					if(_AHManager.diff_Level == 1 && _AHManager.carrot_Bullet_List.Count == 0)
 					{
-						Invoke("Shoot_Carrot", 0);	
+                        _AHManager.carrot_Bullet_List.Add(1);
+
+						Invoke("Shoot_Carrot", 0.5f);	
 					}
 
                     if(_AHManager.diff_Level == 2)
 					{
-						Invoke("Shoot_Carrot", 1);	
+						Invoke("Shoot_Carrot", 0.5f);	
 					}
 	
 					if(_AHManager.diff_Level == 3)
 					{
-						Invoke("Shoot_Carrot", 0);
+						Invoke("Shoot_Carrot", 0.5f);
 						Invoke("Shoot_Carrot", 1);
 					}
 				}
@@ -206,7 +208,7 @@ public void Pace()
 
 
     public void Shoot_Carrot()
-    {
+    { 
         Instantiate(carrot, carrotPos.position, Quaternion.identity);
     }
 
