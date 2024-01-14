@@ -62,6 +62,7 @@
      <Compile Include="Assets\Scripts\PuckScript.cs" />
      <Compile Include="Assets\Scripts\Carrot_Scripts\TMProWarpText.cs" />
      <Compile Include="Assets\Scripts\MoveWithOffset.cs" />
+     <Compile Include="Assets\Explosion_Check.cs" />
      <Compile Include="Assets\AH_Menu\AH_Menu_Scripts\FreezeText.cs" />
      <Compile Include="Assets\Scripts\ScoreScaling.cs" />
      <Compile Include="Assets\AH_Menu\AH_Menu_Scripts\PushPaddle.cs" />
@@ -115,7 +116,7 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
      <Compile Include="Assets\AH_Menu\AH_Menu_Scripts\PuckColliderScript.cs" />
      <Compile Include="Assets\Scripts\CountDown.cs" />
-     <Compile Include="Assets\explosion_Check.cs" />
+     <Compile Include="Assets\Scripts\Shaking.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

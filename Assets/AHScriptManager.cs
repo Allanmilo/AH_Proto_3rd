@@ -449,6 +449,7 @@ public bool Pan_Leaves_Screen;
 
     GameObject opp_Mask; // added.
 
+    GameObject player_Paddle;
 
 
     RectTransform good_Bunnies_Rec;
@@ -478,6 +479,8 @@ public bool Pan_Leaves_Screen;
     RectTransform second_Camera_Rect;
 
     RectTransform square_Screen_Text_Rec;
+
+    RectTransform Player_Paddle_Rect;
 
     Rigidbody2D good_Bunny_03_Rb;
 
@@ -713,6 +716,13 @@ public static event Character_Try_Again character_Try_Again;
     string fadeOutCR_Pick_01;
     string fadeOutCR_Pick_02;
 
+    // Variables for Shaking.
+    RectTransform obj_Rect;
+
+    public float dura;
+    public float freq;
+    public float shake;
+
     void Start()
     {  
         Pan_Leaves_Screen = true;
@@ -731,6 +741,9 @@ public static event Character_Try_Again character_Try_Again;
 
         backDropGlow = GameObject.FindGameObjectWithTag("BackDropGlow");
         backDropGlow_SR = backDropGlow.GetComponent<SpriteRenderer>();
+
+        player_Paddle = GameObject.FindGameObjectWithTag("Player_Paddle");
+        Player_Paddle_Rect = player_Paddle.GetComponent<RectTransform>();
 
         // paddle_Face_List = new List<Sprite>();
 
@@ -1732,6 +1745,50 @@ public IEnumerator Float_Pulse(float scale_Start, float Speed, float Amplitude, 
     }
 
 
+ public IEnumerator Shake_01(RectTransform obj_Rect, float duration, float frequency, float shakeFrequency)
+{
+	// duration = length of time shaking will occur.
+	// frequency = length of time for each individual shake.
+	// shakeFrequency = size of shaking.
+	
+		float time = 0f;
+		
+		Vector3 _orignalPosOfCam = obj_Rect.position;
+
+	 while(time < duration)
+	{
+            Vector3 currentPosOfCam = obj_Rect.position;
+        
+            Vector3 random_Pos = _orignalPosOfCam + Random.insideUnitSphere * shakeFrequency;
+            
+            float time_Freq = 0;
+
+			while(time_Freq < frequency)
+				{
+					obj_Rect.position = Vector3.Lerp( _orignalPosOfCam, random_Pos, time_Freq/frequency );
+
+					time_Freq += Time.unscaledDeltaTime;
+
+					yield return null;
+				}
+				
+		time += Time.unscaledDeltaTime;
+		yield return null;
+    }
+       
+        float time_Freq02 = 0;
+        Vector3 _currentPosOfCam = obj_Rect.position;
+
+        while(time_Freq02 < frequency)
+				{
+					obj_Rect.position = Vector3.Lerp(_currentPosOfCam,  _orignalPosOfCam, time_Freq02/frequency );
+
+					time_Freq02 += Time.unscaledDeltaTime;
+
+					yield return null;
+				}
+	
+}
 
     IEnumerator Set_Object_Activate(GameObject object_To_Set, bool on_Off, float WFS)
     {
@@ -3183,8 +3240,10 @@ IEnumerator mopseys_Exit_Text()
     }
 
 
-
-
+public void Shake_PP()
+{
+StartCoroutine(Shake_01(Player_Paddle_Rect, dura, freq, shake));
+}
 
 public void Fade_Children(GameObject parent)
 		{	

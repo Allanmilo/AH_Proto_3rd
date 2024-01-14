@@ -8979,8 +8979,8 @@ RectTransform:
   - {fileID: 1454915085}
   - {fileID: 2108363340}
   - {fileID: 2070758980}
-  - {fileID: 716579608}
   - {fileID: 523231048}
+  - {fileID: 1486873497}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -25020,7 +25020,7 @@ Transform:
   - {fileID: 367559497}
   - {fileID: 1148881823}
   m_Father: {fileID: 367209711}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &523231049
 MonoBehaviour:
@@ -35785,8 +35785,8 @@ Transform:
   m_LocalPosition: {x: -2.23, y: -4.1, z: 0}
   m_LocalScale: {x: 0.284, y: 0.284, z: 0}
   m_Children: []
-  m_Father: {fileID: 367209711}
-  m_RootOrder: 4
+  m_Father: {fileID: 1486873497}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &716579609
 MonoBehaviour:
@@ -63469,6 +63469,58 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1486873496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1486873497}
+  - component: {fileID: 1486873498}
+  m_Layer: 0
+  m_Name: Player_Paddle
+  m_TagString: Player_Paddle
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1486873497
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486873496}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 716579608}
+  m_Father: {fileID: 367209711}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 33, y: 20}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1486873498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486873496}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ec7402cd279b22449c816c7d055b3ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dura: 0.03
+  freq: 0.02
+  shake: 0.2
 --- !u!1 &1518264648
 GameObject:
   m_ObjectHideFlags: 0
@@ -78939,6 +78991,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c7ea3afafa372bc47af3c0d316629fa7, type: 3}
   - {fileID: 21300000, guid: 8b782c7a1102d39489e0cdfbcfd6a3e9, type: 3}
   - {fileID: 21300000, guid: fd5467872a1a3324d90bb15f9523dda0, type: 3}
+  dura: 0.25
+  freq: 0.03
+  shake: 0.03
 --- !u!4 &1743815474
 Transform:
   m_ObjectHideFlags: 0

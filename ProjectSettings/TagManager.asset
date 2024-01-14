@@ -106,6 +106,7 @@ TagManager:
   - Menu_Flower_02
   - Try_Again
   - Carrot_Missile
+  - Player_Paddle
   layers:
   - Default
   - TransparentFX

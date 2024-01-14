@@ -137,6 +137,7 @@ Vector3 small_Scale;
         {
              
             StartCoroutine(Scale_Paddle());
+            _AHManager.Shake_PP();
         }
 	}
 
