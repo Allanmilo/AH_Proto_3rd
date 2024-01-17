@@ -147,7 +147,7 @@ MonoBehaviour:
   carrot_RB: {fileID: 0}
   force: {x: 1, y: 1}
   speed: 5
-  rotation_Speed: 2
+  rotation_Speed: 200
 --- !u!198 &8499860272795501550
 ParticleSystem:
   m_ObjectHideFlags: 0

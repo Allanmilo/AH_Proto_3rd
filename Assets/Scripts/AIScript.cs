@@ -177,13 +177,15 @@ public class AIScript : MonoBehaviour
 						Invoke("Shoot_Carrot", 0.5f);	
 					}
 
-                    if(_AHManager.diff_Level == 2)
+                    if(_AHManager.diff_Level == 2 && _AHManager.carrot_Bullet_List.Count == 0)
 					{
+                        _AHManager.carrot_Bullet_List.Add(1);
 						Invoke("Shoot_Carrot", 0.5f);	
 					}
 	
 					if(_AHManager.diff_Level == 3)
 					{
+                        _AHManager.carrot_Bullet_List.Add(1);
 						Invoke("Shoot_Carrot", 0.5f);
 						Invoke("Shoot_Carrot", 1);
 					}
@@ -209,6 +211,7 @@ public void Pace()
 
     public void Shoot_Carrot()
     { 
+        Debug.Log("Carrot");
         Instantiate(carrot, carrotPos.position, Quaternion.identity);
     }
 

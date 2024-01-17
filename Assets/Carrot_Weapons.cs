@@ -18,6 +18,8 @@ public GameObject player_Paddle;
 public Transform player_Paddle_Rect;
 public Rigidbody2D carrot_RB;
 
+public SpriteRenderer carrot_Render;
+
 public Vector2 force; // controls speed of carrot.
 public  float speed; // controls speed of carrot.
 public float rotation_Speed;
@@ -33,22 +35,31 @@ void Start()
 
 	carrot_RB = GetComponent<Rigidbody2D>();
 	carrot_Pos = GetComponent<RectTransform>();
+	carrot_Render = GetComponent<SpriteRenderer>();
+
 	player_Paddle = GameObject.FindGameObjectWithTag("Player");
     player_Paddle_Rect = player_Paddle.GetComponent<Transform>();
+
 
 	ps = GetComponent<ParticleSystem>();
 
 		if(_AHManager.diff_Level == 1)
 		{
+			carrot_Render.flipY = false;
 			force = new Vector2(9, 9); // controls speed of carrot.
 			Carrot_Bullet();
 		}
 		
 		if(_AHManager.diff_Level == 2)
 		{
-			speed = 9; // controls speed of carrot.
-			rotation_Speed = 2;
-			StartCoroutine(Carrot_Missile());
+			speed = 7; // controls speed of carrot.
+			rotation_Speed = 200;
+			// carrot_Render.flipY = true;
+			Debug.Log("Start missile");
+			 StartCoroutine(Carrot_Missile());
+
+		//	force = new Vector2(9, 9); // controls speed of carrot.
+		//	Carrot_Bullet();
 		}
 		
 		if(_AHManager.diff_Level == 3)
@@ -65,7 +76,7 @@ void Start()
 	void OnCollisionEnter2D(Collision2D colPuck)
         {
             if (colPuck.gameObject.tag != "Opponent")
-            
+           { 
 		Instantiate(carrot_Explosion, carrot_Pos.position, Quaternion.identity);
 
                
@@ -79,7 +90,7 @@ void Start()
 					}
                     if(_AHManager.diff_Level == 2)
 					{	
-							Debug.Log("Level is " + _AHManager.diff_Level);
+						Debug.Log("Level is " + _AHManager.diff_Level);
 					}
 	
 					if(_AHManager.diff_Level == 3)
@@ -87,7 +98,7 @@ void Start()
 						Debug.Log("Level is " + _AHManager.diff_Level);
 					}
 				
-               
+		   }      
             
         }
 
@@ -95,7 +106,7 @@ void Start()
 	public void Carrot_Bullet()
 	{
 		// player position minus carrot position.
-		Vector3 direction = player_Paddle_Rect.position - transform.position;
+		Vector2 direction = player_Paddle_Rect.position - transform.position;
 		
 		//Velocity of carrot.
 		carrot_RB.velocity = new Vector2(direction.x, direction.y).normalized * force;
@@ -105,24 +116,25 @@ void Start()
 	}
 		
 	
-	
-	
-	
 	IEnumerator Carrot_Missile()
 {	
+	
+
 	while(true)
 	{
 		// player position minus carrot position.
-		Vector3 direction = player_Paddle.transform.position - transform.position;
+		Vector2 direction = (Vector2)player_Paddle_Rect.position - carrot_RB.position;
 		direction.Normalize(); // makes sure direction is not zero?
 		
-		float rotationAmount = Vector3.Cross(direction, transform.up).z;
+		float rotationAmount = Vector3.Cross(direction, -transform.up).z;
 		
 		//Velocity of carrot.
-		carrot_RB.velocity = transform.up * speed;
+		carrot_RB.velocity = -transform.up * speed;
 		// speed of rotation.
 		carrot_RB.angularVelocity = -rotationAmount * rotation_Speed;
 			yield return null;
+	
+/*
 	}
 }
 }
