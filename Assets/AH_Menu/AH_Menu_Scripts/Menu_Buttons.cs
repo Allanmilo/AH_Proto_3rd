@@ -165,15 +165,18 @@ void OnMouseOver()
         {
             _AHManager.diff_Level = 3;
 
-           _AHManager._maxPuckSpeed = 80f;  
+           _AHManager._maxPuckSpeed = 20f;  
 
-            _AHManager._maxAISpeed = 40f;
+            _AHManager._maxAISpeed = 8f;
 
             _AHManager.start_Count = true;
 
              _AHManager.start_Game = true;
 
-            _AHManager.SwitchScreens();
+            _AHManager.SwitchScreens();   
+            _countDown.StartCount(3);
+            _AHManager.MovePan(true, _AHManager.firstToFive, 1, 5.5f);
+
         }
             
 

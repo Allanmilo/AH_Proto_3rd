@@ -28,8 +28,6 @@ public float rotation_Speed;
 
 void Start()
 {
-	 
-
 	_AHScriptManager = GameObject.FindGameObjectWithTag("AHManager");
 	_AHManager =  _AHScriptManager.GetComponent<AHScriptManager>();
 
@@ -45,7 +43,6 @@ void Start()
 
 		if(_AHManager.diff_Level == 1)
 		{
-			carrot_Render.flipY = false;
 			force = new Vector2(9, 9); // controls speed of carrot.
 			Carrot_Bullet();
 		}
@@ -54,18 +51,13 @@ void Start()
 		{
 			speed = 7; // controls speed of carrot.
 			rotation_Speed = 200;
-			// carrot_Render.flipY = true;
-			Debug.Log("Start missile");
 			 StartCoroutine(Carrot_Missile());
-
-		//	force = new Vector2(9, 9); // controls speed of carrot.
-		//	Carrot_Bullet();
 		}
 		
 		if(_AHManager.diff_Level == 3)
 		{
-			speed = 3; // controls speed of carrot.
-			rotation_Speed = 3;
+			speed = 7; // controls speed of carrot.
+			rotation_Speed = 200;
 			StartCoroutine(Carrot_Missile());
 		}
 
@@ -77,14 +69,13 @@ void Start()
         {
             if (colPuck.gameObject.tag != "Opponent")
            { 
-		Instantiate(carrot_Explosion, carrot_Pos.position, Quaternion.identity);
+				Instantiate(carrot_Explosion, carrot_Pos.position, Quaternion.identity);
+					
+				_AHManager.carrot_Bullet_List.Remove(1);
+				
+				Destroy(gameObject);
 
-               
-		 _AHManager.carrot_Bullet_List.Remove(1);
-		 
-           Destroy(gameObject);
-
-					if(_AHManager.diff_Level == 1)
+				/*	if(_AHManager.diff_Level == 1)
 					{
 						Debug.Log("Level is " + _AHManager.diff_Level);
 					}
@@ -97,7 +88,7 @@ void Start()
 					{
 						Debug.Log("Level is " + _AHManager.diff_Level);
 					}
-				
+				*/
 		   }      
             
         }
@@ -134,7 +125,7 @@ void Start()
 		carrot_RB.angularVelocity = -rotationAmount * rotation_Speed;
 			yield return null;
 	
-/*
+
 	}
 }
 }
