@@ -79,7 +79,7 @@ void Update()
     */
 }
 
-
+/*
 void OnMouseOver()
     {
         if(gameObject.tag == "MainMenu")
@@ -88,12 +88,13 @@ void OnMouseOver()
         }
     }
 
-
+*/
 
    void OnMouseEnter()
     {
       if(gameObject.tag == "MainMenu")
     {
+        mouse_Over_True = true;
         StartCoroutine(Scale_on_Mouse_Over());  
     }     
     }

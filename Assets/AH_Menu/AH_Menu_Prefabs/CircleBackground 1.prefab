@@ -3516,7 +3516,7 @@ GameObject:
   - component: {fileID: 2027207021550106538}
   - component: {fileID: 2919711240549671923}
   - component: {fileID: 647447133117432902}
-  m_Layer: 20
+  m_Layer: 2
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4134,7 +4134,7 @@ GameObject:
   - component: {fileID: 1686185123201062770}
   - component: {fileID: 1018947778459179511}
   - component: {fileID: 3444523505411396229}
-  m_Layer: 20
+  m_Layer: 2
   m_Name: StarBoyPuck
   m_TagString: MenuPucks
   m_Icon: {fileID: 0}
@@ -6726,7 +6726,7 @@ GameObject:
   - component: {fileID: 3829882036829903885}
   - component: {fileID: 2089587490513818883}
   - component: {fileID: 7333783430576597165}
-  m_Layer: 20
+  m_Layer: 2
   m_Name: Square (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8969,7 +8969,7 @@ GameObject:
   - component: {fileID: 2690438283566554228}
   - component: {fileID: 4386911772373181534}
   - component: {fileID: 3696008694992928573}
-  m_Layer: 20
+  m_Layer: 2
   m_Name: MenuPuckText03
   m_TagString: MenuPuckText
   m_Icon: {fileID: 0}
@@ -11357,7 +11357,7 @@ GameObject:
   - component: {fileID: 5699672282815145893}
   - component: {fileID: 7475459329008625982}
   - component: {fileID: 7708527388196246419}
-  m_Layer: 20
+  m_Layer: 2
   m_Name: StarGirlPuck
   m_TagString: MenuPucks
   m_Icon: {fileID: 0}
@@ -14697,7 +14697,7 @@ GameObject:
   - component: {fileID: 8278083090745050508}
   - component: {fileID: 3072275378545152186}
   - component: {fileID: 2635157846309431497}
-  m_Layer: 20
+  m_Layer: 2
   m_Name: Menu_Frame
   m_TagString: MenuFrame
   m_Icon: {fileID: 0}
@@ -22797,7 +22797,7 @@ GameObject:
   - component: {fileID: 6929813747482405452}
   - component: {fileID: 5251747126919819773}
   - component: {fileID: 7046654113315899647}
-  m_Layer: 20
+  m_Layer: 2
   m_Name: MenuPuckText01
   m_TagString: MenuPuckText
   m_Icon: {fileID: 0}
@@ -24613,7 +24613,7 @@ GameObject:
   - component: {fileID: 3219632994309004388}
   - component: {fileID: 1002418154334137028}
   - component: {fileID: 5401399329364302932}
-  m_Layer: 20
+  m_Layer: 2
   m_Name: Square (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29055,7 +29055,7 @@ GameObject:
   - component: {fileID: 5025563098201706034}
   - component: {fileID: 1024962436423221128}
   - component: {fileID: 6133518934934275947}
-  m_Layer: 20
+  m_Layer: 2
   m_Name: PuckCenter
   m_TagString: MenuPucks
   m_Icon: {fileID: 0}
@@ -31164,7 +31164,7 @@ GameObject:
   - component: {fileID: 3007499030610342540}
   - component: {fileID: 3191584032082983168}
   - component: {fileID: 5178234445462788941}
-  m_Layer: 20
+  m_Layer: 2
   m_Name: MenuPuckText02
   m_TagString: MenuPuckText
   m_Icon: {fileID: 0}
@@ -31845,7 +31845,7 @@ GameObject:
   - component: {fileID: 2863800682562293687}
   - component: {fileID: 9016096193172525307}
   - component: {fileID: 3691629590380852330}
-  m_Layer: 20
+  m_Layer: 2
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

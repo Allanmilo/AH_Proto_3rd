@@ -172,6 +172,9 @@ public List<int> carrot_Bullet_List;
     ParticleSystem bad_Hearts_02_PS;
     ParticleSystem bad_Hearts_03_PS;
 
+
+    ParticleSystem mopseys_Entrance_PS;
+    ParticleSystem mopseys_Exiting_PS;
     Renderer hearts_00_Renderer;
     Renderer hearts_01_Renderer;
     Renderer hearts_02_Renderer;
@@ -696,8 +699,8 @@ public static event Character_Try_Again character_Try_Again;
 	public delegate void Character_Loses();
 	public static event Character_Loses character_Loses;
 
-   // public delegate void Play_Paddle_Intro();
-	// public static event Play_Paddle_Intro  play_Paddle_Intro;
+    public delegate void Play_Paddle_Intro();
+	public static event Play_Paddle_Intro  play_Paddle_Intro;
 
     public delegate void Play_Paddle_Exit();
 	public static event Play_Paddle_Exit  play_Paddle_Exit;
@@ -1046,9 +1049,10 @@ public static event Character_Try_Again character_Try_Again;
         mopsey_Is_Angry_Rec = mopsey_Is_Angry.GetComponent<RectTransform>();
 
         mopseys_Entrance = GameObject.FindGameObjectWithTag("Mopseys_Entrance");
-
+        mopseys_Entrance_PS = mopseys_Entrance.GetComponent<ParticleSystem>();
 
         mopseys_Exiting = GameObject.FindGameObjectWithTag("Mopseys_Exiting");
+        mopseys_Exiting_PS = mopseys_Exiting.GetComponent<ParticleSystem>();
 
         // working here Test_Function();
 
@@ -1207,12 +1211,12 @@ public static event Character_Try_Again character_Try_Again;
 
             if (Input.GetKeyUp(KeyCode.S))
         {
-                 StartCoroutine(Unfreeze(good_Bunny_03_Rb, .1f));
+                mopseys_Entrance_PS.Play();
         }
 
              if (Input.GetKeyDown(KeyCode.W))
         {
-                   StartCoroutine(Freeze(good_Bunny_03_Rb, 0f));
+                  mopseys_Exiting_PS.Play();
         }
 
 
@@ -1271,7 +1275,7 @@ public void Pick_Opponent(string opponent)
 
     if(opponent == "Mopsey")
     {
-        Debug.Log("Mopsey starting...");
+        // Debug.Log("Mopsey starting...");
 
         character.SetActive(false);
         character = null;
@@ -1298,8 +1302,8 @@ public void Pick_Opponent(string opponent)
         // good_Bunny_03_Rec.position.y = Mathf.Clamp(good_Bunny_03_Rec.position.y, -7.23f, 7.0f);
         opponent_Text_Box_Rec.localScale = scale_00;
        opp_Mask.transform.position =  opp_Mask_Pos; 
-       // play_Paddle_Intro += Mopseys_Paddle_Intro;
-      //  play_Paddle_Exit += Mopseys_Paddle_Exit;
+        play_Paddle_Intro += Mopseys_Paddle_Intro;
+       play_Paddle_Exit += Mopseys_Paddle_Exit;
 
         // Carrot_Bitten_Glow.SetActive(false);
 
@@ -2472,13 +2476,15 @@ public void Mopsey_Try_Again()
 
 public void Change_Paddle(Sprite paddle)
     {
+
+
         opponent_Paddle.SetActive(true);
 
         opponent_Paddle_SR.sprite = paddle;
         
         Scale_Object(opponent_Paddle, scale_00, scale_01, 1, 0);
 
-      //  play_Paddle_Intro();
+        play_Paddle_Intro();
        
     }
 
@@ -2558,9 +2564,10 @@ IEnumerator Mopseys_Intro()
     hearts_00_PS.Play();
 
    // Change_Paddle(mopseys_Paddle);
-
+     
     Opp_Paddle_Intro(mopseys_Paddle, 0);
-
+    yield return new WaitForSeconds(1);
+    mopseys_Entrance_PS.Play();
 
 
     // Mopsey says Hi!.
@@ -2629,7 +2636,7 @@ IEnumerator Mopseys_Intro()
 
 
 
-/*
+
 public void Mopseys_Paddle_Intro()
     {
         var _colorOverLifetime = Opp_Paddle_PS.colorOverLifetime;
@@ -2654,10 +2661,10 @@ public void Mopseys_Paddle_Intro()
 
                  Opp_Paddle_PS.Play();
     }
-*/
 
 
-/*
+
+
 public void Mopseys_Paddle_Exit()
     {
         var _colorOverLifetime = Opp_Paddle_PS.colorOverLifetime;
@@ -2687,7 +2694,7 @@ public void Mopseys_Paddle_Exit()
 
                  opponent_Paddle.SetActive(false);
     }
-*/
+
 
 
  public async Task Bunnies_Attack()
@@ -3144,6 +3151,7 @@ Fade_Children(bunny_03);
     
      yield return new WaitForSeconds(1);
 
+    mopseys_Exiting_PS.Play();
     Opp_Paddle_Exit(mopseys_Paddle, 1);
 
 bad_Hearts_00_PS.Play();
