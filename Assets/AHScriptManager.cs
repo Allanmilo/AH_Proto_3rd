@@ -707,6 +707,8 @@ public static event Character_Try_Again character_Try_Again;
 
     #endregion Delegates
 
+     int length_Array;
+    bool Word_Text_Reveal_Bool;
     public bool speedUp;
     public int paddle_Array_Pos;
 
@@ -1705,19 +1707,34 @@ public async void Size_Object(GameObject object_To_Size, Vector3 start_Size, Vec
 
 IEnumerator Word_Text_Reveal(TextMeshPro objects_TMPro, string words_To_Split, float duration, float WFS)
     {
+        Word_Text_Reveal_Bool = true;
     //----------------Word by word text reveal.------------------
         yield return new WaitForSeconds(WFS);
 
-        string[] array = words_To_Split.Split(' ');
+       Debug.Log("objects_TMPro=" + objects_TMPro + " words_To_Split=" + words_To_Split);
+
+        string[] array = words_To_Split.Split(new string[] { "  " }, System.StringSplitOptions.None);
+
+
+      //   objects_TMPro.color = new Color(1, 1, 1, 1);
         objects_TMPro.text = array[0]; 
 
-        objects_TMPro.color = new Color(1, 1, 1, 1);
-Debug.Log(opponent_TMPro.color + objects_TMPro.color);
+        
+         objects_TMPro.color = new Color(1, 1, 1, 1);
+
       for( int i = 1 ; i < array.Length ; ++ i)
       {
+         Debug.Log("word is " + objects_TMPro.text);
         yield return new WaitForSeconds(duration);
         objects_TMPro.text += " " + array[i]; 
+        length_Array = i;
+        
       }
+       
+      yield return null;
+       // yield return new WaitUntil(() => length_Array == array.Length);
+        Word_Text_Reveal_Bool = false;
+        Debug.Log("finish " + Word_Text_Reveal_Bool);
     }
 
 
@@ -1816,6 +1833,8 @@ public void Set_Font(TextMeshPro _TMPro, Color32 new_Color, TMP_FontAsset font_S
 
  IEnumerator FadeOutCR( string text_Moves, float WFS, float duration ) // Fades text out from full alpha to zero alpha.
 {
+    Debug.Log("text moves is " + text_Moves);
+
    function_Done = false;
 
     if(text_To_Use_Is != null)
@@ -1856,7 +1875,7 @@ public void Set_Font(TextMeshPro _TMPro, Color32 new_Color, TMP_FontAsset font_S
         {
             yield return null;
         }
-              //    yield return new WaitForSeconds(1f);    
+               yield return new WaitForSeconds(1f);    
  
     }
                 float currentTime = 0f;
@@ -2168,7 +2187,7 @@ public void Stars_Dialogue()
         {
             case 0:
                 trashTalk01 = "<b><size=12><align=right><color=#780987>Don't Run!</color></b>";
-				trashTalk02 = "<size=9><align=right><color=#780987>The puck doesn't bite!</color>";
+				trashTalk02 = "<size=9><align=right><color=#780987>The  puck  doesn't  bite!</color>";
                 fadeOutCR_Pick_01 = "fade"; 
                 fadeOutCR_Pick_02 = "type";
                 Character_Switch_Case();
@@ -2176,7 +2195,7 @@ public void Stars_Dialogue()
 
             case 1:
                 trashTalk01 = "<b><size=12><align=right><color=#780987>Did you see that?</b>";
-				trashTalk02 = "<size=9><align=right><color=#780987>No. I guess you didn't</color>";
+				trashTalk02 = "<size=9><align=right><color=#780987>No. I  guess  you  didn't</color>";
                  fadeOutCR_Pick_01 = "fade"; 
                 fadeOutCR_Pick_02 = "type";
                 Character_Switch_Case();
@@ -2184,7 +2203,7 @@ public void Stars_Dialogue()
 
             case 2:
                 trashTalk01 = "<b><size=12><align=right><color=#780987>Say...</color></b>";
-				trashTalk02 = "<size=9><align=right><color=#780987>is that goal AWAYS open?</color>";
+				trashTalk02 = "<size=9><align=right><color=#780987>is  that  goal  AWAYS  open?</color>";
                  fadeOutCR_Pick_01 = "fade"; 
                 fadeOutCR_Pick_02 = "type";
                 Character_Switch_Case(); 
@@ -2192,15 +2211,15 @@ public void Stars_Dialogue()
 
             case 3:
                 trashTalk01 = "<b><size=12><align=right><color=#780987>Hello?</color></b>";
-                trashTalk02 = "<size=10><align=right><color=#780987>Are you AFK?</color>";
+                trashTalk02 = "<size=10><align=right><color=#780987>Are  you  AFK?</color>";
                  fadeOutCR_Pick_01 = "fade"; 
                 fadeOutCR_Pick_02 = "type";
                 Character_Switch_Case();
             break;
 
             case 4:  
-                trashTalk01 = "<b><size=12><align=right><color=#780987>That's so sweet</color></b>";
-				trashTalk02 = "<size=9><align=right><color=#780987>You're letting me win!</color>";
+                trashTalk01 = "<b><size=12><align=right><color=#780987>That's  so  sweet</color></b>";
+				trashTalk02 = "<size=9><align=right><color=#780987>You're  letting  me  win!</color>";
                  fadeOutCR_Pick_01 = "type"; 
                 fadeOutCR_Pick_02 = "slide";
                 Character_Switch_Case();
@@ -2226,7 +2245,7 @@ public void Stars_Dialogue()
 
 		char_Try_Again_Text_01 = "<b><size=12><align=right><color=#780987>That was FUN!</color></b>";
 
-		char_Try_Again_Text_02 = "<size=12><align=right><color=#780987>Wanna lose again?</color>";
+		char_Try_Again_Text_02 = "<size=12><align=right><color=#780987>Wanna  lose  again?</color>";
 		
 		pan_Try_Again_Exit = "Go get her!";
 
@@ -2273,7 +2292,7 @@ public void Stars_Dialogue()
                 tmpro_Object.font = star_Loses_Font;
                 opponent_Text_Box_Rec.position = stars_Text_Box_Pos_Losing;
                 trashTalk01 = "<b><size=9><align=right><color=#0e1111>that wasn't very nice.</color></b>";
-				trashTalk02 = "<size=9><color=#0e1111><align=right>i'm gonna tell on you...</color> ";
+				trashTalk02 = "<size=9><color=#0e1111><align=right>i'm  gonna  tell  on  you...</color> ";
         
 
         
@@ -2401,12 +2420,12 @@ public void Mopseys_Dialogue()
         textBox_width01 = new Vector2(5.5f, 0);
         textBox_width02 = new Vector2(5.5f, 6.5f);
         tmpro_Object.text = " ";
-
+        tmpro_Object.color = new Color(0, 0, 0, 0);
         switch (orderList[arrayPos])
     {
             case 0:
                 trashTalk01 = "<b><size=9>Don't \nbe \nAfraid!</b>";
-				trashTalk02 = "<size=8>Bunnies <br>just like <br>to <br>have fun.";
+				trashTalk02 = "<size=8>Bunnies <br>  just like <br>  to <br>  have fun.";
                  fadeOutCR_Pick_01 = "fade"; 
                 fadeOutCR_Pick_02 = "type"; 
                 Character_Switch_Case();
@@ -2414,7 +2433,7 @@ public void Mopseys_Dialogue()
 
             case 1:
                 trashTalk01 = "<b><size=9>The \nbunnies \nwill \nwait</b>";
-				trashTalk02 = "<size=9>If you need a nap.";
+				trashTalk02 = "<size=9>If you \n  need \n  a \n  nap.";
                  fadeOutCR_Pick_01 = "fade"; 
                 fadeOutCR_Pick_02 = "type";
                 Character_Switch_Case();
@@ -2423,7 +2442,7 @@ public void Mopseys_Dialogue()
 
             case 2:
                 trashTalk01 = "<b><size=10>Want \na \ncarrot?</b>";
-				trashTalk02 = "<size=9>They're <br>good for <br>the eyes.";
+				trashTalk02 = "<size=9>They're <br>  good for <br>  the eyes.";
                  fadeOutCR_Pick_01 = "fade"; 
                 fadeOutCR_Pick_02 = "type";
                 Character_Switch_Case(); 
@@ -2431,7 +2450,7 @@ public void Mopseys_Dialogue()
 
             case 3:
                 trashTalk01 = "<b><size=8>We don't\nhave enough\nrabbits feet</b>";
-                trashTalk02 = "<size=9>to \nimprove \nyour \nluck.";
+                trashTalk02 = "<size=9>to  \nimprove  \nyour  \nluck.";
                  fadeOutCR_Pick_01 = "fade"; 
                 fadeOutCR_Pick_02 = "type";
                 Character_Switch_Case();
@@ -2439,7 +2458,7 @@ public void Mopseys_Dialogue()
 
             case 4:  
                 trashTalk01 = "<b><size=9>The \nbunnies \nare \nsad</b>";
-				trashTalk02 = "<size=8>They were \nhoping \nfor a \nchallenge.";
+				trashTalk02 = "<size=8>They were\n  hoping\n  for a\n  challenge.";
                  fadeOutCR_Pick_01 = "fade"; 
                 fadeOutCR_Pick_02 = "type";
                 Character_Switch_Case();
@@ -2566,7 +2585,7 @@ IEnumerator Mopseys_Intro()
    // Change_Paddle(mopseys_Paddle);
      
     Opp_Paddle_Intro(mopseys_Paddle, 0);
-    yield return new WaitForSeconds(1);
+   // yield return new WaitForSeconds(1);
     mopseys_Entrance_PS.Play();
 
 
@@ -2574,22 +2593,18 @@ IEnumerator Mopseys_Intro()
     yield return new WaitForSeconds(4);
         opponent_TMPro.text = "\nHi!\n";    // Replace mopsey_Text_Box_TMPro with  tmpro_Object.
     
-    opponent_Text_Box_Rec.pivot = new Vector2(.5f, .5f);
-   // opponent_Text_Box_Rec.pivot = new Vector2(.9f, .3f);
+    opponent_Text_Box_Rec.pivot = new Vector2(.5f, .5f); // Move pivot point of text box.
+
     Vector3 newCenterOffset = new Vector3(0, -10, 0);
 
+    // Moves textbox from Mopsey's mouth to full ballon.
     Move_Object_Slerp(opponent_Text_Box_Rec, Mopsey_Text_Start_Pos, Mopsey_Text_Hello_Pos, newCenterOffset, .3f);
-    //Move_Object_Curve_Async(opponent_Text_Box_Rec, Mopsey_Text_Start_Pos, Mopsey_Text_OffSet_Center01, Mopsey_Text_Origin_Pos, .7f, 0);
-
     Scale_Object(opponent_Text_Box, scale_00, scale_01, .3f, 0);
 
     yield return new WaitForSeconds(2);
 
-     
-
+    // Shrink text and move back to Mopsey.
      Move_Object_Slerp(opponent_Text_Box_Rec, Mopsey_Text_Hello_Pos, Mopsey_Text_Start_Pos, newCenterOffset, .2f);
-   //  Move_Object_Curve_Async(opponent_Text_Box_Rec, Mopsey_Text_Origin_Pos, Mopsey_Text_OffSet_Center02, Mopsey_Text_Start_Pos, .2f, 0);
-
     Scale_Object(opponent_Text_Box, scale_01, scale_00, .25f, 0);
 
 
@@ -2609,11 +2624,12 @@ IEnumerator Mopseys_Intro()
     opponent_Text_Box_Rec.pivot = new Vector2(.8f, .3f);  // adjust position of box when at scale 1.
     opponent_TMPro.text = "\nI'm \nMopsey.";
 
+    // Moves textbox from Mopsey's mouth to full ballon.
     Scale_Object(opponent_Text_Box, scale_00, scale_01, .3f, 0);
     Move_Object_Slerp(opponent_Text_Box_Rec, Mopsey_Text_Start_Pos, Mopsey_Text_Hello_Pos, newCenterOffset, .3f);
 
     yield return new WaitForSeconds(1);
-
+// Shrink text and move back to Mopsey.
     Scale_Object(opponent_Text_Box, scale_01, scale_00, .2f, 0);
     Move_Object_Slerp(opponent_Text_Box_Rec, Mopsey_Text_Hello_Pos, Mopsey_Text_Start_Pos, newCenterOffset, .2f);
     
@@ -2747,8 +2763,16 @@ IEnumerator Bunny_Attack_01_Start()
 
     yield return new WaitForSeconds(1.1f);
     // run mopsey text box- bunnies are angry..
-    Angry_Bunnies_Text();
+    //  Angry_Bunnies_Text();
 
+        Set_Font(opponent_TMPro, oh_No_new_Color, oh_No, 10f);
+        // bunnies_Text = "The bunnies are angry...";
+        sayStuff = "The  bunnies  are  angry...";
+        // text_To_Use_Is += First_Text_Line;
+       yield return StartCoroutine(FadeOutCR("type", 0, 1));
+       // yield return StartCoroutine(Word_Text_Reveal(opponent_TMPro, bunnies_Text, .3f, 0));
+       // StartCoroutine(Lerp_TMPro_Color_Alpha(opponent_TMPro, oh_No_new_Color_01, oh_No_new_Color, 1.5f,  1));// fade out text.
+  
     // Angry bunnies hop wildly.
     Bunnies_Attack();
 
@@ -2920,15 +2944,15 @@ IEnumerator Bunny_Attack_01_Start()
 
  public async void Mopsey_Wins() // used as character_Wins. Called by FlashFade?
     {
-        pan_Try_Again_Text_01 = "Beaten by a bunch of bunnies?";
+        pan_Try_Again_Text_01 = "Beaten \n  by a bunch \n  of bunnies?";
 
-		pan_Try_Again_Text_02 = "Afraid you'll lose again?";
+		pan_Try_Again_Text_02 = "Afraid you'll \n  lose again?";
 
-		char_Try_Again_Text_01 = "The bunnies Call you CARROT.";
+		char_Try_Again_Text_01 = "Wanna carrot?";
 
 		char_Try_Again_Text_02 = " ";
 		
-		pan_Try_Again_Exit = "Show'em what you're made of!";
+		pan_Try_Again_Exit = "Show'em \nwhat you're \nmade of!";
 
       StartCoroutine(Start_Carrots());
 
@@ -2936,8 +2960,8 @@ IEnumerator Bunny_Attack_01_Start()
 				text_To_Use_Is = null;
 
               //  maskingTextBox =stars_Text_Box_RecTrans; // chose text box container for slide effect.
-                trashTalk01 = char_Try_Again_Text_01;   // "<b><size=12><align=right><color=#780987>That was FUN!</color></b>"
-				trashTalk02 = char_Try_Again_Text_02;   // "<size=12><align=right><color=#780987>Wanna lose again?</color>"
+                trashTalk01 = char_Try_Again_Text_01;   
+				trashTalk02 = char_Try_Again_Text_02; 
                 text_To_Use_Is += First_Text_Line;
 
                 StartCoroutine(FadeOutCR("fade", 0, 1.5f));
@@ -3151,8 +3175,9 @@ Fade_Children(bunny_03);
     
      yield return new WaitForSeconds(1);
 
-    mopseys_Exiting_PS.Play();
+   
     Opp_Paddle_Exit(mopseys_Paddle, 1);
+      mopseys_Exiting_PS.Play();
 
 bad_Hearts_00_PS.Play();
    
@@ -3187,17 +3212,53 @@ IEnumerator mopseys_Exit_Text()
 				{
 					yield return null; 
 				}
-				 
-				opponent_TMPro.text = "<size=10> The<br> fur's<br> gonna<br> fly!"; 
-				// opponent_TMPro.color = new Color(0, 0, 0, 1);
-				StartCoroutine(Word_Text_Reveal(opponent_TMPro, opponent_TMPro.text, .5f, 0));
-				
-				yield return new WaitForSeconds(2f);
 
-				StartCoroutine(GlowAdjust(opponent_TMPro, 0, 1f, .5f));
+
+
+
+            opponent_TMPro.text = "<size=10> The<br> fur's<br> gonna<br> fly!";
+			
+		
+			textBox_width03 = new Vector2(5.5f, 6.5f);
+			Size_Object(opponent_Text_Box, textBox_width01, textBox_width03, 500, 1.5f);
+
+          
+          
+            while(size_Object_Bool == true)
+				{
+					yield return null;
+				}
+
+
+                yield return StartCoroutine(GlowAdjust(opponent_TMPro, 0, 1f, .5f));
+				
+			//	 StartCoroutine(Lerp_TMPro_Color_Alpha(tmpro_Object, sunGlass_01, sunGlass_00, .8f, 0));
+         
+
+			 StartCoroutine(Lerp_TMPro_Color_Alpha(tmpro_Object, sunGlass_01, sunGlass_00, 0, .5f));
+			
+
+
+            /*	 
+				//opponent_TMPro.text = "<size=10> The<br> fur's<br> gonna<br> fly!"; 
+
+                string text_To_Use = "<size=10> The<br> fur's<br> gonna<br> fly!"; 
+				// opponent_TMPro.color = new Color(0, 0, 0, 1);
+				yield return StartCoroutine(Word_Text_Reveal(opponent_TMPro, text_To_Use, 2f, 0));
+				
+                while(Word_Text_Reveal_Bool)
+                {
+                    Debug.Log("Continue " + opponent_TMPro.text);
+				    yield return null;
+                }
+
+                Debug.Log("Finished");
+                yield return new WaitForSeconds(2);
+
+				yield return StartCoroutine(GlowAdjust(opponent_TMPro, 0, 1f, .5f));
 				//yield return new WaitForSeconds(2);
 				 StartCoroutine(Lerp_TMPro_Color_Alpha(tmpro_Object, sunGlass_01, sunGlass_00, .8f, 1));
-   
+            */
     	}
 		
 		
@@ -3219,7 +3280,9 @@ IEnumerator mopseys_Exit_Text()
  
 					   yield return null;
 					} 
+// try turning of glow fadeout and just use regular fadeout.
 
+/*
 			glowPower = 0;
 			time = 0;
 					while(time < duration)
@@ -3232,7 +3295,7 @@ IEnumerator mopseys_Exit_Text()
 
 					   yield return null;
 					} 
-
+*/
 					glow_On = false;
 		}
 
@@ -3422,7 +3485,7 @@ public async void  Opp_Paddle_Exit(Sprite paddle, int child_Num)
 
 			opponent_Paddle_SR.sprite = paddle; // Set sprite to use.
 			opponent_Paddle.transform.GetChild(child_Num).gameObject.SetActive(true); // set particle system to active.
-			await Task.Delay(500);
+			await Task.Delay(100);
 		     Scale_Object(opponent_Paddle, scale_01, scale_00, .5f, 0); // Scale sprite to full.
 		     await Task.Delay(5000);
              opponent_Paddle.SetActive(false);   // deactivate opp paddle.
