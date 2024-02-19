@@ -1175,6 +1175,8 @@ public static event Character_Try_Again character_Try_Again;
 
         character = star_Girl;
 
+		
+
     }
 
 
@@ -1417,6 +1419,8 @@ void Pan_Intros(string character)
 				start_Point += Time.unscaledDeltaTime;
 				yield return null ;
 
+                sprite_Renderer.material.color = end_Color ;
+
                 sprite_Renderer_List.Remove(sprite_Renderer);
 			}		
 		}
@@ -1443,7 +1447,9 @@ void Pan_Intros(string character)
                 }
 
 				yield return null ;
-			}		
+            }
+
+            _textMeshPro.color = end_Color ;
                lerp_TMPro_Color_Bool = false;	
 		}
 
@@ -2588,6 +2594,8 @@ IEnumerator Mopseys_Intro()
    // yield return new WaitForSeconds(1);
     mopseys_Entrance_PS.Play();
 
+// remove after next play through.
+// opponent_TMPro.fontSharedMaterial.SetFloat(ShaderUtilities.ID_GlowPower, 0); //new Color32(255, 240, 0, 100));
 
     // Mopsey says Hi!.
     yield return new WaitForSeconds(4);
@@ -3235,8 +3243,9 @@ IEnumerator mopseys_Exit_Text()
 			//	 StartCoroutine(Lerp_TMPro_Color_Alpha(tmpro_Object, sunGlass_01, sunGlass_00, .8f, 0));
          
 
-			 StartCoroutine(Lerp_TMPro_Color_Alpha(tmpro_Object, sunGlass_01, sunGlass_00, 0, .5f));
+			 yield return StartCoroutine(Lerp_TMPro_Color_Alpha(tmpro_Object, sunGlass_01, sunGlass_00, 0, .5f));
 			
+            opponent_TMPro.fontSharedMaterial.SetFloat(ShaderUtilities.ID_GlowPower, 0); //new Color32(255, 240, 0, 100));
 
 
             /*	 
