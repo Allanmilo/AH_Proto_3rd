@@ -34,6 +34,10 @@ public class LoadingScene: MonoBehaviour
 
     float progress;
 
+	public float fillSpeed = 15f;
+
+
+
 	void Awake()
 	{
 		newAlpha = 1;
@@ -65,25 +69,70 @@ public class LoadingScene: MonoBehaviour
 
 
 
-	private IEnumerator BeginLoad()
+	
+private IEnumerator BeginLoad()
 	{
 		
+		_progress_Circle_Image.fillAmount = 0; // not present.
+		// loaderUI.SetActive(true);
+		
+		operation = SceneManager.LoadSceneAsync(sceneName);
+		operation.allowSceneActivation = false;
+		
+		float progress = 0; // not present.
+		float smoothValue = 0;
+		float speed = 10;
+
+		// while(!operation.isDone)
+		while(progress < .95f)
+		{
+			// determines gap between progress bar value and actual load screen progress,
+			if(operation.progress >= progress)
+				{
+					smoothValue += (operation.progress - progress) / speed * Time.deltaTime;
+				}
+			
+			else if (progress < operation.progress)
+				{
+					smoothValue -= (progress - operation.progress) / speed * Time.deltaTime;
+				}
+				
+		//progress = Mathf.MoveTowards(progress, operation.progress, fillSpeed * Time.deltaTime);
+		progress = Mathf.Lerp(progress, operation.progress, Time.deltaTime / fillSpeed);
+		
+		_progress_Circle_Image.fillAmount = progress + smoothValue;
+		
+
+		Debug.Log("progress is " + progress);
+		if (progress >= 0.95f)
+			{
+				_progress_Circle_Image.fillAmount = 1;
+				operation.allowSceneActivation = true;
+			}
+		
 		yield return null;
+		}
+		/* yield return null;
 		
 		 operation = SceneManager.LoadSceneAsync(sceneName);
 		 operation.allowSceneActivation = false;  // was off originally.
 		
 		while (!operation.isDone)
 		{
-			
 			progress = Mathf.Clamp01(operation.progress / .9f); // allows progress to go to 1 instead of stopping AT .9.
+			// progress = operation.progress / .9f; // allows progress to go to 1 instead of stopping AT .9.
 			
+			
+			
+			
+			Debug.Log("progress is " + progress);
 			_progress_Circle_Image.fillAmount = progress;
 
             operation.allowSceneActivation = true;
 
             yield return null;	
 		}
+		*/
 
         Change_Circle(); // was an action item.
 		// action();
